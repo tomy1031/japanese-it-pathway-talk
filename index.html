@@ -285,6 +285,10 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .want{position:absolute;left:190px;width:440px;text-align:center;padding:16px 20px;border-radius:99px;background:rgba(255,255,255,.95);font-weight:800;font-size:30px;color:#1C3F8F;box-shadow:0 10px 26px rgba(10,30,80,.25)}
 .want.run{animation:pop .7s var(--ease) both}
 /* japan quality */
+.jq-pill{position:absolute;left:130px;top:830px;display:flex;align-items:center;gap:16px;white-space:nowrap;padding:20px 40px;border-radius:99px;background:var(--grad);color:#fff;font-weight:800;font-size:46px;box-shadow:0 24px 60px rgba(255,77,109,.4);z-index:6}
+.jq-pill small{font-size:26px;font-weight:600;opacity:.92}
+.jq-pill .star{color:#FFE27A}
+
 .jq{position:absolute;left:130px;right:130px;top:340px;display:flex;align-items:center;justify-content:center;gap:26px;z-index:5}
 .jqc{position:relative;width:440px;padding:40px 36px 36px;text-align:center}
 .jqc .n{position:absolute;top:-22px;left:50%;margin-left:-22px;width:44px;height:44px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;font-size:22px;display:grid;place-items:center}
@@ -810,14 +814,15 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Click 1: AI takes Build and Test. Click 2: the human parts light up: understanding the client, UX design (how it should feel for the user), review, reporting. Click 3: the one thing AI cannot do for you is communicate with your clients: listen, ask, build trust. That needs language, and it is exactly the part Japanese companies care most about.</aside>
 </section>
 
-<!-- 21 ICEBERG -->
-<section class="slide" data-title="Clients don't say everything">
-  <div class="pad" style="width:860px;top:120px">
+<!-- 21 NOTICE -->
+<section class="slide" data-title="Learn to notice">
+  <div class="pad" style="width:860px;top:130px">
     <div class="kicker a">What you learn in Japan</div>
-    <h1 class="h m split" style="--d:.2s">Clients don't say <span class="g">everything.</span></h1>
-    <p class="sub a" style="--d:1.0s;font-size:32px">Japan is a <b>high-context</b> culture: much of the message is in what is <b>not</b> said. Working there, you learn to listen, ask and notice.</p>
-    <div class="jword a up" style="--d:1.6s"><span class="jp">察する</span><span class="ro">sassuru</span><span class="en">to sense what is not said</span></div>
+    <h1 class="h m split" style="--d:.2s">Clients don't say everything. <span class="g">Learn to notice.</span></h1>
+    <p class="sub a" style="--d:1.0s;font-size:32px">Japan is a <b>high-context</b> culture. Working there, you learn to sense what clients really want, and deliver it with care.</p>
+    <div class="jword a up" style="--d:1.5s"><span class="jp">察する</span><span class="ro">sassuru</span><span class="en">to sense what is not said</span></div>
   </div>
+  <div class="jq-pill step a pop"><span class="star">★</span> Japan Quality <small>Care in every detail</small></div>
   <div class="berg">
     <svg viewBox="0 0 820 900" class="berg-svg">
       <defs>
@@ -826,39 +831,21 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
         <linearGradient id="iceDeep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFD9FF" stop-opacity=".95"/><stop offset="1" stop-color="#7FA9EE" stop-opacity=".7"/></linearGradient>
       </defs>
       <rect x="0" y="330" width="820" height="570" rx="40" fill="url(#sea)"/>
-      <path class="berg-deep" d="M 250 330 L 110 540 L 150 760 L 320 870 L 540 850 L 700 680 L 670 470 L 570 330 Z" fill="url(#iceDeep)"/>
-      <path class="berg-tip" d="M 250 330 L 330 230 L 380 200 L 420 150 L 470 205 L 500 240 L 570 330 Z" fill="url(#ice)" stroke="#9CC2F5" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 250 330 L 110 540 L 150 760 L 320 870 L 540 850 L 700 680 L 670 470 L 570 330 Z" fill="url(#iceDeep)"/>
+      <path d="M 250 330 L 330 230 L 380 200 L 420 150 L 470 205 L 500 240 L 570 330 Z" fill="url(#ice)" stroke="#9CC2F5" stroke-width="4" stroke-linejoin="round"/>
       <path d="M 420 150 L 400 230 L 440 330" fill="none" stroke="#C9DEFA" stroke-width="4" stroke-linejoin="round"/>
       <path d="M 20 330 Q 120 314 225 330 T 430 330 T 635 330 T 800 330" fill="none" stroke="#fff" stroke-width="6" opacity=".85"/>
     </svg>
-    <div class="said a pop" style="--d:1.0s"><small>WHAT THEY SAY</small>"Please make a booking app."</div>
-    <div class="want-h a fade" style="--d:1.7s">WHAT THEY REALLY WANT</div>
-    <div class="want step a" data-order="1" style="--d:0s;top:430px">Easy for older customers</div>
-    <div class="want step a" data-order="2" style="--d:0s;top:530px">No mistakes on busy days</div>
-    <div class="want step a" data-order="3" style="--d:0s;top:630px">Safe, simple payment</div>
-    <div class="want step a" data-order="4" style="--d:0s;top:730px">Quick help when stuck</div>
+    <div class="said a pop" style="--d:.8s"><small>WHAT THEY SAY</small>"Please make a booking app."</div>
+    <div class="want-h a fade" style="--d:1.6s">WHAT THEY REALLY WANT</div>
+    <div class="want a pop" style="--d:2.0s;top:450px">Easy for older customers</div>
+    <div class="want a pop" style="--d:2.4s;top:565px">No mistakes on busy days</div>
+    <div class="want a pop" style="--d:2.8s;top:680px">Quick help when stuck</div>
   </div>
-  <aside class="notes">Clients rarely say everything they want. In Japan this is even stronger: it is a high-context culture, so people expect you to understand what is not said. The Japanese word is 察する, sassuru: to sense what someone means. Example: the client only says "Please make a booking app." Click four times to show what they really want under the surface. Working with Japanese clients trains you to listen, ask good questions and notice these needs. AI cannot do this for you.</aside>
+  <aside class="notes">AI cannot talk with your clients, and clients rarely say everything they want. Japan is a high-context culture: people expect you to understand what is not said. The Japanese word is 察する, sassuru. Example: the client only says "Please make a booking app." Under the surface they want it to be easy for older customers, to work without mistakes on busy days, and to get quick help when stuck. Working in Japan trains you to notice (気づく), think ahead (先回り) and care about every detail (心配り). Click: that is Japan Quality, service that clients trust and come back for.</aside>
 </section>
 
-<!-- 22 JAPAN QUALITY -->
-<section class="slide" data-title="Japan Quality">
-  <div class="pad" style="text-align:center">
-    <div class="kicker a">Japan Quality</div>
-    <h1 class="h m split" style="--d:.2s">Understand the real need. <span class="g">Deliver it with care.</span></h1>
-  </div>
-  <div class="jq">
-    <div class="card jqc a up" style="--d:.9s"><span class="n">1</span><div class="jp">気づく</div><div class="ro">kizuku</div><h3>Notice</h3><p>See what the client did not say.</p></div>
-    <div class="jqar a fade" style="--d:1.3s">→</div>
-    <div class="card jqc a up" style="--d:1.5s"><span class="n">2</span><div class="jp">先回り</div><div class="ro">sakimawari</div><h3>Think ahead</h3><p>Solve problems before they happen.</p></div>
-    <div class="jqar a fade" style="--d:1.9s">→</div>
-    <div class="card jqc a up" style="--d:2.1s"><span class="n">3</span><div class="jp">心配り</div><div class="ro">kokorokubari</div><h3>Care in every detail</h3><p>Make it right for every user.</p></div>
-  </div>
-  <div class="jq-res step a pop"><span class="star">★</span> Japan Quality <small>Service that clients trust, and come back for.</small></div>
-  <aside class="notes">This is what Japanese companies call quality. Three Japanese words: 気づく kizuku, to notice; 先回り sakimawari, to think ahead; 心配り kokorokubari, care in every detail. You notice the real need, solve problems before they happen, and care about every user. Click: that is Japan Quality, the kind of service clients trust and come back for. You learn it by working in Japan, and it stays with you for your whole career, wherever you work.</aside>
-</section>
-
-<!-- 23 EQUATION -->
+<!-- 22 EQUATION -->
 <section class="slide" data-title="Few people have all three">
   <div class="pad" style="text-align:center">
     <div class="kicker a">Your chance</div>
@@ -877,7 +864,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">AI makes every engineer faster, so speed alone is not rare any more. What is rare: someone who can build software, use AI, and understand clients the Japanese way: notice the real need and deliver Japan Quality. That person leads the AI.</aside>
 </section>
 
-<!-- 24 JAPANESE STEPS -->
+<!-- 23 JAPANESE STEPS -->
 <section class="slide" data-title="Japanese for work">
   <div class="pad">
     <div class="kicker a">How much Japanese?</div>
@@ -892,7 +879,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Explain JLPT simply: it is the standard Japanese test, from N5 (easiest) to N1 (hardest). N3 is about everyday conversation; N2 is business level. Our first goal is N3 in one year: that takes steady study every week. Passing N3 lets you work with a Japanese team, and going on to N2 opens even more doors. Next: someone who took exactly this path.</aside>
 </section>
 
-<!-- 25 HENDRI -->
+<!-- 24 HENDRI -->
 <section class="slide" data-title="Hendri">
   <div class="pad">
     <div class="kicker a">Meet Hendri · Next Make, Osaka</div>
@@ -915,7 +902,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Hendri's path is the same order as this program: Japanese first (language school, JLPT N3 in 2020), then IT school, then an engineer job in Japan, now a project manager. Today he leads a multinational team, including engineers in Cambodia, and he builds AI tools so his team can spend time on the work that counts. Click for his words. Best: a 1 to 2 minute video or live call. Ask him: 1) What was your Japanese like at the start, and what was hard? 2) When did Japanese start to help your career? 3) Why could you become a PM? 4) One piece of advice for students starting from zero. Get his OK before showing this slide.</aside>
 </section>
 
-<!-- 26 PROGRAM -->
+<!-- 25 PROGRAM -->
 <section class="slide" data-title="The program">
   <div class="pad" style="top:96px">
     <div class="kicker a">The program</div>
@@ -935,7 +922,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Four steps from zero to Japan. Step 1, year 1: Japanese only, from zero to JLPT N3. Step 2: IT training the Japanese way (requirements, design, team projects). Step 3: an internship in the NEXT MAKE Internship Lab, a team of two or three students with a Japanese project manager, working on real projects for Japanese companies (development, testing, using AI). Step 4: interviews and your first day in Japan. [Confirm the timing of the IT phase, the internship and the interviews.] The wall is climbed in steps, with classmates.</aside>
 </section>
 
-<!-- 27 ON THEIR WAY -->
+<!-- 26 ON THEIR WAY -->
 <section class="slide" data-title="On their way">
   <div class="pad">
     <div class="kicker a">It's already happening</div>
@@ -956,7 +943,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">This is a Cambodian news report (Thmey Thmey) about our first students: Japanese class, team projects, the Japanese course completion ceremony, and getting ready to work in Japan. If you have internet, click "Watch the video" (about 2 minutes). No need to name the university.</aside>
 </section>
 
-<!-- 28 WORRIES -->
+<!-- 27 WORRIES -->
 <section class="slide" data-title="Worried? That's normal">
   <div class="pad" style="text-align:center">
     <div class="kicker a">Be honest</div>
@@ -973,7 +960,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">No hands, no counting. Ask students to imagine which worry is theirs, or to keep one in mind. Read the six bubbles in a friendly voice: these are worries many students have, and having them is normal. Then move on: the next slide shows what we prepare for them.</aside>
 </section>
 
-<!-- 29 SUPPORT -->
+<!-- 28 SUPPORT -->
 <section class="slide" data-title="Our support">
   <div class="pad">
     <div class="kicker a">Your worries, our support</div>
@@ -989,7 +976,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Frame this as "we are building this with you", because the support system is still being prepared. Confirm each line with Next Make before presenting and remove anything not yet decided. Answer the top worries from the poll first.</aside>
 </section>
 
-<!-- 30 COMMUNITY -->
+<!-- 29 COMMUNITY -->
 <section class="slide" data-title="You won't go alone">
   <div class="bg"><div class="kbi" style="background-image:url(img/community.jpg);animation:none"></div></div>
   <div class="board-wrap"><div class="board-text a pop" style="--d:1.0s">Welcome<br>to Osaka!</div></div>
@@ -1005,7 +992,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Graduates support each other: housing tips, study help, first-week advice, friends. The first class has finished the Japanese course and is getting ready to work in Japan (see the news video). They will be the first people you can ask. Invite students to be the next class, the one that helps the class after them.</aside>
 </section>
 
-<!-- 31 TRIAL CLASS -->
+<!-- 30 TRIAL CLASS -->
 <section class="slide" data-title="Trial class" data-fx="confetti">
   <div class="diag a wipe" style="left:44%"><div class="kbi" style="background-image:url(img/trial_class.jpg);background-position:62% 50%;--kbo:62% 50%"></div></div>
   <div class="free-badge" style="--d:1.6s">TRIAL<small>CLASS</small></div>
@@ -1023,7 +1010,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Make the first step tiny. Students who never thought about working abroad will not decide today, and they don't need to. They can join one trial class, enjoy it, and get a feel for their future. [Add the trial class date and place.]</aside>
 </section>
 
-<!-- 32 REWRITE -->
+<!-- 31 REWRITE -->
 <section class="slide" data-title="Imagine your 2031 again">
   <div class="pad" style="width:800px;top:220px">
     <div class="kicker a">Back to the start</div>
@@ -1043,7 +1030,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">Ask everyone to imagine their 2031 again, the same way as at the start. Ask two or three volunteers whether anything changed. Even "I want to try one Japanese class" is a real change.</aside>
 </section>
 
-<!-- 33 THANK YOU -->
+<!-- 32 THANK YOU -->
 <section class="slide" data-title="Thank you" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg)"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 42%,rgba(255,255,255,0) 70%);z-index:1"></div>
