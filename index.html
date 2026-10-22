@@ -1,0 +1,1437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Japanese IT Pathway</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --ink:#14213D; --muted:#56627A; --line:#E7EBF3; --bg:#FFFFFF;
+  --coral:#FF4D6D; --orange:#FF8E3C; --sky:#2F7BFF; --sun:#FFC23C; --mint:#12B886; --lav:#7C5CFF;
+  --coral-s:#FFE3E9; --sky-s:#E2EDFF; --sun-s:#FFF3CF; --mint-s:#D5F7EA; --lav-s:#ECE6FF;
+  --grad:linear-gradient(95deg,#FF4D6D 0%,#FF8E3C 100%);
+  --grad2:linear-gradient(120deg,#2F7BFF 0%,#7C5CFF 100%);
+  --grad3:linear-gradient(120deg,#12B886 0%,#2F7BFF 100%);
+  --ease:cubic-bezier(.2,.85,.25,1);
+  --font:'Plus Jakarta Sans','Hiragino Sans','Yu Gothic UI','Noto Sans JP',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#FFFFFF}
+body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
+#viewport{position:fixed;inset:0;overflow:hidden}
+#deck{width:1920px;height:1080px;position:absolute;left:50%;top:50%;transform-origin:center center;transform:translate(-50%,-50%);background:#fff}
+#fx{position:absolute;inset:0;width:1920px;height:1080px;z-index:50;pointer-events:none}
+
+/* ---------- slides & transitions ---------- */
+.slide{position:absolute;inset:0;overflow:hidden;background:var(--bg);opacity:0;visibility:hidden;transform:scale(1.035);
+  transition:opacity .8s var(--ease),transform 1.1s var(--ease),filter .8s var(--ease),visibility 0s linear .8s}
+.slide.active{opacity:1;visibility:visible;transform:none;filter:none;z-index:3;
+  transition:opacity .8s var(--ease),transform 1.1s var(--ease),filter .8s var(--ease),visibility 0s}
+.slide.leaving{visibility:visible;opacity:0;transform:scale(.965);filter:blur(8px);z-index:2}
+#deck.back .slide:not(.active){transform:scale(.965)}
+#deck.back .slide.leaving{transform:scale(1.035)}
+
+/* ---------- background blobs ---------- */
+.blobs{position:absolute;inset:-10%;z-index:0;pointer-events:none}
+.blobs i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.75;animation:drift 22s ease-in-out infinite alternate}
+.blobs i:nth-child(1){width:760px;height:760px;background:#FFD6DF;left:-6%;top:-14%}
+.blobs i:nth-child(2){width:680px;height:680px;background:#D8E7FF;right:-4%;top:6%;animation-duration:26s;animation-delay:-6s}
+.blobs i:nth-child(3){width:620px;height:620px;background:#FFF0C2;left:34%;bottom:-22%;animation-duration:30s;animation-delay:-12s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.08)}100%{transform:translate(-50px,70px) scale(.95)}}
+
+/* ---------- type ---------- */
+.pad{position:absolute;left:130px;top:110px;right:130px;z-index:5}
+.kicker{display:inline-flex;align-items:center;gap:14px;font-weight:800;font-size:22px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral)}
+.kicker::before{content:"";width:44px;height:4px;border-radius:4px;background:var(--grad)}
+.kicker.light{color:#fff}.kicker.light::before{background:#fff}
+.h{font-weight:800;font-size:96px;line-height:1.04;letter-spacing:-.035em;margin:26px 0 0}
+.h.l{font-size:116px}.h.xl{font-size:176px;letter-spacing:-.045em}.h.m{font-size:80px}.h.s{font-size:66px}
+.sub{font-size:36px;line-height:1.45;color:var(--muted);font-weight:500;margin:30px 0 0}
+.sub b{color:var(--ink);font-weight:800}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.g2{background:var(--grad2);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.g3{background:var(--grad3);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.src{position:absolute;left:130px;right:130px;bottom:46px;font-size:17px;color:#8A93A6;z-index:6;line-height:1.4}
+.w{display:inline-block;will-change:transform}
+.white{color:#fff}
+
+/* ---------- reveal animation system ---------- */
+.a,.w{opacity:0}
+.a.run{animation:var(--an,up) var(--du,.95s) var(--ease) var(--d,0s) both}
+.w.run{animation:wordup .9s var(--ease) var(--d,0s) both}
+.left{--an:fromleft}.right{--an:fromright}.zoom{--an:zoom}.pop{--an:pop}.blur{--an:blurin}.fade{--an:fadein}.drop{--an:dropin}.wipe{--an:wipe;--du:1.3s}
+@keyframes up{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:none}}
+@keyframes fromleft{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+@keyframes fromright{from{opacity:0;transform:translateX(80px)}to{opacity:1;transform:none}}
+@keyframes zoom{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}60%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:none}}
+@keyframes blurin{from{opacity:0;filter:blur(24px);transform:scale(1.15)}to{opacity:1;filter:none;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes dropin{0%{opacity:0;transform:translateY(-760px)}70%{opacity:1;transform:translateY(10px)}85%{transform:translateY(-6px)}100%{opacity:1;transform:none}}
+@keyframes wordup{from{opacity:0;transform:translateY(.55em) rotate(4deg)}to{opacity:1;transform:none}}
+@keyframes wipe{from{opacity:1;clip-path:polygon(100% 0,100% 0,100% 100%,100% 100%)}to{opacity:1;clip-path:var(--clip,polygon(0 0,100% 0,100% 100%,0 100%))}}
+.step:not(.shown):not(.keep){opacity:0!important;animation:none!important}
+.step.shown{opacity:1}
+
+/* ---------- images ---------- */
+.bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.kbi{position:absolute;inset:0;background-size:cover;background-position:center;transform-origin:var(--kbo,50% 50%)}
+.run .kbi,.kbi.run,.slide.active .bg .kbi{animation:kb 20s ease-out both}
+@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.0)}}
+.diag{position:absolute;top:0;bottom:0;right:0;left:46%;--clip:polygon(18% 0,100% 0,100% 100%,0 100%);clip-path:var(--clip);z-index:1;overflow:hidden}
+.frame{position:absolute;border-radius:40px;overflow:hidden;z-index:2;box-shadow:0 40px 90px rgba(20,33,61,.22)}
+.frame::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.glass{position:absolute;z-index:5;background:rgba(255,255,255,.82);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-radius:36px;padding:52px 60px;box-shadow:0 30px 70px rgba(20,33,61,.18)}
+.glass.dark{background:rgba(12,18,40,.55);color:#fff}
+.glass .h{margin-top:18px}
+
+/* ---------- generic pieces ---------- */
+.icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pill{display:inline-flex;align-items:center;gap:14px;padding:18px 30px;border-radius:999px;font-weight:800;font-size:30px;background:#fff;box-shadow:0 14px 34px rgba(20,33,61,.14)}
+.pill .icon{font-size:36px}
+.card{background:#fff;border-radius:32px;box-shadow:0 22px 60px rgba(20,33,61,.10);border:1px solid var(--line)}
+.num-badge{display:grid;place-items:center;width:64px;height:64px;border-radius:20px;font-weight:800;font-size:30px;color:#fff;background:var(--grad)}
+
+/* terminal & editor */
+.term{position:absolute;z-index:4;border-radius:28px;background:#0F1730;color:#E6ECFF;box-shadow:0 40px 90px rgba(20,33,61,.35);overflow:hidden;font-family:var(--mono)}
+.term-bar{display:flex;align-items:center;gap:12px;padding:22px 28px;background:#18223F;font-size:20px;color:#8F9BC4}
+.term-bar i{width:16px;height:16px;border-radius:50%;background:#FF5F57}.term-bar i:nth-child(2){background:#FEBC2E}.term-bar i:nth-child(3){background:#28C840}
+.term-bar span{margin-left:14px}
+.term-body{padding:34px 40px 40px;font-size:34px;line-height:1.75}
+.tl{display:block;width:0;overflow:hidden;white-space:pre}
+.tl.run{animation:typing calc(var(--n)*32ms) steps(var(--n)) var(--d,0s) forwards}
+@keyframes typing{from{width:0}to{width:calc(var(--n)*1ch + 2px)}}
+.tl .y{color:#FFC23C;font-weight:700}.tl .p{color:#5EE6A8}.tl .k{color:#FF7BA0}.tl .s{color:#FFD27A}.tl .f{color:#7FB2FF}.tl .c{color:#7681A8;font-style:italic}.tl .new{color:#FF8FA6;font-weight:700}
+.blank{color:#5A668F}
+.cursor{display:inline-block;width:.55em;height:1.05em;background:#5EE6A8;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.ai-badge{margin-left:auto;display:inline-flex;align-items:center;gap:10px;color:#fff;background:var(--grad2);padding:8px 18px;border-radius:99px;font-family:var(--font);font-weight:700;font-size:19px}
+.ai-badge .icon{font-size:22px;animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* bars, rings, counters */
+.grow{transition:all 1.5s var(--ease) var(--d,0s)}
+.vbar{position:absolute;bottom:0;width:100%;height:0;border-radius:26px 26px 10px 10px}
+.vbar.run{height:var(--v)}
+.hfill{height:100%;width:0;border-radius:inherit}
+.hfill.run{width:var(--v)}
+.donut circle{fill:none;stroke-linecap:round}
+.donut .val{stroke-dasharray:0 2000;transition:stroke-dasharray 2s var(--ease) var(--d,.3s)}
+.donut.run .val{stroke-dasharray:var(--len) 2000}
+.count{font-variant-numeric:tabular-nums}
+
+/* ---------- slide specific ---------- */
+/* s3 chips */
+.chiprow{position:absolute;left:110px;bottom:110px;display:flex;gap:22px;z-index:6}
+.chiprow .pill{font-size:30px}
+/* s4 floating tags */
+.tag{position:absolute;z-index:6;display:inline-flex;align-items:center;gap:12px;padding:14px 26px;border-radius:99px;background:#fff;font-weight:800;font-size:26px;box-shadow:0 16px 40px rgba(20,33,61,.22)}
+.tag i{width:14px;height:14px;border-radius:50%;background:var(--c,var(--coral));box-shadow:0 0 0 6px color-mix(in srgb,var(--c,var(--coral)) 22%,transparent)}
+.float{animation:bob 4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px)}}
+/* s6 process */
+.proc{position:absolute;left:120px;right:120px;top:440px;display:grid;grid-template-columns:repeat(6,1fr);gap:26px;z-index:5}
+.pimg{border-radius:22px;background-size:cover;background-position:center;background-color:#EEF2F8;transition:filter .8s var(--ease)}
+.pcard{position:relative;padding:16px 16px 28px;transition:all .8s var(--ease)}
+.pcard .pimg{height:250px}
+.pcard .icon{font-size:56px;color:var(--ink);transition:color .6s}
+.pcard h3{font-size:34px;margin:22px 8px 6px;letter-spacing:-.02em}
+.pcard p{font-size:23px;line-height:1.4;color:var(--muted);margin:0 8px}
+.pbadge{position:absolute;top:-26px;left:50%;transform:translateX(-50%);padding:10px 22px;border-radius:99px;color:#fff;font-weight:800;font-size:22px;display:inline-flex;gap:8px;align-items:center;white-space:nowrap;box-shadow:0 10px 24px rgba(20,33,61,.2)}
+.pbadge.ai{background:var(--grad2)}.pbadge.you{background:var(--grad)}
+.pcard .pbadge .icon{font-size:24px;color:#fff!important}
+.pbadge.run{animation:badgein .7s var(--ease) var(--d,0s) both}
+@keyframes badgein{from{opacity:0;transform:translate(-50%,-40px) scale(.6)}to{opacity:1;transform:translate(-50%,0)}}
+.pcard:has(.ai.shown){background:#F2F6FF;border-color:#C9DAFF}
+.pcard:has(.ai.shown) .icon{color:var(--sky)}
+.pcard:has(.you.shown){background:#FFF4F6;border-color:#FFC2CF;transform:translateY(-16px);box-shadow:0 30px 70px rgba(255,77,109,.22)}
+.pcard:has(.you.shown) .icon{color:var(--coral)}
+/* s7 equation */
+.eq{position:absolute;left:0;right:0;top:360px;display:flex;justify-content:center;align-items:center;gap:26px;z-index:5}
+.eqb{width:310px;padding:16px 16px 26px;display:flex;flex-direction:column;align-items:center;gap:20px;font-weight:800;font-size:36px;text-align:center;line-height:1.1}
+.eqb .pimg{width:100%;height:300px}
+.eqb .icon{font-size:84px}
+.eqop{font-size:90px;font-weight:300;color:#B4BCCD}
+.eqb.res{width:350px;background:var(--grad);color:#fff;border:none;box-shadow:0 30px 80px rgba(255,77,109,.4)}
+.eqb.res .pimg{height:340px;box-shadow:0 0 0 4px rgba(255,255,255,.7)}
+.eqb.res.run{animation:pop .9s var(--ease) var(--d) both, glow 2.4s ease-in-out calc(var(--d) + 1s) infinite}
+@keyframes glow{50%{box-shadow:0 30px 110px rgba(255,77,109,.7)}}
+/* s8 reveal */
+.reveal-word{position:absolute;left:0;right:0;top:120px;text-align:center;z-index:5;color:#0E2A6B;text-shadow:0 6px 40px rgba(255,255,255,.9)}
+.kanji-bg{position:absolute;left:0;right:0;top:40px;text-align:center;font-size:420px;font-weight:800;color:rgba(255,255,255,.35);letter-spacing:.1em;z-index:4;font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+/* s9 */
+.bignum{font-size:250px;font-weight:800;letter-spacing:-.05em;line-height:1}
+/* s11 money bars */
+.barwrap{position:absolute;bottom:250px;width:300px;height:620px}
+.barlab{position:absolute;top:100%;left:0;right:0;text-align:center;font-size:26px;color:var(--muted);margin-top:18px;line-height:1.35}
+.barval{position:absolute;left:0;right:0;text-align:center;font-weight:800;font-size:64px;letter-spacing:-.03em}
+/* salary comparison */
+.cmpcol{position:absolute;top:150px;width:320px;text-align:center;z-index:5}
+.cmpcol .who{width:84px;height:84px;margin:0 auto 14px;border-radius:24px;display:grid;place-items:center;background:#EEF2F8;color:#56627A;font-size:48px}
+.cmpcol .who.jp{background:var(--coral-s);color:var(--coral)}
+.cmpcol .ctry{font-size:44px;font-weight:800;letter-spacing:-.02em}
+.cmpcol .what{font-size:26px;font-weight:700;color:var(--muted);margin-top:2px}
+.cmpcol .scope{display:inline-block;margin-top:14px;padding:10px 20px;border-radius:99px;background:#EEF2F8;color:#56627A;font-weight:800;font-size:22px}
+.cmpcol .scope.jp{background:var(--coral-s);color:#D61F45}
+.barval small{display:block;font-size:22px;font-weight:700;color:var(--muted);letter-spacing:0;margin-top:2px}
+/* s12 budget */
+.yen{font-size:.62em;font-weight:700;color:#8A93A6;margin-left:8px;letter-spacing:0}
+
+.stack{position:absolute;left:130px;right:130px;top:470px;height:130px;display:flex;border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(20,33,61,.12);z-index:5;background:#F1F3F8}
+.seg{height:100%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px;color:var(--ink);opacity:0;transform:scaleX(0);transform-origin:left}
+.seg.run{animation:segin .8s var(--ease) var(--d) both}
+@keyframes segin{to{opacity:1;transform:none}}
+.takehome{position:absolute;left:130px;right:130px;top:410px;display:flex;justify-content:space-between;font-size:26px;font-weight:700;color:var(--muted);z-index:5}
+.legend{position:absolute;left:130px;top:660px;width:1060px;display:grid;grid-template-columns:1fr 1fr;gap:34px 50px;z-index:5}
+.legend div{display:grid;grid-template-columns:30px 1fr;column-gap:18px;align-items:center}
+.legend.l3{width:1100px;grid-template-columns:1fr 1fr 1fr;gap:30px 40px}
+.legend.l3 b{font-size:34px}.legend.l3 span{font-size:22px}
+.legend i{width:30px;height:30px;border-radius:9px;grid-row:span 2}
+.legend b{font-size:36px;letter-spacing:-.02em}
+.legend span{font-size:23px;color:var(--muted)}
+/* s16 timeline */
+.tline{position:absolute;left:130px;top:360px;width:760px;z-index:5}
+.tline::before{content:"";position:absolute;left:47px;top:20px;bottom:20px;width:4px;border-radius:4px;background:var(--line)}
+.tline .rail{position:absolute;left:47px;top:20px;width:4px;height:0;border-radius:4px;background:var(--grad)}
+.tline .rail.run{height:calc(100% - 40px);transition:height 3.2s var(--ease) .4s}
+.ti{position:relative;display:flex;gap:34px;align-items:flex-start;margin-bottom:34px}
+.ti .dot{width:98px;flex:none;text-align:center}
+.ti .dot b{display:inline-block;background:#fff;border:3px solid var(--coral);color:var(--coral);font-size:22px;font-weight:800;padding:6px 12px;border-radius:99px}
+.ti h4{margin:2px 0 4px;font-size:34px;letter-spacing:-.02em}
+.ti p{margin:0;font-size:24px;color:var(--muted)}
+/* s18 wall */
+.wall{position:absolute;left:-60px;right:-60px;bottom:0;height:560px;z-index:4}
+.brick{position:absolute;width:190px;height:76px;border-radius:12px;display:grid;place-items:center;font-size:40px;font-weight:700;color:rgba(20,33,61,.55);
+  background:linear-gradient(180deg,#FFFFFF,#EEF1F7);border:2px solid #DDE3EE;box-shadow:0 8px 18px rgba(20,33,61,.08);font-family:'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif}
+/* s20 crowd */
+.panel{position:absolute;top:330px;width:800px;height:520px;padding:40px;z-index:5}
+.panel h3{margin:0;font-size:40px;letter-spacing:-.02em;display:flex;align-items:center;gap:16px}
+.panel .field{position:absolute;left:40px;right:40px;top:120px;bottom:130px}
+.panel .cap{position:absolute;left:40px;right:40px;bottom:34px;font-size:26px;line-height:1.4;color:var(--muted)}
+.pdot{position:absolute;width:20px;height:20px;border-radius:50%;background:#B9C2D6}
+.pdot.you{width:52px;height:52px;background:var(--grad);box-shadow:0 0 0 0 rgba(255,77,109,.5);animation:none}
+.pdot.you.run{animation:pop .8s var(--ease) var(--d) both, ping 1.8s ease-out calc(var(--d) + .8s) infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,77,109,.55)}100%{box-shadow:0 0 0 34px rgba(255,77,109,0)}}
+.youlab{position:absolute;font-weight:800;font-size:26px;color:var(--coral);white-space:nowrap}
+/* s21 companies */
+.cos{position:absolute;left:130px;right:130px;top:410px;display:flex;justify-content:space-between;z-index:5}
+.co{width:136px;height:170px;border-radius:26px;display:grid;place-items:center;font-size:76px;background:#F1F3F8;color:#B5BED0;position:relative}
+.co.ok{background:var(--mint-s);color:var(--mint)}
+.co.ok::after{content:"✓";position:absolute;top:-16px;right:-16px;width:46px;height:46px;border-radius:50%;background:var(--mint);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800}
+/* s22 hendri */
+.photo{position:absolute;left:150px;top:300px;width:470px;height:470px;border-radius:50%;background:var(--grad2);display:grid;place-items:center;color:#fff;font-size:30px;font-weight:700;text-align:center;z-index:5;box-shadow:0 30px 80px rgba(47,123,255,.35)}
+.photo::before{content:"";position:absolute;inset:-22px;border-radius:50%;border:3px dashed rgba(47,123,255,.45);animation:spin 30s linear infinite}
+.journey{position:absolute;left:740px;right:130px;top:330px;z-index:5;display:grid;gap:26px}
+.jrow{display:grid;grid-template-columns:1fr 80px 1.25fr;align-items:center;gap:10px;padding:26px 34px}
+.jrow .from{font-size:30px;color:var(--muted);font-weight:600}
+.jrow .to{font-size:32px;font-weight:800}
+.jrow .arr{font-size:46px;color:var(--coral);text-align:center}
+.quote{position:absolute;left:620px;right:130px;bottom:90px;z-index:5;padding:30px 40px;border-radius:30px;background:var(--sun-s);font-size:32px;font-weight:700;color:#7A5300;line-height:1.4}
+.quote small{font-size:22px;font-weight:600;margin-left:8px}
+.hphoto{position:absolute;left:130px;top:330px;width:400px;height:520px;border-radius:40px;overflow:hidden;z-index:5;box-shadow:0 30px 80px rgba(20,33,61,.25)}
+.hphoto::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 6px rgba(255,255,255,.6)}
+.hname{position:absolute;left:130px;top:875px;width:400px;z-index:5;display:flex;flex-direction:column;gap:2px}
+.hname b{font-size:34px;letter-spacing:-.02em}.hname span{font-size:22px;color:var(--muted);font-weight:600}
+.hlog{position:absolute;left:620px;right:130px;top:330px;z-index:5}
+.hrail{position:absolute;left:58px;top:30px;width:4px;height:0;border-radius:4px;background:var(--grad)}
+.hrail.run{height:calc(100% - 60px);transition:height 2.4s var(--ease) .8s}
+.hlog::before{content:"";position:absolute;left:58px;top:30px;bottom:30px;width:4px;border-radius:4px;background:var(--line)}
+.hc{position:relative;display:flex;gap:36px;align-items:center;margin-bottom:34px}
+.hc b{flex:none;width:120px;text-align:center;font-size:26px;font-weight:800;color:var(--coral);background:#fff;border:3px solid var(--coral);border-radius:99px;padding:6px 0;position:relative;z-index:1}
+.hc h4{margin:0;font-size:37px;letter-spacing:-.02em;line-height:1.25;font-weight:700}
+.hc.now b{background:var(--grad);color:#fff;border-color:transparent}
+.hc.now h4{font-weight:800}
+.hchips{position:absolute;left:620px;top:770px;display:flex;gap:18px;z-index:5}
+.hchips .pill{font-size:26px;padding:14px 26px}
+/* N3 stairs */
+.stairs{position:absolute;left:130px;right:130px;bottom:90px;display:flex;align-items:flex-end;gap:28px;z-index:5}
+.stp{position:relative;flex:1;height:var(--h);border-radius:32px 32px 14px 14px;padding:34px 38px;transform:scaleY(0);transform-origin:bottom;box-shadow:0 24px 60px rgba(20,33,61,.12)}
+.stp.run{animation:rise 1.1s var(--ease) var(--d) both}
+@keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.stp .lv{font-size:64px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.stp h3{font-size:36px;margin:16px 0 8px;letter-spacing:-.02em}
+.stp p{font-size:25px;line-height:1.4;margin:0}
+.stp.s1{background:#EEF2F8;color:var(--ink)}.stp.s1 p{color:var(--muted)}
+.stp.s2{background:var(--grad);color:#fff;box-shadow:0 30px 80px rgba(255,77,109,.35)}
+.stp.s3{background:linear-gradient(135deg,#DDE9FF,#ECE6FF);color:#2B3A8C}.stp.s3 p{color:#4B5A9C}
+.stp .flag{position:absolute;left:38px;top:-64px;background:#14213D;color:#fff;font-weight:800;font-size:22px;padding:10px 20px;border-radius:99px;white-space:nowrap}
+.shot .stp,#deck.ov .stp{transform:none!important;animation:none!important}
+/* news slide */
+.snaps{position:absolute;left:130px;right:130px;top:360px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;z-index:5}
+.snap{margin:0;background:#fff;padding:14px 14px 18px;border-radius:18px;box-shadow:0 24px 60px rgba(20,33,61,.18);transform:rotate(var(--r))}
+.snap.run{animation:snapin .9s var(--ease) var(--d) both}
+@keyframes snapin{from{opacity:0;transform:translateY(70px) rotate(calc(var(--r) * 4)) scale(.9)}to{opacity:1;transform:rotate(var(--r))}}
+.snap .ph{height:290px;border-radius:10px;background-size:cover;background-position:center}
+.snap figcaption{display:flex;align-items:center;gap:12px;margin-top:16px;font-weight:800;font-size:28px}
+.snap figcaption b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--grad);color:#fff;font-size:22px}
+.newsbar{position:absolute;left:130px;right:130px;top:810px;display:flex;align-items:center;gap:28px;padding:24px 34px;border-radius:28px;background:#0F1730;color:#fff;z-index:5}
+.nb-tag{flex:none;background:var(--grad);padding:8px 16px;border-radius:10px;font-weight:800;font-size:18px;letter-spacing:.12em}
+.nb-text{flex:1;font-size:24px;line-height:1.35;color:#C9D3F5}
+.nb-text .km{display:block;font-family:'Khmer Sangam MN','Khmer MN','Khmer UI','Leelawadee UI',sans-serif;font-size:30px;color:#fff;margin-bottom:4px}
+.nb-play{flex:none;color:#0F1730;background:#FFC23C;padding:16px 28px;border-radius:99px;font-weight:800;font-size:24px;text-decoration:none}
+/* s23 doors */
+.doors{position:absolute;left:130px;right:130px;top:350px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;z-index:5;perspective:1800px}
+.dcard{position:relative;height:640px;padding:18px 18px 34px;overflow:visible}
+.dcard .pimg{height:340px}
+.dcard .icon{font-size:72px}
+.dcard h3{font-size:44px;margin:28px 18px 10px;letter-spacing:-.02em}
+.dcard p{font-size:28px;line-height:1.45;color:var(--muted);margin:0 18px}
+.door{position:absolute;inset:0;border-radius:32px;transform-origin:left center;background:linear-gradient(135deg,var(--dc1),var(--dc2));display:grid;place-items:center;backface-visibility:hidden;z-index:3}
+.door::after{content:"";position:absolute;right:38px;top:50%;width:18px;height:18px;border-radius:50%;background:#fff;opacity:.9}
+.door.run{animation:dooropen 1.5s var(--ease) var(--d) both}
+@keyframes dooropen{0%{transform:rotateY(0)}100%{transform:rotateY(-108deg);opacity:.0}}
+/* s24 roadmap */
+.road{position:absolute;inset:0;z-index:3}
+.road path.track{fill:none;stroke:#E6EAF2;stroke-width:16;stroke-linecap:round}
+.road path.draw{fill:none;stroke:url(#roadgrad);stroke-width:16;stroke-linecap:round;stroke-dasharray:2400;stroke-dashoffset:2400}
+.road path.draw.run{stroke-dashoffset:0;transition:stroke-dashoffset 4s cubic-bezier(.45,.05,.3,1) .5s}
+.plane{position:absolute;left:0;top:0;width:76px;height:76px;margin:-38px 0 0 -38px;z-index:6;color:#fff;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-size:40px;box-shadow:0 12px 30px rgba(255,77,109,.45);
+  offset-path:path('M 140 1020 C 700 1020 1250 1005 1790 958');offset-rotate:0deg;offset-distance:0%}
+.plane.run{animation:fly 4s cubic-bezier(.45,.05,.3,1) .5s both}
+@keyframes fly{from{offset-distance:0%}to{offset-distance:100%}}
+.ms{position:absolute;z-index:5;width:390px;padding:16px 16px 26px;display:flex;flex-direction:column;gap:18px}
+.ms .pimg{width:100%;height:200px;flex:none;border-radius:18px}
+.ms .yr{font-weight:800;font-size:21px;letter-spacing:.14em;color:var(--coral);padding:0 8px}
+.ms h3{font-size:36px;margin:6px 8px 6px;letter-spacing:-.02em;line-height:1.1}
+.ms p{font-size:23px;line-height:1.35;color:var(--muted);margin:0 8px}
+/* s26 poll */
+.poll{position:absolute;left:130px;right:130px;top:380px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;z-index:5}
+.popt{position:relative;padding:34px 40px;cursor:pointer;user-select:none;overflow:hidden;transition:transform .2s}
+.popt:active{transform:scale(.97)}
+.popt .lt{display:inline-grid;place-items:center;width:62px;height:62px;border-radius:18px;font-weight:800;font-size:30px;color:#fff;background:var(--c)}
+.popt h3{display:inline-block;margin:0 0 0 22px;font-size:40px;vertical-align:middle;letter-spacing:-.02em}
+.popt .meter{height:16px;border-radius:99px;background:#F1F3F8;margin-top:28px;overflow:hidden}
+.popt .meter i{display:block;height:100%;width:0;border-radius:99px;background:var(--c);transition:width .6s var(--ease)}
+.popt .cnt{position:absolute;right:36px;top:34px;font-size:44px;font-weight:800;color:var(--c)}
+.popt.top{box-shadow:0 0 0 4px var(--c),0 22px 60px rgba(20,33,61,.14)}
+.worry-img{position:absolute;left:660px;top:390px;width:600px;height:600px;border-radius:50%;overflow:hidden;z-index:4;box-shadow:0 30px 80px rgba(20,33,61,.18)}
+.worry-img::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 8px rgba(255,255,255,.75)}
+.bub{position:absolute;z-index:5;width:480px;padding:26px 34px;border-radius:36px;background:#fff;box-shadow:0 18px 50px rgba(20,33,61,.12);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.bub.l{left:130px}.bub.r{right:130px}
+.bub b{font-size:36px;letter-spacing:-.02em;color:var(--c)}
+.bub span{font-size:27px;color:var(--ink);font-weight:600}
+.bub::before,.bub::after{content:"";position:absolute;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(20,33,61,.12)}
+.bub.l::before{width:26px;height:26px;right:-36px;top:50%}.bub.l::after{width:14px;height:14px;right:-62px;top:calc(50% + 22px)}
+.bub.r::before{width:26px;height:26px;left:-36px;top:50%}.bub.r::after{width:14px;height:14px;left:-62px;top:calc(50% + 22px)}
+.bub.run{animation:pop .8s var(--ease) var(--d) both, bob 4.5s ease-in-out calc(var(--d) + .8s) infinite}
+/* s27 support */
+.sup{position:absolute;left:130px;right:130px;top:350px;display:grid;grid-template-columns:repeat(5,1fr);gap:26px;z-index:5}
+.sup .card{padding:16px 16px 30px}
+.sup .pimg{height:270px}
+.sup .ic{width:96px;height:96px;border-radius:28px;display:grid;place-items:center;font-size:52px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#fff)}
+.sup h3{font-size:34px;margin:24px 10px 8px;letter-spacing:-.02em;color:var(--c)}
+.sup p{font-size:24px;line-height:1.45;color:var(--muted);margin:0 10px}
+/* s28 community chain */
+.chain{position:absolute;left:110px;bottom:90px;display:flex;align-items:center;gap:18px;z-index:6}
+.chain .pill{flex-direction:column;align-items:flex-start;gap:4px;border-radius:28px;padding:22px 30px;font-size:30px}
+.chain .pill small{font-size:21px;font-weight:600;color:var(--muted)}
+.chain .ar{font-size:44px;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.35);font-weight:800}
+.board-wrap{position:absolute;z-index:4;left:1511px;top:731px;width:0;height:0;transform:rotate(-3.3deg)}
+.board-text{position:absolute;left:-300px;top:-96px;width:600px;text-align:center;font-weight:800;font-size:86px;line-height:1.05;letter-spacing:-.02em;color:var(--coral)}
+/* s29 table */
+.cmp{position:absolute;left:860px;right:110px;top:330px;z-index:5;border-collapse:separate;border-spacing:0 14px;font-size:26px}
+.cmp th{font-size:24px;text-align:left;padding:0 22px 6px;color:var(--muted);font-weight:700}
+.cmp th.us{color:var(--coral)}
+.cmp td{padding:22px;background:#fff;line-height:1.35}
+.cmp td:first-child{border-radius:20px 0 0 20px;font-weight:800;width:170px;background:#F6F8FC}
+.cmp td:last-child{border-radius:0 20px 20px 0;color:var(--muted)}
+.cmp td.us{background:var(--coral-s);font-weight:700}
+.cmp tr.a.run{animation-name:fromright}
+/* s30 flip */
+.faq{position:absolute;left:130px;right:130px;top:350px;display:grid;grid-template-columns:repeat(2,1fr);gap:34px;z-index:5;perspective:2000px}
+.flip{height:280px}
+.flip .in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 1s var(--ease)}
+.flip.shown .in{transform:rotateY(180deg)}
+.flip .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:32px;padding:44px 50px;display:flex;flex-direction:column;justify-content:center}
+.flip .front{background:#fff;border:1px solid var(--line);box-shadow:0 22px 60px rgba(20,33,61,.10)}
+.flip .front h3{font-size:42px;margin:0;letter-spacing:-.02em;display:flex;gap:22px;align-items:center}
+.flip .front h3 span{flex:none;width:64px;height:64px;border-radius:20px;background:var(--grad2);color:#fff;display:grid;place-items:center;font-size:32px}
+.flip .back{transform:rotateY(180deg);background:var(--grad2);color:#fff}
+.flip .back small{font-size:22px;font-weight:700;opacity:.8;letter-spacing:.06em}
+.flip .back p{font-size:32px;line-height:1.4;font-weight:600;margin:10px 0 0}
+/* s31 trial */
+.steps3{display:flex;gap:18px;margin-top:44px}
+.steps3 .pill{font-size:26px;padding:16px 26px}
+.steps3 .pill b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--grad);color:#fff;font-size:22px}
+.qr{width:200px;height:200px;border-radius:24px;border:4px dashed #C9D0DE;display:grid;place-items:center;text-align:center;font-size:20px;color:#8A93A6;background:#fff}
+.free-badge{position:absolute;z-index:7;left:1180px;top:110px;width:230px;height:230px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;text-align:center;font-weight:800;font-size:48px;line-height:1;box-shadow:0 24px 60px rgba(255,194,60,.55);transform:rotate(-10deg)}
+.free-badge small{display:block;font-size:24px;letter-spacing:.1em;margin-top:6px}
+.free-badge.run{animation:stamp 1s var(--ease) var(--d) both, wobble 3s ease-in-out calc(var(--d) + 1s) infinite}
+@keyframes stamp{0%{opacity:0;transform:scale(2.4) rotate(-30deg)}60%{opacity:1;transform:scale(.92) rotate(-8deg)}100%{opacity:1;transform:scale(1) rotate(-10deg)}}
+@keyframes wobble{50%{transform:scale(1.05) rotate(-6deg)}}
+
+/* program video slide */
+.deckvid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;z-index:4;cursor:pointer}
+.vid-play{position:absolute;left:50%;top:50%;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;border:0;background:rgba(255,77,109,.92);z-index:6;display:none;place-items:center;cursor:pointer;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.vid-play svg{width:96px;height:96px;fill:#fff;margin-left:12px}
+.slide[data-video].paused .vid-play{display:grid}
+/* ---------- chrome: progress, counter, notes, help, overview ---------- */
+#progress{position:absolute;left:0;bottom:0;height:8px;width:100%;z-index:60;background:transparent}
+#progress i{display:block;height:100%;width:0;background:var(--grad);transition:width .8s var(--ease)}
+#pageno{position:absolute;right:40px;bottom:26px;z-index:60;font-size:18px;font-weight:700;color:#A0A8BA;letter-spacing:.06em}
+#notes-panel{position:fixed;left:0;right:0;bottom:0;max-height:38vh;overflow:auto;background:rgba(15,23,48,.94);color:#E9EEFF;font:16px/1.6 var(--font);padding:18px 28px 22px;z-index:100;display:none}
+#notes-panel.on{display:block}
+#notes-panel h5{margin:0 0 6px;color:#FFB4C3;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+#help{position:fixed;right:18px;top:18px;z-index:101;background:rgba(15,23,48,.88);color:#fff;font:13px/1.7 var(--font);padding:12px 18px;border-radius:14px;transition:opacity .8s;pointer-events:none}
+#help.hide{opacity:0}
+#help b{color:#FFC23C}
+#black{position:fixed;inset:0;background:#000;z-index:200;display:none}
+#black.on{display:block}
+#deck.ov{transition:none;background:#1B2035;box-shadow:none}
+#deck.ov .slide{opacity:1!important;visibility:visible!important;filter:none!important;cursor:pointer;transition:none!important;box-shadow:0 40px 120px rgba(0,0,0,.45);border-radius:70px}
+#deck.ov .slide.active{outline:44px solid var(--coral)}
+#deck.ov .a,#deck.ov .w,#deck.ov .step{opacity:1!important;animation:none!important}
+#deck.ov .tl{width:auto!important;animation:none!important}
+#deck.ov #fx,#deck.ov #progress,#deck.ov #pageno{display:none}
+#deck.ov .vbar{height:var(--v)}#deck.ov .hfill{width:var(--v)}#deck.ov .seg{opacity:1;transform:none;animation:none}#deck.ov .door{display:none}#deck.ov .donut .val{stroke-dasharray:var(--len) 2000;transition:none}#deck.ov .road path.draw{stroke-dashoffset:0;transition:none}#deck.ov .plane{offset-distance:100%;animation:none}#deck.ov .tline .rail{height:calc(100% - 40px)}
+.notes{display:none}
+
+/* static capture mode (?shot) */
+.shot .slide{transition:none!important}
+.shot #help{display:none}
+.shot .a,.shot .w,.shot .step{opacity:1!important;animation:none!important}
+.shot .tl{width:auto!important;animation:none!important}
+.shot .door{display:none}
+.shot .kbi{animation:none!important}
+.shot .hfill{width:var(--v)!important}.shot .vbar{height:var(--v)!important}.shot .seg{opacity:1;transform:none}.shot .donut .val{stroke-dasharray:var(--len) 2000}.shot .road path.draw{stroke-dashoffset:0}.shot .plane{offset-distance:100%}
+.shot .tline .rail{height:calc(100% - 40px)}
+.shot .flip{height:auto}.shot .flip .in{transform:none;height:auto;display:flex;flex-direction:column;gap:12px}
+.shot .flip .fc{position:relative;inset:auto;backface-visibility:visible;-webkit-backface-visibility:visible;padding:30px 44px}
+.shot .flip .back{transform:none}.shot .flip .front h3{font-size:36px}.shot .flip .back p{font-size:28px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="roadgrad" x1="0" x2="1"><stop offset="0" stop-color="#FF4D6D"/><stop offset=".5" stop-color="#FF8E3C"/><stop offset="1" stop-color="#2F7BFF"/></linearGradient>
+    <linearGradient id="ringgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF4D6D"/><stop offset="1" stop-color="#FF8E3C"/></linearGradient>
+    <linearGradient id="ringgrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12B886"/><stop offset="1" stop-color="#2F7BFF"/></linearGradient>
+  </defs>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="3"/><path d="M12 8V4M9 4h6M2 14h1M21 14h1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 3.1a4 4 0 0 1 0 7.8M22 21a7 7 0 0 0-5-6.7"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M2 10h20M16 15h2"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4M5 17v4M3 19h4"/></symbol>
+  <symbol id="i-lang" viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+</svg>
+
+<div id="viewport"><div id="deck">
+<canvas id="fx" width="1920" height="1080"></canvas>
+
+<!-- 1 TITLE -->
+<section class="slide" data-title="Title" data-fx="petals">
+  <div class="diag a wipe"><div class="kbi" style="background-image:url(img/hero.jpg);--kbo:60% 40%"></div></div>
+  <div class="pad" style="width:760px;top:200px">
+    <div class="kicker a" style="--d:.5s">Japanese IT Pathway Program</div>
+    <h1 class="h l split" style="--d:.7s">Start in Cambodia. <span class="g">Grow with the world.</span></h1>
+    <p class="sub a" style="--d:1.6s">A career talk for IT students in Cambodia</p>
+    <img class="a" src="img/nextmake-logo.png" alt="Next Make" style="--d:1.9s;display:block;margin-top:70px;height:46px">
+  </div>
+  <aside class="notes">Open with the students, not with Japan. Today is about their next five years. Introduce yourself and Next Make in one or two sentences. [Date and venue]</aside>
+</section>
+
+<!-- 1b VIDEO -->
+<section class="slide" data-title="Program video" data-video>
+  <video class="deckvid" src="video/japanese-it-pathway-program_short.mp4" poster="img/video_poster.jpg" preload="auto" playsinline></video>
+  <button class="vid-play" type="button" aria-label="Play the video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+  <aside class="notes">Program video (about 3:48). It starts by itself with sound. Click the video to pause or resume. Press the right arrow to move on.</aside>
+</section>
+
+<!-- 2 QUESTION -->
+<section class="slide" data-title="Where will you be in 2031?">
+  <div class="pad" style="width:800px;top:220px">
+    <div class="kicker a">Start here</div>
+    <h1 class="h split" style="--d:.2s">Where will you be in <span class="g">2031?</span></h1>
+    <p class="sub a" style="--d:1.1s"><b>Imagine yourself in 2031.</b></p>
+    <p class="sub a" style="--d:1.4s;font-size:30px">Where are you? What are you doing? No wrong answers.</p>
+  </div>
+  <div class="term a zoom" style="--d:.6s;left:1000px;top:280px;width:800px">
+    <div class="term-bar"><i></i><i></i><i></i><span>my-career</span></div>
+    <div class="term-body typer" data-start="1.3">
+      <span class="tl"><span class="p">$</span> git log --oneline my-career</span>
+      <span class="tl"><span class="y">2026</span> Studying IT in Phnom Penh</span>
+      <span class="tl"><span class="y">2028</span> <span class="blank">________________</span></span>
+      <span class="tl"><span class="y">2031</span> <span class="blank">________________</span><span class="cursor"></span></span>
+    </div>
+  </div>
+  <aside class="notes">Ask everyone to imagine themselves in 2031: where they live, what job they do. Give about 20 seconds of quiet. Ask one or two students to share if they want to. Do not judge any answer, including "I don't know". We come back to this picture at the end.</aside>
+</section>
+
+<!-- 3 WORLD GETS BIGGER -->
+<section class="slide" data-title="Your options grow">
+  <div class="bg"><div class="kbi" style="background-image:url(img/horizon.jpg);--kbo:70% 40%"></div></div>
+  <div class="glass a left" style="--d:.3s;left:110px;top:100px;width:900px">
+    <div class="kicker">Work abroad</div>
+    <h1 class="h m split" style="--d:.6s">Cross a border. Your options <span class="g">grow.</span></h1>
+  </div>
+  <div class="chiprow">
+    <div class="pill a pop" style="--d:1.6s"><svg class="icon" style="color:var(--coral)"><use href="#i-building"/></svg>More companies</div>
+    <div class="pill a pop" style="--d:1.85s"><svg class="icon" style="color:var(--sky)"><use href="#i-network"/></svg>Bigger projects</div>
+    <div class="pill a pop" style="--d:2.1s"><svg class="icon" style="color:var(--mint)"><use href="#i-layers"/></svg>More roles</div>
+    <div class="pill a pop" style="--d:2.35s"><svg class="icon" style="color:var(--orange)"><use href="#i-compass"/></svg>More futures</div>
+  </div>
+  <aside class="notes">Working abroad is not "leaving Cambodia". It adds options: more companies to apply to, bigger projects, more kinds of roles (backend, cloud, QA, bridge SE, PM), and more paths later. Do not say abroad is "better"; say the number of options gets bigger.</aside>
+</section>
+
+<!-- 4 BIGGER SYSTEMS -->
+<section class="slide" data-title="Systems millions use">
+  <div class="frame a right" style="--d:.15s;left:880px;top:100px;width:940px;height:880px"><div class="kbi" style="background-image:url(img/systems.jpg);--kbo:40% 60%"></div></div>
+  <div class="tag a pop" style="--d:1.4s;left:930px;top:180px;--c:var(--sky)"><i></i>Trains</div>
+  <div class="tag a pop" style="--d:1.6s;left:1500px;top:300px;--c:var(--coral)"><i></i>Banks</div>
+  <div class="tag a pop" style="--d:1.8s;left:1580px;top:560px;--c:var(--mint)"><i></i>Shops</div>
+  <div class="tag a pop" style="--d:2.0s;left:1230px;top:850px;--c:var(--orange)"><i></i>Factories</div>
+  <div class="pad" style="width:700px;top:260px">
+    <div class="kicker a">Bigger projects</div>
+    <h1 class="h split" style="--d:.3s">Build systems <span class="g">millions</span> use every day.</h1>
+    <p class="sub a" style="--d:1.3s">Trains, banks, shops, factories. Bigger markets run bigger systems.</p>
+  </div>
+  <aside class="notes">In a bigger economy, the systems are bigger. One project can be used by millions of people every day. That experience stays with you for life.</aside>
+</section>
+
+<!-- 5 DOORS -->
+<section class="slide" data-title="More doors open">
+  <div class="pad">
+    <div class="kicker a">Three years later</div>
+    <h1 class="h split" style="--d:.2s">Your experience <span class="g">opens more doors.</span></h1>
+  </div>
+  <div class="doors">
+    <div class="card dcard a" style="--d:.6s"><div class="door" style="--d:1.2s;--dc1:#FF4D6D;--dc2:#FF8E3C"></div><div class="pimg" style="background-image:url(img/spot/d_grow.jpg)"></div><h3 style="color:var(--coral)">Grow abroad</h3><p>Senior engineer, team lead, project manager.</p></div>
+    <div class="card dcard a" style="--d:.8s"><div class="door" style="--d:1.7s;--dc1:#2F7BFF;--dc2:#7C5CFF"></div><div class="pimg" style="background-image:url(img/spot/d_home.jpg)"></div><h3 style="color:var(--sky)">Come home strong</h3><p>Work for global companies in Cambodia.</p></div>
+    <div class="card dcard a" style="--d:1.0s"><div class="door" style="--d:2.2s;--dc1:#12B886;--dc2:#2F7BFF"></div><div class="pimg" style="background-image:url(img/spot/d_bridge.jpg)"></div><h3 style="color:var(--mint)">Be the bridge</h3><p>Connect teams across countries.</p></div>
+  </div>
+  <aside class="notes">Working abroad is not "leaving Cambodia forever". A few years abroad add skills, a language and a new way of working, and then more doors open: keep growing abroad, come home with rare experience, or connect teams across countries. Still no specific country yet; the next slide reveals it.</aside>
+</section>
+
+<!-- 6 REVEAL JAPAN -->
+<section class="slide" data-title="Japan" data-fx="petals">
+  <div class="bg"><div class="kbi" style="background-image:url(img/japan_reveal.jpg);--kbo:50% 30%"></div></div>
+  <div class="reveal-word" style="top:130px">
+    <p class="a" style="--d:.6s;font-size:44px;font-weight:700;margin:0">So, where can you start?</p>
+  </div>
+  <div class="reveal-word step a blur" style="top:200px;--du:1.6s">
+    <div class="h xl" style="margin:0;font-size:230px">Japan.</div>
+  </div>
+  <aside class="notes">Pause before the click. Up to now we talked about working abroad in general. Now the reveal: one great place to start is Japan. From here, the talk is about why Japan.</aside>
+</section>
+
+<!-- 7 JAPAN NEEDS YOU -->
+<section class="slide" data-title="Japan needs engineers">
+  <div class="pad" style="width:1000px">
+    <div class="kicker a">Why Japan · 1</div>
+    <h1 class="h split" style="--d:.2s">Japan needs engineers.</h1>
+    <div class="bignum g a zoom" style="--d:.8s;margin-top:50px"><span class="count" data-to="790000" data-dur="2.2">0</span></div>
+    <p class="sub a" style="--d:1.2s;margin-top:10px">IT workers Japan may be <b>short of by 2030</b>.</p>
+  </div>
+  <div class="card step a right" style="position:absolute;right:130px;top:300px;width:560px;height:560px;padding:50px;text-align:center;z-index:5">
+    <svg class="donut grow" viewBox="0 0 200 200" style="width:300px;height:300px;--len:298;--d:.3s"><circle cx="100" cy="100" r="84" stroke="#F1F3F8" stroke-width="22"/><circle class="val" cx="100" cy="100" r="84" stroke="url(#ringgrad2)" stroke-width="22" transform="rotate(-90 100 100)" style="--len:285"/></svg>
+    <div style="position:absolute;left:0;right:0;top:160px;font-size:76px;font-weight:800" class="g3"><span class="count" data-to="54">0</span>%</div>
+    <p style="font-size:28px;line-height:1.4;margin:26px 0 0;color:var(--muted)">of IT companies <b style="color:var(--ink)">already employ people from abroad.</b></p>
+  </div>
+  <div class="src">Sources: METI, IT human resources supply and demand survey (2019), upper estimate · Human Holdings, survey of 1,000 HR staff (2024), IT and telecom companies.</div>
+  <aside class="notes">790,000 is METI's upper estimate for 2030, published in 2019. Click: in the Human Holdings 2024 survey, over 54% of IT and telecom companies employ foreign staff. Japan is not just open to you; it needs you.</aside>
+</section>
+
+<!-- 8 TRAINS BEGINNERS -->
+<section class="slide" data-title="Japan trains beginners">
+  <div class="frame a left" style="--d:.15s;left:100px;top:100px;width:960px;height:880px"><div class="kbi" style="background-image:url(img/training.jpg);--kbo:60% 40%"></div></div>
+  <div class="pad" style="left:1140px;right:110px;top:270px">
+    <div class="kicker a">Why Japan · 2</div>
+    <h1 class="h m split" style="--d:.3s">Japan hires beginners. <span class="g">Then trains them.</span></h1>
+    <p class="sub a" style="--d:1.3s">Many companies hire new graduates for their potential, then teach them on the job.</p>
+  </div>
+  <aside class="notes">This matters most for new graduates: in many countries, companies want years of experience first. Many Japanese companies hire for potential and train you with courses and on-the-job training.</aside>
+</section>
+
+<!-- 9 SALARY -->
+<section class="slide" data-title="Salary 3.4x">
+  <div class="pad" style="width:840px;top:150px">
+    <div class="kicker a">Why Japan · 3 · Money</div>
+    <h1 class="h m split" style="--d:.2s">Your <span class="g">first</span> salary in Japan: <span class="g">3.4×</span> Cambodia's average.</h1>
+    <p class="sub a" style="--d:1.2s;font-size:32px">Japan: a new graduate's <b>starting</b> salary.<br>Cambodia: the <b>average</b> of all IT workers, every age and level.</p>
+  </div>
+  <div class="cmpcol a up" style="--d:.7s;left:1010px">
+    <div class="who"><svg class="icon"><use href="#i-users"/></svg></div>
+    <div class="ctry">Cambodia</div>
+    <div class="what">Average IT salary</div>
+    <div class="scope">All ages · all levels</div>
+  </div>
+  <div class="cmpcol a up" style="--d:1.0s;left:1440px">
+    <div class="who jp"><svg class="icon"><use href="#i-user"/></svg></div>
+    <div class="ctry">Japan</div>
+    <div class="what">Starting salary</div>
+    <div class="scope jp">New graduates · first job</div>
+  </div>
+  <div class="barwrap" style="left:1030px;bottom:110px;height:470px">
+    <div class="vbar grow" style="--v:124px;--d:1.1s;background:#CDD5E3"></div>
+    <div class="barval a" style="--d:1.8s;bottom:140px;color:var(--muted)">$<span class="count" data-to="490" data-delay="1.2">0</span><small>/ month</small></div>
+  </div>
+  <div class="barwrap" style="left:1460px;bottom:110px;height:470px">
+    <div class="vbar grow" style="--v:424px;--d:1.4s;background:var(--grad)"></div>
+    <div class="barval a" style="--d:2.4s;bottom:440px"><span class="g">$<span class="count" data-to="1670" data-delay="1.5">0</span></span><small>/ month</small></div>
+  </div>
+  <div class="num-badge a pop" style="--d:3.0s;position:absolute;left:1312px;top:560px;width:140px;height:140px;border-radius:50%;font-size:48px;box-shadow:0 20px 50px rgba(255,77,109,.45)">×3.4</div>
+  <div class="src">Sources: MHLW Basic Survey on Wage Structure 2025 (¥262,300 a month, before tax, bonuses not included); Paylab Cambodia IT salary survey (about 1.95M KHR, all experience levels). Rate ¥157 = $1 (Sept 2026).</div>
+  <aside class="notes">Make the comparison clear: Japan's number is only for beginners, new university graduates in their first job. Cambodia's number is the average of all IT workers, young and experienced together. Even so, a beginner in Japan earns about 3.4 times more. A fresh graduate in Cambodia usually earns less than this average, so the real gap at the start is even bigger. Replace with Next Make's real offer if you can, and update the exchange rate on the day.</aside>
+</section>
+
+<!-- 10 SAVE -->
+<section class="slide" data-title="Save each month">
+  <div class="pad">
+    <div class="kicker a">Example: living in Osaka</div>
+    <h1 class="h split" style="--d:.2s">Live well. Still save about <span class="g">$670</span> a month.</h1>
+  </div>
+  <div class="takehome a fade" style="--d:.7s"><span>Starting salary, before tax (from the last slide)</span><span style="color:var(--ink)">$1,670 / month <small class="yen">¥262,300</small></span></div>
+  <div class="stack">
+    <div class="seg" style="--d:.9s;width:19.76%;background:#D9DEE8">Tax</div>
+    <div class="seg" style="--d:1.15s;width:14.97%;background:#FFD3DC">Rent</div>
+    <div class="seg" style="--d:1.4s;width:11.38%;background:#FFE1C7">Food</div>
+    <div class="seg" style="--d:1.65s;width:5.99%;background:#D7E6FF">Bills</div>
+    <div class="seg" style="--d:1.9s;width:7.78%;background:#E6DEFF">Fun</div>
+    <div class="seg" style="--d:2.2s;width:40.12%;background:var(--grad3);color:#fff;font-size:34px">You keep ≈ $670</div>
+  </div>
+  <div class="legend l3">
+    <div class="a" style="--d:1.0s"><i style="background:#D9DEE8"></i><b>$330 <small class="yen">¥52,300</small></b><span>Tax and social insurance</span></div>
+    <div class="a" style="--d:1.25s"><i style="background:#FFD3DC"></i><b>$250 <small class="yen">¥40,000</small></b><span>Rent (share house)</span></div>
+    <div class="a" style="--d:1.5s"><i style="background:#FFE1C7"></i><b>$190 <small class="yen">¥30,000</small></b><span>Food (cook + eat out)</span></div>
+    <div class="a" style="--d:1.75s"><i style="background:#D7E6FF"></i><b>$100 <small class="yen">¥15,000</small></b><span>Utilities and phone</span></div>
+    <div class="a" style="--d:2.0s"><i style="background:#E6DEFF"></i><b>$130 <small class="yen">¥20,000</small></b><span>Daily life and fun</span></div>
+  </div>
+  <div class="a zoom" style="--d:2.7s;position:absolute;right:130px;bottom:120px;text-align:right;z-index:5">
+    <div style="font-size:30px;color:var(--muted);font-weight:700">Left to save or send home</div>
+    <div class="g3" style="font-size:130px;font-weight:800;letter-spacing:-.04em;line-height:1.05">≈ $<span class="count" data-to="670" data-delay="2.7">0</span></div>
+    <div style="font-size:30px;color:var(--muted);font-weight:700;margin-top:4px">≈ ¥105,000</div>
+  </div>
+  <div class="src" style="right:900px">Example only. Dollar amounts are rounded. Spending depends on your choices. Commuting is often paid by the company. Bonuses not included. Rate ¥157 = $1 (Sept 2026).</div>
+  <aside class="notes">Start from the same number as the last slide: the starting salary of $1,670 (¥262,300) a month before tax. About 20% goes to income tax and social insurance (about $330). In the first year there is no resident tax, so it is a little less. Then rent, food, bills and fun. About $670 (¥105,000) is left each month: more than the average monthly IT salary in Cambodia. An example budget, not a promise. Replace with Next Make's real numbers if possible.</aside>
+</section>
+
+<!-- 11 SAFE -->
+<section class="slide" data-title="Safe at night">
+  <div class="bg"><div class="kbi" style="background-image:url(img/safe_night.jpg);--kbo:35% 50%"></div></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(270deg,rgba(8,14,40,.78) 0%,rgba(8,14,40,.45) 40%,rgba(8,14,40,0) 62%);z-index:1"></div>
+  <div class="pad" style="left:1120px;right:110px;top:300px">
+    <div class="kicker light a">Life in Japan</div>
+    <h1 class="h l split white" style="--d:.3s">Safe. Even at midnight.</h1>
+    <p class="sub a" style="--d:1.3s;color:#DCE4FF">Walk home late and feel relaxed. Safety is one of the top reasons foreigners like living in Japan.</p>
+  </div>
+  <aside class="notes">Many students and parents worry about safety abroad. In Japan, people walk home late at night, children ride trains alone, and lost wallets often come back.</aside>
+</section>
+
+<!-- 12 FOOD -->
+<section class="slide" data-title="Food">
+  <div class="bg"><div class="kbi" style="background-image:url(img/food.jpg);--kbo:30% 70%"></div></div>
+  <div class="glass a right" style="--d:.3s;right:90px;top:90px;width:760px">
+    <div class="kicker">Life in Osaka</div>
+    <h1 class="h m split" style="--d:.6s">The kitchen of <span class="g">Japan.</span></h1>
+    <p class="sub a" style="--d:1.4s;font-size:32px">Takoyaki, ramen, okonomiyaki, sushi. Great food that does not cost much.</p>
+  </div>
+  <aside class="notes">Osaka has been called "the kitchen of Japan" for centuries. Food is a big part of daily happiness, and in Osaka a good lunch is cheap.</aside>
+</section>
+
+<!-- 13 SEASONS -->
+<section class="slide" data-title="Four seasons" data-fx="petals">
+  <div class="bg"><div class="kbi" style="background-image:url(img/seasons.jpg)"></div></div>
+  <div class="glass a up" style="--d:.3s;left:90px;bottom:80px;width:1020px;padding:44px 54px">
+    <div class="kicker">Life in Japan</div>
+    <h1 class="h m split" style="--d:.6s">Four seasons. <span class="g">Endless weekends.</span></h1>
+    <p class="sub a" style="--d:1.4s;font-size:30px;margin-top:20px">Kyoto, Nara and Kobe are about an hour or less from Osaka by train.</p>
+  </div>
+  <div class="glass a zoom" style="--d:1.2s;right:90px;bottom:80px;width:560px;height:380px;padding:0">
+    <svg viewBox="0 0 560 380" style="width:100%;height:100%">
+      <g font-family="Plus Jakarta Sans" font-weight="800">
+        <path class="grow" d="M280 230 L370 90" stroke="#FF4D6D" stroke-width="6" stroke-dasharray="8 10" fill="none"/>
+        <path d="M280 230 L450 250" stroke="#2F7BFF" stroke-width="6" stroke-dasharray="8 10" fill="none"/>
+        <path d="M280 230 L110 200" stroke="#12B886" stroke-width="6" stroke-dasharray="8 10" fill="none"/>
+        <circle cx="280" cy="230" r="22" fill="#FF4D6D"/><circle cx="280" cy="230" r="36" fill="none" stroke="#FF4D6D" stroke-width="3" opacity=".5"><animate attributeName="r" values="24;50" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="1.8s" repeatCount="indefinite"/></circle>
+        <text x="280" y="300" text-anchor="middle" font-size="34" fill="#14213D">Osaka</text>
+        <circle cx="370" cy="90" r="14" fill="#FF8E3C"/><text x="392" y="80" font-size="30" fill="#14213D">Kyoto</text>
+        <circle cx="450" cy="250" r="14" fill="#2F7BFF"/><text x="430" y="300" font-size="30" fill="#14213D">Nara</text>
+        <circle cx="110" cy="200" r="14" fill="#12B886"/><text x="60" y="250" font-size="30" fill="#14213D">Kobe</text>
+        <text x="280" y="355" text-anchor="middle" font-size="22" fill="#56627A" font-weight="600">≤ 1 hour by train</text>
+      </g>
+    </svg>
+  </div>
+  <aside class="notes">Cherry blossoms in spring, festivals and fireworks in summer, red leaves in autumn, snow in winter. Every season has its own trips, and from Osaka they are close.</aside>
+</section>
+
+<!-- 14 DAY IN OSAKA -->
+<section class="slide" data-title="A day in Osaka">
+  <div class="frame a right" style="--d:.2s;left:980px;top:100px;width:840px;height:880px"><div class="kbi" style="background-image:url(img/office.jpg);--kbo:35% 50%"></div></div>
+  <div class="pad" style="width:800px;top:100px">
+    <div class="kicker a">Picture it</div>
+    <h1 class="h m split" style="--d:.2s">A day as an engineer in <span class="g">Osaka.</span></h1>
+  </div>
+  <div class="tline">
+    <div class="rail grow"></div>
+    <div class="ti a left" style="--d:.8s"><div class="dot"><b>8:30</b></div><div><h4>Train to work</h4><p>Fast, clean and on time.</p></div></div>
+    <div class="ti a left" style="--d:1.3s"><div class="dot"><b>9:00</b></div><div><h4>Morning stand-up</h4><p>Share today's plan with the team.</p></div></div>
+    <div class="ti a left" style="--d:1.8s"><div class="dot"><b>10:00</b></div><div><h4>Build with the team</h4><p>Design and code with Japanese engineers.</p></div></div>
+    <div class="ti a left" style="--d:2.3s"><div class="dot"><b>15:00</b></div><div><h4>Code review</h4><p>Get feedback. Get better.</p></div></div>
+    <div class="ti a left" style="--d:2.8s"><div class="dot"><b>18:30</b></div><div><h4>Your time</h4><p>Dinner, the gym, a walk in the city.</p></div></div>
+  </div>
+  <aside class="notes">Tell it as a story: "Imagine you wake up in Osaka..." Times are an example day. If you have real photos of the Next Make Osaka office, show them here too.</aside>
+</section>
+
+<!-- 15 91% -->
+<section class="slide" data-title="91% satisfied">
+  <div class="pad" style="left:900px;top:190px">
+    <div class="kicker a">Facts first</div>
+    <h1 class="h m split" style="--d:.2s">People from abroad <span class="g">like living here.</span></h1>
+    <p class="sub a" style="--d:1s">Top reasons they are satisfied:</p>
+    <div style="margin-top:30px;display:grid;gap:22px;width:860px">
+      <div class="a" style="--d:1.4s"><div style="display:flex;justify-content:space-between;font-size:28px;font-weight:700"><span>Clean, comfortable living</span><span>38.1%</span></div><div style="height:22px;border-radius:99px;background:#F1F3F8;margin-top:10px"><div class="hfill grow" style="--v:100%;--d:1.6s;background:var(--grad)"></div></div></div>
+      <div class="a" style="--d:1.6s"><div style="display:flex;justify-content:space-between;font-size:28px;font-weight:700"><span>Japanese culture suits me</span><span>18.0%</span></div><div style="height:22px;border-radius:99px;background:#F1F3F8;margin-top:10px"><div class="hfill grow" style="--v:47%;--d:1.8s;background:var(--grad2)"></div></div></div>
+      <div class="a" style="--d:1.8s"><div style="display:flex;justify-content:space-between;font-size:28px;font-weight:700"><span>It is safe</span><span>10.7%</span></div><div style="height:22px;border-radius:99px;background:#F1F3F8;margin-top:10px"><div class="hfill grow" style="--v:28%;--d:2.0s;background:var(--grad3)"></div></div></div>
+    </div>
+  </div>
+  <div class="a zoom" style="--d:.3s;position:absolute;left:130px;top:220px;width:640px;height:640px;z-index:5">
+    <svg class="donut grow" viewBox="0 0 200 200" style="width:640px;height:640px;--d:.5s"><circle cx="100" cy="100" r="84" stroke="#F1F3F8" stroke-width="18"/><circle class="val" cx="100" cy="100" r="84" stroke="url(#ringgrad)" stroke-width="18" transform="rotate(-90 100 100)" style="--len:480"/></svg>
+    <div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center">
+      <div><div class="g" style="font-size:190px;font-weight:800;letter-spacing:-.05em;line-height:1"><span class="count" data-to="91" data-delay=".5">0</span>%</div>
+      <div style="font-size:28px;font-weight:700;color:var(--muted);margin-top:8px">are satisfied with<br>life in Japan</div></div>
+    </div>
+  </div>
+  <div class="src">Source: Immigration Services Agency of Japan, Basic Survey on Foreign Residents, FY2025 (8,874 foreign residents, published May 2026). Reasons: one answer per person.</div>
+  <aside class="notes">This survey covers all foreign residents, not only IT engineers, so present it as general life in Japan. Many things students imagine as worries, like safety, are actually reasons people like living here.</aside>
+</section>
+
+<!-- 16 THE WALL -->
+<section class="slide" data-title="The hard part: Japanese">
+  <div class="pad">
+    <div class="kicker a">The honest part</div>
+    <h1 class="h l split" style="--d:.2s">The hard part: <span class="g">Japanese.</span></h1>
+  </div>
+  <div class="wall" data-rows="6" data-cols="11"></div>
+  <aside class="notes">Say it before the students do. Most of them are already thinking it. Naming it first builds trust. Let the wall build up, then move on: the next slide turns it around.</aside>
+</section>
+
+<!-- 17 WALL IS YOUR DOOR -->
+<section class="slide" data-title="The wall is your door">
+  <div class="bg"><div class="kbi" style="background-image:url(img/wall_door.jpg);--kbo:62% 55%"></div></div>
+  <div class="a fade" style="--d:1s;position:absolute;left:58%;top:52%;width:700px;height:700px;margin:-350px 0 0 -350px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,170,.75),rgba(255,236,170,0) 65%);z-index:1;mix-blend-mode:screen;animation-iteration-count:1"></div>
+  <div class="glass a left" style="--d:.3s;left:90px;top:90px;width:900px">
+    <h1 class="h m split" style="--d:.5s;margin-top:0">The wall stops most people.</h1>
+    <h1 class="h m step a" style="margin-top:14px"><span class="g">That's why it's your door.</span></h1>
+  </div>
+  <aside class="notes">Click for the second line. If Japanese were easy, everyone would already have these jobs. Because it is hard, the people who climb it are rare, and companies want them.</aside>
+</section>
+
+<!-- 18 FEWER RIVALS -->
+<section class="slide" data-title="Fewer rivals">
+  <div class="pad">
+    <div class="kicker a">Why the wall matters</div>
+    <h1 class="h split" style="--d:.2s">Fewer rivals. <span class="g">More chances.</span></h1>
+  </div>
+  <div class="card panel a left" style="--d:.6s;left:130px">
+    <h3><svg class="icon" style="color:var(--sky)"><use href="#i-code"/></svg>IT + English</h3>
+    <div class="field crowd" data-n="230"></div>
+    <div class="cap">You compete with experienced engineers from all over the world.</div>
+  </div>
+  <div class="card panel step a right" style="right:130px">
+    <h3><svg class="icon" style="color:var(--coral)"><use href="#i-lang"/></svg>IT + Japanese</h3>
+    <div class="field crowd" data-n="12" data-you="1"></div>
+    <div class="cap"><b style="color:var(--ink)">Few people can do it.</b> So companies hire new graduates and train them.</div>
+  </div>
+  <div class="src">In one survey of English-speaking foreign software engineers in Japan, the median experience was 5 years. Source: TokyoDev.</div>
+  <aside class="notes">With coding and English, a new graduate competes with experienced engineers from all over the world. Click: with Japanese, the field is small. That is why many Japanese companies hire new graduates from abroad and train them.</aside>
+</section>
+
+<!-- 19 AI CAN CODE -->
+<section class="slide" data-title="AI can write code">
+  <div class="pad" style="width:780px;top:250px">
+    <div class="kicker a">The AI era</div>
+    <h1 class="h l split" style="--d:.2s">AI can write code now.</h1>
+    <p class="sub a" style="--d:1s">And it gets better every month.</p>
+    <p class="step a" style="margin-top:80px;font-size:48px;font-weight:800;letter-spacing:-.02em">So what makes <span class="g">you</span> valuable?</p>
+  </div>
+  <div class="term a zoom" style="--d:.4s;left:960px;top:190px;width:860px">
+    <div class="term-bar"><i></i><i></i><i></i><span>booking.js</span><span class="ai-badge"><svg class="icon"><use href="#i-spark"/></svg>AI is writing</span></div>
+    <div class="term-body typer" data-start="1.0" data-speed="18" style="font-size:27px;line-height:1.85">
+      <span class="tl"><span class="c">// Book a train seat for a user</span></span>
+      <span class="tl"><span class="k">async function</span> <span class="f">bookSeat</span>(user, train) {</span>
+      <span class="tl">  <span class="k">const</span> seat = <span class="k">await</span> <span class="f">findFreeSeat</span>(train);</span>
+      <span class="tl">  <span class="k">if</span> (!seat) <span class="k">return</span> { ok: <span class="s">false</span> };</span>
+      <span class="tl">  <span class="k">await</span> <span class="f">reserve</span>(seat, user.id);</span>
+      <span class="tl">  <span class="k">await</span> <span class="f">sendTicket</span>(user.email, seat);</span>
+      <span class="tl">  <span class="k">return</span> { ok: <span class="s">true</span>, seat };</span>
+      <span class="tl">}<span class="cursor"></span></span>
+    </div>
+  </div>
+  <aside class="notes">Let the code type itself. Ask: "Who uses AI tools already?" Then click for the question: if AI can write code, what makes you valuable?</aside>
+</section>
+
+<!-- 20 AI WRITES, YOU DECIDE -->
+<section class="slide" data-title="AI writes. You decide.">
+  <div class="pad">
+    <div class="kicker a">The AI era</div>
+    <h1 class="h m split" style="--d:.2s">AI writes the code. <span class="g">You decide</span> what to build.</h1>
+  </div>
+  <div class="proc">
+    <div class="card pcard a" style="--d:.9s"><span class="pbadge you step" data-group="you" data-order="2">YOU</span><div class="pimg" style="background-image:url(img/spot/p_understand.jpg)"></div><h3>Understand</h3><p>What does the client really need?</p></div>
+    <div class="card pcard a" style="--d:1.0s"><span class="pbadge you step" data-group="you" data-order="2">YOU</span><div class="pimg" style="background-image:url(img/spot/p_design.jpg)"></div><h3>Design</h3><p>How should it work?</p></div>
+    <div class="card pcard a" style="--d:1.1s"><span class="pbadge ai step" data-group="ai" data-order="1"><svg class="icon"><use href="#i-bot"/></svg>AI</span><div class="pimg" style="background-image:url(img/spot/p_build.jpg)"></div><h3>Build</h3><p>Write the code.</p></div>
+    <div class="card pcard a" style="--d:1.2s"><span class="pbadge ai step" data-group="ai" data-order="1"><svg class="icon"><use href="#i-bot"/></svg>AI</span><div class="pimg" style="background-image:url(img/spot/p_test.jpg)"></div><h3>Test</h3><p>Check the quality.</p></div>
+    <div class="card pcard a" style="--d:1.3s"><span class="pbadge you step" data-group="you" data-order="2">YOU</span><div class="pimg" style="background-image:url(img/spot/p_review.jpg)"></div><h3>Review</h3><p>Is it right for the user?</p></div>
+    <div class="card pcard a" style="--d:1.4s"><span class="pbadge you step" data-group="you" data-order="2">YOU</span><div class="pimg" style="background-image:url(img/spot/p_report.jpg)"></div><h3>Report</h3><p>Share progress early.</p></div>
+  </div>
+  <p class="sub step a" data-order="3" style="position:absolute;left:130px;right:130px;top:920px;text-align:center;font-size:40px;color:var(--ink);font-weight:700">The human part is talking with people. <span class="g">That needs language.</span></p>
+  <aside class="notes">Click 1: AI takes Build and Test. Click 2: the human parts light up: understanding the client, design, review, reporting. Click 3: these are all about people, so they need language. This is exactly the part Japanese companies are careful about.</aside>
+</section>
+
+<!-- 21 EQUATION -->
+<section class="slide" data-title="Few people have all three">
+  <div class="pad" style="text-align:center">
+    <div class="kicker a">Your chance</div>
+    <h1 class="h split" style="--d:.2s">Few people have <span class="g">all three.</span></h1>
+  </div>
+  <div class="eq">
+    <div class="card eqb a pop" style="--d:.9s"><div class="pimg" style="background-image:url(img/spot/e_it.jpg)"></div>IT skills</div>
+    <div class="eqop a fade" style="--d:1.2s">+</div>
+    <div class="card eqb a pop" style="--d:1.4s"><div class="pimg" style="background-image:url(img/spot/e_japanese.jpg)"></div>Japanese</div>
+    <div class="eqop a fade" style="--d:1.7s">+</div>
+    <div class="card eqb a pop" style="--d:1.9s"><div class="pimg" style="background-image:url(img/spot/e_ai.jpg)"></div>AI tools</div>
+    <div class="eqop a fade" style="--d:2.2s">=</div>
+    <div class="card eqb res a" style="--d:2.5s;--an:pop"><div class="pimg" style="background-image:url(img/spot/e_you.jpg)"></div>You, in demand</div>
+  </div>
+  <p class="sub step a" style="position:absolute;left:0;right:0;top:900px;text-align:center">AI makes you faster. <b>Japanese takes you where few others can go.</b></p>
+  <aside class="notes">AI makes every engineer faster, so speed alone is not rare any more. What is rare: someone who can use AI, build software, and talk with Japanese clients and teams. That person leads the AI.</aside>
+</section>
+
+<!-- 22 JAPANESE STEPS -->
+<section class="slide" data-title="Japanese for work">
+  <div class="pad">
+    <div class="kicker a">How much Japanese?</div>
+    <h1 class="h m split" style="--d:.2s">Step one: N3. <span class="g">Then keep climbing.</span></h1>
+    <p class="sub a" style="--d:.9s;margin-top:16px">Every level you pass opens more doors.</p>
+  </div>
+  <div class="stairs">
+    <div class="stp s1" style="--h:240px;--d:.9s"><div class="lv">START</div><h3>Hiragana and greetings</h3><p>Everyone starts here.</p></div>
+    <div class="stp s2" style="--h:400px;--d:1.3s"><span class="flag a pop" style="--d:2.4s">Your first goal · 1 year</span><div class="lv">N3</div><h3>Everyday conversation</h3><p>Talk with your team: ask, confirm and report.</p></div>
+    <div class="stp s3" style="--h:560px;--d:1.7s"><div class="lv">N2</div><h3>Business level</h3><p>Even more jobs and roles open up.</p></div>
+  </div>
+  <aside class="notes">Explain JLPT simply: it is the standard Japanese test, from N5 (easiest) to N1 (hardest). N3 is about everyday conversation; N2 is business level. Our first goal is N3 in one year: that takes steady study every week. Passing N3 lets you work with a Japanese team, and going on to N2 opens even more doors. Next: someone who took exactly this path.</aside>
+</section>
+
+<!-- 23 HENDRI -->
+<section class="slide" data-title="Hendri">
+  <div class="pad">
+    <div class="kicker a">Meet Hendri · Next Make, Osaka</div>
+    <h1 class="h m split" style="--d:.2s">Japanese first. Then IT. <span class="g">Now he leads a team.</span></h1>
+  </div>
+  <div class="hphoto a zoom" style="--d:.4s"><div class="kbi" style="background-image:url(img/hendri_work.jpg);background-position:38% 30%;--kbo:45% 30%"></div></div>
+  <div class="hname a up" style="--d:.8s"><b>Hendri Simarmata</b><span>From Indonesia · IT project manager</span></div>
+  <div class="hchips">
+    <span class="pill a pop" style="--d:3.4s;--c:var(--coral)"><svg class="icon" style="color:var(--coral)"><use href="#i-lang"/></svg>Indonesian · Japanese · English</span>
+    <span class="pill a pop" style="--d:3.6s"><svg class="icon" style="color:var(--lav)"><use href="#i-spark"/></svg>Builds AI tools for his team</span>
+  </div>
+  <div class="hlog">
+    <div class="hrail grow"></div>
+    <div class="hc a left" style="--d:1.0s"><b>2018</b><div><h4>Came to Japan. Started Japanese at a language school.</h4></div></div>
+    <div class="hc a left" style="--d:1.5s"><b>2020</b><div><h4>Passed JLPT N3. Then studied IT in Tokyo.</h4></div></div>
+    <div class="hc a left" style="--d:2.0s"><b>2022</b><div><h4>System engineer at Next Make, Osaka.</h4></div></div>
+    <div class="hc now a left" style="--d:2.5s"><b>2026</b><div><h4>IT project manager. <span class="g">Leads a team, including engineers in Cambodia.</span></h4></div></div>
+  </div>
+  <div class="quote step a">“I build software for Japanese companies and manage the people who build it with me.” <small>— Hendri</small></div>
+  <aside class="notes">Hendri's path is the same order as this program: Japanese first (language school, JLPT N3 in 2020), then IT school, then an engineer job in Japan, now a project manager. Today he leads a multinational team, including engineers in Cambodia, and he builds AI tools so his team can spend time on the work that counts. Click for his words. Best: a 1 to 2 minute video or live call. Ask him: 1) What was your Japanese like at the start, and what was hard? 2) When did Japanese start to help your career? 3) Why could you become a PM? 4) One piece of advice for students starting from zero. Get his OK before showing this slide.</aside>
+</section>
+
+<!-- 24 PROGRAM -->
+<section class="slide" data-title="The program">
+  <div class="pad">
+    <div class="kicker a">The program</div>
+    <h1 class="h m split" style="--d:.2s">Japanese first. Then IT. <span class="g">Then an internship. Then Japan.</span></h1>
+  </div>
+  <svg class="road" viewBox="0 0 1920 1080"><path class="track" d="M 140 1020 C 700 1020 1250 1005 1790 958"/><path class="draw grow" d="M 140 1020 C 700 1020 1250 1005 1790 958"/></svg>
+  <div class="plane grow"><svg class="icon"><use href="#i-plane"/></svg></div>
+  <div class="card ms a pop" style="--d:1.0s;left:130px;top:375px"><div class="pimg" style="background-image:url(img/spot/r_japanese.jpg)"></div><div><div class="yr">STEP 1 · YEAR 1</div><h3>Japanese: zero → N3</h3><p>Start from hiragana. Reach JLPT N3 in one year.</p></div></div>
+  <div class="card ms a pop" style="--d:2.0s;left:546px;top:375px"><div class="pimg" style="background-image:url(img/spot/r_it.jpg)"></div><div><div class="yr" style="color:var(--orange)">STEP 2 · IT</div><h3>IT, the Japanese way</h3><p>Requirements, design and team projects.</p></div></div>
+  <div class="card ms a pop" style="--d:3.0s;left:962px;top:375px"><div class="pimg" style="background-image:url(img/spot/r_intern.jpg)"></div><div><div class="yr" style="color:var(--mint)">STEP 3 · INTERNSHIP</div><h3>Real projects</h3><p>NEXT MAKE Internship Lab: a small student team with a Japanese project manager.</p></div></div>
+  <div class="card ms a pop" style="--d:4.0s;left:1378px;top:375px"><div class="pimg" style="background-image:url(img/spot/r_japan.jpg)"></div><div><div class="yr" style="color:var(--sky)">STEP 4 · JAPAN</div><h3>Your first day</h3><p>Interviews, then your first day as an engineer.</p></div></div>
+  <p class="sub a" style="--d:4.6s;position:absolute;left:130px;top:850px;font-weight:700;color:var(--ink)">You don't need Japanese today. <span class="g">You need to start.</span></p>
+  <aside class="notes">Year 1 is Japanese only, from zero to JLPT N3. After that, IT training: how Japanese teams build software (requirements, design, team projects). Then an internship in the NEXT MAKE Internship Lab: a team of two or three students with a Japanese project manager, working on real projects for Japanese companies (development, testing, using AI). Then interviews and your first day in Japan. [Confirm the timing of the IT phase, the internship and the interviews.] The wall is climbed in steps, with classmates.</aside>
+</section>
+
+<!-- 25 ON THEIR WAY -->
+<section class="slide" data-title="On their way">
+  <div class="pad">
+    <div class="kicker a">It's already happening</div>
+    <h1 class="h m split" style="--d:.2s">Students like you are <span class="g">already on their way.</span></h1>
+  </div>
+  <div class="snaps">
+    <figure class="snap a" style="--d:.8s;--r:-3deg"><div class="ph" style="background-image:url(img/news/news_006.jpg)"></div><figcaption><b>1</b>Japanese class</figcaption></figure>
+    <figure class="snap a" style="--d:1.1s;--r:2deg"><div class="ph" style="background-image:url(img/news/news_041.jpg)"></div><figcaption><b>2</b>Team projects</figcaption></figure>
+    <figure class="snap a" style="--d:1.4s;--r:-2deg"><div class="ph" style="background-image:url(img/news/news_101c.jpg)"></div><figcaption><b>3</b>Completion ceremony</figcaption></figure>
+    <figure class="snap a" style="--d:1.7s;--r:3deg"><div class="ph" style="background-image:url(img/news/news_071.jpg)"></div><figcaption><b>4</b>Ready for Japan</figcaption></figure>
+  </div>
+  <div class="newsbar a up" style="--d:2.2s">
+    <span class="nb-tag">ON CAMBODIAN NEWS</span>
+    <span class="nb-text"><span class="km">និស្សិតកម្ពុជា នឹងត្រូវបញ្ជូនទៅធ្វើការងារក្នុងជំនាញឌីជីថលនៅប្រទេសជប៉ុន</span>Cambodian students will go to work in digital jobs in Japan.</span>
+    <a class="nb-play" href="https://www.facebook.com/reel/1920207232028819" target="_blank" rel="noopener">▶ Watch the video</a>
+  </div>
+  <div class="src">Photos and headline: Thmey Thmey news video on Facebook.</div>
+  <aside class="notes">This is a Cambodian news report (Thmey Thmey) about our first students: Japanese class, team projects, the Japanese course completion ceremony, and getting ready to work in Japan. If you have internet, click "Watch the video" (about 2 minutes). No need to name the university.</aside>
+</section>
+
+<!-- 26 INTERNS -->
+<section class="slide" data-title="Voices from interns">
+  <div class="pad">
+    <div class="kicker a">One year ahead of you</div>
+    <h1 class="h split" style="--d:.2s">They started <span class="g">where you are.</span></h1>
+  </div>
+  <div style="position:absolute;left:130px;right:130px;top:410px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px;z-index:5">
+    <div class="card a up" style="--d:.7s;padding:46px"><div class="num-badge">?</div><h3 style="font-size:36px;margin:28px 0 14px">What surprised you most?</h3><p style="font-size:26px;color:var(--muted);margin:0">[Answer in the intern's own words]</p></div>
+    <div class="card a up" style="--d:.9s;padding:46px"><div class="num-badge" style="background:var(--grad2)">?</div><h3 style="font-size:36px;margin:28px 0 14px">What was hard, and what helped?</h3><p style="font-size:26px;color:var(--muted);margin:0">[Answer in the intern's own words]</p></div>
+    <div class="card a up" style="--d:1.1s;padding:46px"><div class="num-badge" style="background:var(--grad3)">?</div><h3 style="font-size:36px;margin:28px 0 14px">Why was it worth it?</h3><p style="font-size:26px;color:var(--muted);margin:0">[Answer in the intern's own words]</p></div>
+  </div>
+  <p class="sub a" style="--d:1.4s;position:absolute;left:130px;bottom:90px;font-size:26px">[Intern name] · [University] · [Internship period and place]</p>
+  <aside class="notes">The interns are the closest role models: same country, close in age. Best live or as a short video, in Khmer with English subtitles if needed. Ask them to talk about real difficulties too.</aside>
+</section>
+
+<!-- 27 WORRIES -->
+<section class="slide" data-title="Worried? That's normal">
+  <div class="pad" style="text-align:center">
+    <div class="kicker a">Be honest</div>
+    <h1 class="h split" style="--d:.2s">Worried? <span class="g">That's normal.</span></h1>
+    <p class="sub a" style="--d:.9s;margin-top:14px">Which one is on your mind?</p>
+  </div>
+  <div class="worry-img a zoom" style="--d:.5s"><div class="kbi" style="background-image:url(img/spot/worry.jpg)"></div></div>
+  <div class="bub l a pop" style="--d:1.2s;top:420px;--c:#FF4D6D"><b>Money</b><span>Can I live on the salary?</span></div>
+  <div class="bub l a pop" style="--d:1.5s;top:610px;--c:#FF8E3C"><b>Japanese</b><span>Can I really learn it?</span></div>
+  <div class="bub l a pop" style="--d:1.8s;top:800px;--c:#E9A400"><b>Housing</b><span>Where will I live?</span></div>
+  <div class="bub r a pop" style="--d:1.35s;top:420px;--c:#12B886"><b>Work culture</b><span>Will I fit in?</span></div>
+  <div class="bub r a pop" style="--d:1.65s;top:610px;--c:#2F7BFF"><b>Far from family</b><span>Will I feel alone?</span></div>
+  <div class="bub r a pop" style="--d:1.95s;top:800px;--c:#7C5CFF"><b>Safety</b><span>What about earthquakes?</span></div>
+  <aside class="notes">No hands, no counting. Ask students to imagine which worry is theirs, or to keep one in mind. Read the six bubbles in a friendly voice: these are worries many students have, and having them is normal. Then move on: the next slide shows what we prepare for them.</aside>
+</section>
+
+<!-- 28 SUPPORT -->
+<section class="slide" data-title="Our support">
+  <div class="pad">
+    <div class="kicker a">Your worries, our support</div>
+    <h1 class="h split" style="--d:.2s">We prepare it <span class="g">with you.</span></h1>
+  </div>
+  <div class="sup">
+    <div class="card a up" style="--d:.6s;--c:#FF4D6D"><div class="pimg" style="background-image:url(img/spot/sp_money.jpg)"></div><h3>Money</h3><p>A clear guide to salary, deductions and living costs.</p></div>
+    <div class="card a up" style="--d:.75s;--c:#FF8E3C"><div class="pimg" style="background-image:url(img/spot/sp_housing.jpg)"></div><h3>Housing</h3><p>Help finding a safe, affordable home, like a share house.</p></div>
+    <div class="card a up" style="--d:.9s;--c:#E9A400"><div class="pimg" style="background-image:url(img/spot/sp_daily.jpg)"></div><h3>Daily life</h3><p>Practice for the hospital, city office and bank.</p></div>
+    <div class="card a up" style="--d:1.05s;--c:#12B886"><div class="pimg" style="background-image:url(img/spot/sp_work.jpg)"></div><h3>Work culture</h3><p>Training in reporting, stand-ups and teamwork.</p></div>
+    <div class="card a up" style="--d:1.2s;--c:#2F7BFF"><div class="pimg" style="background-image:url(img/spot/sp_contact.jpg)"></div><h3>Someone to ask</h3><p>A contact at Next Make in Osaka from day one.</p></div>
+  </div>
+  <aside class="notes">Frame this as "we are building this with you", because the support system is still being prepared. Confirm each line with Next Make before presenting and remove anything not yet decided. Answer the top worries from the poll first.</aside>
+</section>
+
+<!-- 29 COMMUNITY -->
+<section class="slide" data-title="You won't go alone">
+  <div class="bg"><div class="kbi" style="background-image:url(img/community.jpg);animation:none"></div></div>
+  <div class="board-wrap"><div class="board-text a pop" style="--d:1.0s">Welcome<br>to Osaka!</div></div>
+  <div class="glass a left" style="--d:.3s;left:80px;top:60px;width:820px;padding:40px 50px">
+    <div class="kicker">Community</div>
+    <h1 class="h m split" style="--d:.5s">You won't go <span class="g">alone.</span></h1>
+  </div>
+  <div class="chain">
+    <div class="pill a pop" style="--d:1.4s">Class 1<small>Goes first, shares tips</small></div><span class="ar a fade" style="--d:1.6s">→</span>
+    <div class="pill a pop" style="--d:1.8s">Class 2<small>Gets help, gives help</small></div><span class="ar a fade" style="--d:2.0s">→</span>
+    <div class="pill a pop" style="--d:2.2s">Class 3<small>Joins a ready network</small></div>
+  </div>
+  <aside class="notes">Graduates support each other: housing tips, study help, first-week advice, friends. The first class has finished the Japanese course and is getting ready to work in Japan (see the news video). They will be the first people you can ask. Invite students to be the next class, the one that helps the class after them.</aside>
+</section>
+
+<!-- 30 FAMILY -->
+<section class="slide" data-title="For your family">
+  <div class="frame a left" style="--d:.15s;left:100px;top:100px;width:680px;height:880px"><div class="kbi" style="background-image:url(img/family.jpg);--kbo:45% 50%;background-position:42% 50%"></div></div>
+  <div class="pad" style="left:860px;right:110px;top:100px">
+    <div class="kicker a">For your family</div>
+    <h1 class="h s split" style="--d:.2s">A professional career, <span class="g">not a trainee job.</span></h1>
+  </div>
+  <table class="cmp">
+    <tr class="a fade" style="--d:.7s"><th></th><th class="us">Engineer work visa<br>(this program)</th><th>Technical Intern<br>Training</th></tr>
+    <tr class="a" style="--d:.9s"><td>Work</td><td class="us">Professional IT work using your degree</td><td>Training in set job types</td></tr>
+    <tr class="a" style="--d:1.1s"><td>Change jobs</td><td class="us">Possible within your field</td><td>Generally not allowed</td></tr>
+    <tr class="a" style="--d:1.3s"><td>Family</td><td class="us">Spouse and children can join</td><td>Family cannot join</td></tr>
+    <tr class="a" style="--d:1.5s"><td>Stay</td><td class="us">Renewable, no set limit</td><td>Up to 5 years</td></tr>
+  </table>
+  <div class="src" style="left:860px">Both are legal programs with different goals. Technical Intern Training will be replaced by a new system from April 2027. Source: Immigration Services Agency of Japan ("Engineer / Specialist in Humanities / International Services").</div>
+  <aside class="notes">Many Cambodian families know "working in Japan" only as Technical Intern Training. In June 2022, about 10,000 Cambodians in Japan were technical interns, and only about 500 worked under professional visas (JETRO). Do not criticize the intern program; just show this is a different path.</aside>
+</section>
+
+<!-- 31 FAQ -->
+<section class="slide" data-title="Questions">
+  <div class="pad">
+    <div class="kicker a">Questions students ask</div>
+    <h1 class="h split" style="--d:.2s">Quick answers.</h1>
+  </div>
+  <div class="faq">
+    <div class="flip step keep a up" style="--d:.5s"><div class="in"><div class="fc front"><h3><span>Q</span>How much is taken from my salary?</h3></div><div class="fc back"><small>ANSWER</small><p>About 20% for tax and social insurance.</p></div></div></div>
+    <div class="flip step keep a up" style="--d:.65s"><div class="in"><div class="fc front"><h3><span>Q</span>How much Japanese do I need?</h3></div><div class="fc back"><small>ANSWER</small><p>Aim for everyday conversation (N3) first. We train you, step by step.</p></div></div></div>
+    <div class="flip step keep a up" style="--d:.8s"><div class="in"><div class="fc front"><h3><span>Q</span>Who pays for the visa process?</h3></div><div class="fc back"><small>ANSWER</small><p>[Next Make to confirm]</p></div></div></div>
+    <div class="flip step keep a up" style="--d:.95s"><div class="in"><div class="fc front"><h3><span>Q</span>What if the yen gets weaker?</h3></div><div class="fc back"><small>ANSWER</small><p>The dollar value moves. Your skills and experience stay with you.</p></div></div></div>
+  </div>
+  <aside class="notes">Each click flips one card. These are questions Cambodian students actually asked at a Japan job seminar in Phnom Penh (JETRO, 2023). Fill in the visa answer before presenting.</aside>
+</section>
+
+<!-- 32 TRIAL CLASS -->
+<section class="slide" data-title="Trial class" data-fx="confetti">
+  <div class="diag a wipe" style="left:44%"><div class="kbi" style="background-image:url(img/trial_class.jpg);background-position:62% 50%;--kbo:62% 50%"></div></div>
+  <div class="free-badge" style="--d:1.6s">TRIAL<small>CLASS</small></div>
+  <div class="pad" style="width:780px;top:170px">
+    <div class="kicker a">Your first step</div>
+    <h1 class="h split" style="--d:.3s">Join a Japanese <span class="g">trial class.</span></h1>
+    <p class="sub a" style="--d:1.2s">Come to one class. No commitment. Then decide.</p>
+    <div class="steps3">
+      <span class="pill a pop" style="--d:1.8s"><b>1</b>Join a class</span>
+      <span class="pill a pop" style="--d:2.0s"><b>2</b>Feel it</span>
+      <span class="pill a pop" style="--d:2.2s"><b>3</b>Decide</span>
+    </div>
+    <div class="a up" style="--d:2.5s;display:flex;gap:30px;align-items:center;margin-top:50px">
+      <div class="qr">[QR code:<br>sign up]</div>
+      <div style="font-size:28px;line-height:1.6;font-weight:700">[Date and time]<br>[Place]<br><span style="color:var(--muted);font-weight:500">[Contact]</span></div>
+    </div>
+  </div>
+  <aside class="notes">Make the first step tiny. Students who never thought about working abroad will not decide today, and they don't need to. They can join one trial class and decide after that. [Add the trial class date, place and sign-up QR code.]</aside>
+</section>
+
+<!-- 33 REWRITE -->
+<section class="slide" data-title="Imagine your 2031 again">
+  <div class="pad" style="width:800px;top:220px">
+    <div class="kicker a">Back to the start</div>
+    <h1 class="h split" style="--d:.2s">Now, imagine your <span class="g">2031</span> again.</h1>
+    <p class="sub a" style="--d:1.1s">Has anything changed?</p>
+  </div>
+  <div class="term a zoom" style="--d:.5s;left:1000px;top:250px;width:800px">
+    <div class="term-bar"><i></i><i></i><i></i><span>my-career</span></div>
+    <div class="term-body typer" data-start="1.0">
+      <span class="tl"><span class="p">$</span> git log --oneline my-career</span>
+      <span class="tl"><span class="y">2026</span> Studying IT in Phnom Penh</span>
+      <span class="tl"><span class="y">2026</span> <span class="new">Joined a Japanese trial class</span></span>
+      <span class="tl"><span class="y">2028</span> <span class="blank">________________</span></span>
+      <span class="tl"><span class="y">2031</span> <span class="blank">________________</span><span class="cursor"></span></span>
+    </div>
+  </div>
+  <aside class="notes">Ask everyone to imagine their 2031 again, the same way as at the start. Ask two or three volunteers whether anything changed. Even "I want to try one Japanese class" is a real change.</aside>
+</section>
+
+<!-- 34 THANK YOU -->
+<section class="slide" data-title="Thank you" data-fx="petals">
+  <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg)"></div></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 42%,rgba(255,255,255,0) 70%);z-index:1"></div>
+  <div class="pad" style="width:900px;top:200px">
+    <div class="kicker a">Japanese IT Pathway Program</div>
+    <h1 class="h xl split" style="--d:.3s">Thank <span class="g">you.</span></h1>
+    <p class="sub a" style="--d:1.1s;font-size:44px;color:var(--ink);font-weight:700">Questions? Let's talk.</p>
+    <div class="a up" style="--d:1.5s;display:flex;gap:30px;align-items:center;margin-top:50px">
+      <div class="qr">[QR code:<br>sign up]</div>
+      <div style="font-size:28px;line-height:1.6;font-weight:700">Sign up and stay in touch<br><span style="color:var(--muted);font-weight:500">[Email] · [Facebook page] · [Website]</span><img src="img/nextmake-logo.png" alt="Next Make" style="display:block;margin-top:14px;height:38px"></div>
+    </div>
+  </div>
+  <aside class="notes">Leave this slide up during Q and A so students can scan the QR code. [Add the sign-up QR code and contact details.]</aside>
+</section>
+
+<div id="progress"><i></i></div>
+<div id="pageno"></div>
+</div></div>
+
+<div id="notes-panel"></div>
+<div id="help"><b>→ / Space</b> next · <b>←</b> back · <b>F</b> full screen · <b>P</b> presenter window · <b>N</b> notes · <b>G</b> overview · <b>B</b> black screen</div>
+<div id="black"></div>
+
+<script>
+(() => {
+  const deck = document.getElementById('deck');
+  const slides = [...deck.querySelectorAll('section.slide')];
+  const SHOT = /[?&]shot/.test(location.search);
+  if (SHOT) document.documentElement.classList.add('shot');
+  const RUNSEL = '.a,.w,.tl,.grow,.door,.seg,.count,.pbadge,.free-badge,.kbi,.stp';
+  let cur = -1, ov = false;
+
+  /* ---------- build-time helpers ---------- */
+  // split headlines into words
+  document.querySelectorAll('.split').forEach(el => {
+    const base = parseFloat(el.style.getPropertyValue('--d')) || 0;
+    let i = 0;
+    const frag = document.createDocumentFragment();
+    const push = (word, cls) => {
+      const s = document.createElement('span');
+      s.className = 'w' + (cls ? ' ' + cls : '');
+      s.textContent = word;
+      s.style.setProperty('--d', (base + i * 0.075).toFixed(3) + 's');
+      i++;
+      frag.appendChild(s);
+      frag.appendChild(document.createTextNode(' '));
+    };
+    [...el.childNodes].forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/\s+/).filter(Boolean).forEach(w => push(w));
+      else if (n.nodeName === 'BR') frag.appendChild(document.createElement('br'));
+      else n.textContent.split(/\s+/).filter(Boolean).forEach(w => push(w, n.className));
+    });
+    el.innerHTML = '';
+    el.appendChild(frag);
+  });
+
+  // typing lines
+  document.querySelectorAll('.typer').forEach(t => {
+    let d = parseFloat(t.dataset.start || 0);
+    const speed = parseFloat(t.dataset.speed || 32) / 1000;
+    t.querySelectorAll('.tl').forEach(l => {
+      const n = Math.max(1, l.textContent.length);
+      l.style.setProperty('--n', n);
+      l.style.setProperty('--d', d.toFixed(2) + 's');
+      l.style.animationDuration = (n * speed).toFixed(2) + 's';
+      d += n * speed + 0.25;
+    });
+  });
+
+  // background blobs on plain slides
+  slides.forEach(s => {
+    if (!s.querySelector('.bg')) {
+      const b = document.createElement('div');
+      b.className = 'blobs';
+      b.innerHTML = '<i></i><i></i><i></i>';
+      s.prepend(b);
+    }
+  });
+
+  // the wall of kana bricks
+  document.querySelectorAll('.wall').forEach(w => {
+    const rows = +w.dataset.rows, cols = +w.dataset.cols;
+    const chars = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんアイウエオカキクケコサシスセソ日本語漢字読書話聞';
+    const bw = 190, bh = 76, gap = 10;
+    for (let r = 0; r < rows; r++) {
+      for (let c = -1; c < cols + 1; c++) {
+        const b = document.createElement('div');
+        b.className = 'brick a drop';
+        b.textContent = chars[Math.floor(Math.random() * chars.length)];
+        const x = c * (bw + gap) + (r % 2 ? (bw + gap) / 2 : 0);
+        const y = 560 - (r + 1) * (bh + gap);
+        b.style.left = x + 'px';
+        b.style.top = y + 'px';
+        b.style.setProperty('--d', (0.5 + r * 0.28 + Math.random() * 0.35).toFixed(2) + 's');
+        b.style.setProperty('--du', '1s');
+        w.appendChild(b);
+      }
+    }
+  });
+
+  // crowd fields
+  document.querySelectorAll('.crowd').forEach(f => {
+    const n = +f.dataset.n, W = 720, H = 270;
+    for (let i = 0; i < n; i++) {
+      const d = document.createElement('span');
+      d.className = 'pdot a pop';
+      d.style.left = (Math.random() * (W - 20)) + 'px';
+      d.style.top = (Math.random() * (H - 20)) + 'px';
+      d.style.setProperty('--d', (0.3 + Math.random() * 1.6).toFixed(2) + 's');
+      d.style.setProperty('--du', '.6s');
+      f.appendChild(d);
+    }
+    if (f.dataset.you) {
+      const y = document.createElement('span');
+      y.className = 'pdot you a';
+      y.style.left = '330px'; y.style.top = '110px';
+      y.style.setProperty('--d', '1.2s');
+      f.appendChild(y);
+      const l = document.createElement('span');
+      l.className = 'youlab a fade';
+      l.textContent = 'YOU';
+      l.style.left = '396px'; l.style.top = '118px';
+      l.style.setProperty('--d', '1.5s');
+      f.appendChild(l);
+    }
+  });
+
+  // poll
+  document.querySelectorAll('.popt').forEach(o => {
+    o.dataset.count = 0;
+    const upd = () => {
+      const all = [...o.parentNode.querySelectorAll('.popt')];
+      const max = Math.max(1, ...all.map(x => +x.dataset.count));
+      all.forEach(x => {
+        x.querySelector('.cnt').textContent = x.dataset.count;
+        x.querySelector('.meter i').style.width = (x.dataset.count / max * 100) + '%';
+        x.classList.toggle('top', +x.dataset.count > 0 && +x.dataset.count === max);
+      });
+    };
+    o.addEventListener('click', e => { e.stopPropagation(); o.dataset.count = +o.dataset.count + 1; upd(); });
+    o.addEventListener('dblclick', e => { e.stopPropagation(); o.dataset.count = 0; upd(); });
+  });
+
+  /* ---------- counters ---------- */
+  function runCount(el) {
+    const to = parseFloat(el.dataset.to), dur = parseFloat(el.dataset.dur || 1.6) * 1000;
+    const delay = parseFloat(el.dataset.delay || 0.4) * 1000;
+    const fmt = v => Math.round(v).toLocaleString('en-US');
+    if (SHOT) { el.textContent = fmt(to); return; }
+    el.textContent = fmt(0);
+    const t0 = performance.now() + delay;
+    const tick = now => {
+      if (!el.classList.contains('run')) return;
+      const p = Math.min(1, Math.max(0, (now - t0) / dur));
+      el.textContent = fmt(to * (1 - Math.pow(1 - p, 4)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  /* ---------- run / reset ---------- */
+  const inHiddenStep = (el, slide) => {
+    for (let p = el.parentElement; p && p !== slide; p = p.parentElement)
+      if (p.classList.contains('step') && !p.classList.contains('shown') && !p.classList.contains('keep')) return true;
+    return false;
+  };
+  function arm(el) {
+    el.classList.add('run');
+    if (el.classList.contains('count')) runCount(el);
+  }
+  function runSlide(s) {
+    s.querySelectorAll(RUNSEL).forEach(el => {
+      if (el.classList.contains('step') && !el.classList.contains('shown') && !el.classList.contains('keep')) return;
+      if (el.classList.contains('pbadge')) return; // badges run when their step is shown
+      if (inHiddenStep(el, s)) return;
+      arm(el);
+    });
+  }
+  function resetSlide(s) {
+    s.querySelectorAll('.run').forEach(el => el.classList.remove('run'));
+    s.querySelectorAll('.step.shown').forEach(el => el.classList.remove('shown'));
+  }
+  const steps = s => [...s.querySelectorAll('.step')].map((el, i) => ({ el, i, o: parseFloat(el.dataset.order) || 0 })).sort((a, b) => a.o - b.o || a.i - b.i).map(x => x.el);
+  // pbadges in the same data-group appear together
+  function groupOf(st) { return st.dataset.group ? steps(slides[cur]).filter(x => x.dataset.group === st.dataset.group) : [st]; }
+  function showStep(st) {
+    groupOf(st).forEach((g, i) => {
+      g.style.setProperty('--d', (i * 0.15) + 's');
+      g.classList.add('shown');
+      arm(g);
+      g.querySelectorAll(RUNSEL).forEach(arm);
+    });
+    if (slides[cur].dataset.fx === 'confetti') burst(960, 900, 60);
+  }
+  function hideStep(st) {
+    groupOf(st).forEach(g => {
+      g.classList.remove('shown', 'run');
+      g.querySelectorAll('.run').forEach(e => e.classList.remove('run'));
+    });
+  }
+  const shownSteps = s => steps(s).filter(x => x.classList.contains('shown'));
+  const nextHidden = s => steps(s).find(x => !x.classList.contains('shown'));
+
+  /* ---------- navigation ---------- */
+  function go(n, opts = {}) {
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n === cur && !opts.force) return;
+    const prev = slides[cur];
+    deck.classList.toggle('back', n < cur);
+    if (prev) {
+      prev.classList.remove('active');
+      prev.classList.add('leaving');
+      clearTimeout(prev._t);
+      prev._t = setTimeout(() => { if (!prev.classList.contains('active')) { prev.classList.remove('leaving'); resetSlide(prev); } }, 900);
+    }
+    cur = n;
+    const s = slides[n];
+    clearTimeout(s._t);
+    s.classList.remove('leaving');
+    resetSlide(s);
+    s.classList.add('active');
+    void s.offsetWidth;
+    runSlide(s);
+    if (opts.allSteps || SHOT) {
+      let st; while ((st = nextHidden(s))) showStep(st);
+    }
+    fxMode(s);
+    if (s.dataset.fx === 'confetti' && !SHOT) setTimeout(() => burst(960, 1080, 160), 1500);
+    slides.forEach(x => { const v = x.querySelector('video'); if (v && x !== s) { v.pause(); } });
+    const vid = s.querySelector('video');
+    if (vid && !SHOT && !ov) {
+      vid.currentTime = 0;
+      s.classList.remove('paused');
+      vid.play().catch(() => s.classList.add('paused'));
+    }
+    document.getElementById('progress').firstElementChild.style.width = ((n + 1) / slides.length * 100) + '%';
+    document.getElementById('pageno').textContent = (n + 1) + ' / ' + slides.length;
+    history.replaceState(null, '', '#' + (n + 1));
+    renderNotes();
+  }
+  function next() {
+    if (ov) return;
+    const s = slides[cur], st = nextHidden(s);
+    if (st) { showStep(st); renderNotes(); } else go(cur + 1);
+  }
+  function prev() {
+    if (ov) return;
+    const s = slides[cur], sh = shownSteps(s);
+    if (sh.length) { hideStep(sh[sh.length - 1]); renderNotes(); } else go(cur - 1, { allSteps: true });
+  }
+
+  /* ---------- scale to window ---------- */
+  function fit() {
+    const sc = Math.min(innerWidth / 1920, innerHeight / 1080);
+    deck.style.transform = `translate(-50%,-50%) scale(${sc})`;
+    if (ov) layoutOverview();
+  }
+  addEventListener('resize', fit);
+
+  /* ---------- overview ---------- */
+  function layoutOverview() {
+    const cols = 7, sc = Math.min(innerWidth / 1920, innerHeight / 1080);
+    const cellW = 1920 / cols, rows = Math.ceil(slides.length / cols);
+    const k = Math.min(1 / cols, 1 / rows) * 0.9;
+    slides.forEach((s, i) => {
+      const c = i % cols, r = Math.floor(i / cols);
+      const x = (c - (cols - 1) / 2) * cellW;
+      const y = (r - (rows - 1) / 2) * (1080 * k + 30);
+      s.style.transform = `translate(${x}px,${y}px) scale(${k})`;
+    });
+    deck.style.transform = `translate(-50%,-50%) scale(${sc})`;
+  }
+  function toggleOverview(on = !ov) {
+    ov = on;
+    deck.classList.toggle('ov', ov);
+    if (ov) { document.querySelectorAll('.count').forEach(el => el.textContent = Math.round(parseFloat(el.dataset.to)).toLocaleString('en-US')); layoutOverview(); }
+    else { slides.forEach(s => s.style.transform = ''); fit(); go(cur, { force: true }); }
+  }
+  slides.forEach((s, i) => s.addEventListener('click', e => { if (ov) { e.stopPropagation(); toggleOverview(false); go(i, { force: true }); } }));
+
+  /* ---------- notes + presenter window ---------- */
+  const notesPanel = document.getElementById('notes-panel');
+  let pw = null, t0 = Date.now();
+  function noteOf(i) { const n = slides[i] && slides[i].querySelector('.notes'); return n ? n.innerHTML : ''; }
+  function renderNotes() {
+    const s = slides[cur];
+    const total = steps(s).length, shown = shownSteps(s).length;
+    notesPanel.innerHTML = `<h5>${cur + 1} / ${slides.length} · ${s.dataset.title || ''}${total ? ` · click ${shown}/${total}` : ''}</h5>${noteOf(cur)}`;
+    if (pw && !pw.closed) {
+      const d = pw.document;
+      d.getElementById('cur').textContent = `${cur + 1} / ${slides.length} — ${s.dataset.title || ''}`;
+      d.getElementById('clicks').textContent = total ? `Clicks on this slide: ${shown} / ${total}` : 'No clicks on this slide';
+      d.getElementById('notes').innerHTML = noteOf(cur);
+      const nx = slides[cur + 1];
+      d.getElementById('next').textContent = nx ? `Next: ${nx.dataset.title}` : 'Last slide';
+    }
+  }
+  function openPresenter() {
+    pw = window.open('', 'jitp-presenter', 'width=900,height=640');
+    if (!pw) return;
+    pw.document.write(`<!doctype html><title>Presenter</title><style>body{margin:0;font:20px/1.6 -apple-system,'Plus Jakarta Sans',sans-serif;background:#0F1730;color:#E9EEFF;padding:28px}#cur{font-size:30px;font-weight:800;color:#fff}#timer{float:right;font:700 34px ui-monospace,monospace;color:#FFC23C}#clicks{color:#9AA6CF;margin:6px 0 18px}#notes{font-size:24px;line-height:1.6;background:#18223F;padding:22px 26px;border-radius:16px}#next{margin-top:18px;color:#FF8FA6;font-weight:700}small{color:#6E7AA6}</style><div id="timer">00:00</div><div id="cur"></div><div id="clicks"></div><div id="notes"></div><div id="next"></div><p><small>Use ← → here or in the main window. R resets the timer.</small></p>`);
+    pw.document.close();
+    pw.document.addEventListener('keydown', onKey);
+    const tick = () => { if (!pw || pw.closed) return; const s = Math.floor((Date.now() - t0) / 1000); pw.document.getElementById('timer').textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); setTimeout(tick, 500); };
+    tick();
+    renderNotes();
+  }
+
+  /* ---------- keyboard / mouse / touch ---------- */
+  let digits = '';
+  function onKey(e) {
+    const k = e.key;
+    if (['ArrowRight', 'PageDown', ' ', 'Spacebar'].includes(k) || (k === 'Enter' && !digits)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(k)) { e.preventDefault(); prev(); }
+    else if (k === 'ArrowDown') { e.preventDefault(); go(cur + 1); }
+    else if (k === 'ArrowUp') { e.preventDefault(); go(cur - 1, { allSteps: true }); }
+    else if (k === 'Home') go(0);
+    else if (k === 'End') go(slides.length - 1);
+    else if (/^[0-9]$/.test(k)) { digits += k; clearTimeout(onKey._d); onKey._d = setTimeout(() => digits = '', 1500); }
+    else if (k === 'Enter' && digits) { go(parseInt(digits, 10) - 1); digits = ''; }
+    else if (k === 'f' || k === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+    else if (k === 'n' || k === 'N') notesPanel.classList.toggle('on');
+    else if (k === 'p' || k === 'P') openPresenter();
+    else if (k === 'g' || k === 'G' || k === 'o' || k === 'O') toggleOverview();
+    else if (k === 'Escape' && ov) toggleOverview(false);
+    else if (k === 'b' || k === 'B' || k === '.') document.getElementById('black').classList.toggle('on');
+    else if (k === 'r' || k === 'R') t0 = Date.now();
+    else if (k === '?') document.getElementById('help').classList.toggle('hide');
+  }
+  addEventListener('keydown', onKey);
+  deck.addEventListener('click', e => { if (!ov && !e.target.closest('a,button,.popt,video')) next(); });
+  document.querySelectorAll('section[data-video]').forEach(sec => {
+    const v = sec.querySelector('video');
+    const toggle = e => { e.stopPropagation(); if (v.paused) { v.play(); sec.classList.remove('paused'); } else { v.pause(); sec.classList.add('paused'); } };
+    v.addEventListener('click', toggle);
+    sec.querySelector('.vid-play').addEventListener('click', toggle);
+    v.addEventListener('ended', () => sec.classList.add('paused'));
+  });
+  deck.addEventListener('contextmenu', e => { e.preventDefault(); prev(); });
+  let tx = null;
+  addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); } tx = null; });
+  setTimeout(() => document.getElementById('help').classList.add('hide'), 6000);
+
+  /* ---------- canvas effects: petals + confetti ---------- */
+  const cv = document.getElementById('fx'), ctx = cv.getContext('2d');
+  let petalsOn = false, petals = [], confetti = [], raf = null;
+  const newPetal = any => ({ x: Math.random() * 2100 - 90, y: any ? Math.random() * 1080 : -40 - Math.random() * 200, s: 10 + Math.random() * 13, vy: .7 + Math.random() * 1.3, vx: .2 + Math.random() * .9, r: Math.random() * 6.3, vr: (Math.random() - .5) * .05, ph: Math.random() * 6.3, hue: Math.random() });
+  function drawPetal(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.scale(1, .55 + .45 * Math.sin(p.ph));
+    const g = ctx.createLinearGradient(-p.s, 0, p.s, 0);
+    g.addColorStop(0, p.hue > .5 ? '#FFC7D6' : '#FFD9E3'); g.addColorStop(1, '#FF8FB1');
+    ctx.fillStyle = g; ctx.globalAlpha = .9;
+    ctx.beginPath();
+    ctx.moveTo(-p.s, 0);
+    ctx.quadraticCurveTo(-p.s * .2, -p.s * .9, p.s, -p.s * .15);
+    ctx.lineTo(p.s * .7, 0);
+    ctx.lineTo(p.s, p.s * .15);
+    ctx.quadraticCurveTo(-p.s * .2, p.s * .9, -p.s, 0);
+    ctx.fill();
+    ctx.restore();
+  }
+  function loop() {
+    ctx.clearRect(0, 0, 1920, 1080);
+    if (petalsOn) petals.forEach((p, i) => {
+      p.ph += .03; p.y += p.vy; p.x += p.vx + Math.sin(p.ph) * .8; p.r += p.vr;
+      if (p.y > 1110 || p.x > 2020) petals[i] = newPetal(false);
+      drawPetal(p);
+    });
+    confetti = confetti.filter(c => c.life > 0);
+    confetti.forEach(c => {
+      c.vy += .35; c.vx *= .99; c.x += c.vx; c.y += c.vy; c.r += c.vr; c.life--;
+      ctx.save(); ctx.translate(c.x, c.y); ctx.rotate(c.r); ctx.fillStyle = c.col; ctx.globalAlpha = Math.min(1, c.life / 40);
+      ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h * Math.abs(Math.cos(c.r * 2))); ctx.restore();
+    });
+    if (petalsOn || confetti.length) raf = requestAnimationFrame(loop); else { raf = null; ctx.clearRect(0, 0, 1920, 1080); }
+  }
+  const startLoop = () => { if (!raf) raf = requestAnimationFrame(loop); };
+  function fxMode(s) {
+    petalsOn = !SHOT && s.dataset.fx === 'petals';
+    if (petalsOn && !petals.length) petals = Array.from({ length: 46 }, () => newPetal(true));
+    startLoop();
+  }
+  function burst(x, y, n) {
+    if (SHOT) return;
+    const cols = ['#FF4D6D', '#FF8E3C', '#FFC23C', '#12B886', '#2F7BFF', '#7C5CFF'];
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + (Math.random() - .5) * 1.6, v = 14 + Math.random() * 16;
+      confetti.push({ x: x + (Math.random() - .5) * 600, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: Math.random() * 6, vr: (Math.random() - .5) * .3, w: 12 + Math.random() * 10, h: 18 + Math.random() * 12, col: cols[i % cols.length], life: 150 + Math.random() * 60 });
+    }
+    startLoop();
+  }
+
+  /* ---------- start ---------- */
+  fit();
+  const h = parseInt((location.hash || '#1').slice(1), 10);
+  go(isNaN(h) ? 0 : h - 1, { force: true });
+})();
+</script>
+</body>
+</html>

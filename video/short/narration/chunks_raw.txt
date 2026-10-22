@@ -1,0 +1,43 @@
+A_000.mp3 | gemini-3.5-flash-lite | What kind of future do you imagine for yourself?
+A_001.mp3 | gemini-3.5-flash-lite | Imagine using your IT skills to build a career in Japan.
+A_002.mp3 | gemini-3.5-flash-lite | and grow into an international IT engineer.
+A_003.mp3 | gemini-3.5-flash-lite | Today
+A_004.mp3 | gemini-3.5-flash-lite | that opportunity is becoming a reality.
+A_005.mp3 | gemini-3.5-flash-lite | through the Japanese IT Pathway Program,
+A_006.mp3 | gemini-3.5-flash-lite | The Japanese IT pathway program
+A_007.mp3 | gemini-3.5-flash-lite | prepares Cambodian IT students for professional careers in Japan.
+A_008.mp3 | gemini-3.5-flash-lite | Students develop two essential skills.
+A_009.mp3 | gemini-3.5-flash-lite | Japanese communication skills
+A_010.mp3 | gemini-3.5-flash-lite | and practical IT skills.
+A_011.mp3 | gemini-3.5-flash-lite | They also learn professional communication
+A_012.mp3 | gemini-3.5-flash-lite | teamwork
+A_013.mp3 | gemini-3.5-flash-lite | problem solving
+A_014.mp3 | gemini-3.5-flash-lite | and Japanese workplace culture.
+A_015.mp3 | gemini-3.5-flash-lite | Our goal is to develop IT professionals who can succeed in an international environment.
+A_016.mp3 | gemini-3.5-flash-lite | There was something very important that every student should understand.
+A_017.mp3 | gemini-3.5-flash-lite | This opportunity did not happen by accident.
+A_018.mp3 | gemini-3.5-flash-lite | The Cambodian government wants young people to gain international experience.
+A_019.mp3 | gemini-3.5-flash-lite | develop their abilities and contribute to Cambodia's future.
+A_020.mp3 | gemini-3.5-flash-lite | with support and financial investment from the Ministry of Post and Telecommunications,
+A_021.mp3 | gemini-3.5-flash-lite | MPTC
+A_022.mp3 | gemini-3.5-flash-lite | This program became possible
+A_023.mp3 | gemini-3.5-flash-lite | This is a special educational opportunity supported by the Cambodian Government,
+A_024.mp3 | gemini-3.5-flash-lite | The government is investing in education
+A_025.mp3 | gemini-3.5-flash-lite | because it believes in your potential.
+B_000.mp3 | gemini-3.5-flash-lite | Through this program you can receive specialized education with strong government support.
+B_001.mp3 | gemini-3.5-flash-lite | your teachers, your university, Nextmake, and the government are all working together to support your growth.
+B_002.mp3 | gemini-3.5-flash-lite | But
+B_003.mp3 | gemini-3.5-flash-lite | There is one thing nobody else can provide for you,
+B_004.mp3 | gemini-3.5-flash-lite | your own commitment.
+B_005.mp3 | gemini-3.5-flash-lite | learning Japanese and developing IT skills require effort
+B_006.mp3 | gemini-3.5-flash-lite | attend your classes
+B_007.mp3 | gemini-3.5-flash-lite | ask questions, and keep practicing every day.
+B_008.mp3 | gemini-3.5-flash-lite | Every small effort brings you closer to your goals.
+B_009.mp3 | gemini-3.5-flash-lite | These students show us how being punctual and studying every day can lead to remarkable growth.
+B_010.mp3 | gemini-3.5-flash-lite | The Cambodian government
+B_011.mp3 | gemini-3.5-flash-lite | your University and NextMake are here to support you.
+B_012.mp3 | gemini-3.5-flash-lite | Now, the next step is yours.
+B_013.mp3 | gemini-3.5-flash-lite | Appreciate this opportunity.
+B_014.mp3 | gemini-3.5-flash-lite | and commit yourself to learning.
+B_015.mp3 | gemini-3.5-flash-lite | Your future starts with your commitment.
+B_016.mp3 | gemini-3.5-flash-lite | Welcome to the Japanese IT Pathway Program.

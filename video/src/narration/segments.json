@@ -1,0 +1,265 @@
+{
+ "partA": [
+  {
+   "key": "s1_01",
+   "start": 0.0,
+   "end": 2.409,
+   "len": 2.409,
+   "text": "Where could your IT skills take you?"
+  },
+  {
+   "key": "s1_02",
+   "start": 3.027,
+   "end": 9.366,
+   "len": 6.339,
+   "text": "Imagine building a career in Japan, learning a new language, and working with people from different backgrounds."
+  },
+  {
+   "key": "s1_03",
+   "start": 10.023,
+   "end": 13.125,
+   "len": 3.102,
+   "text": "For Cambodian students, this is more than a dream."
+  },
+  {
+   "key": "s1_04",
+   "start": 13.715,
+   "end": 17.806,
+   "len": 4.091,
+   "text": "It is the opportunity offered by the Japanese IT Pathway Program."
+  },
+  {
+   "key": "s2_01",
+   "start": 18.589,
+   "end": 24.889,
+   "len": 6.3,
+   "text": "The Japanese IT Pathway Program prepares Cambodian IT students for professional careers in Japan."
+  },
+  {
+   "key": "s2_02",
+   "start": 25.67,
+   "end": 33.806,
+   "len": 8.136,
+   "text": "Over two years, students first focus on learning Japanese, then develop their IT skills through classes conducted in Japanese."
+  },
+  {
+   "key": "s2_03",
+   "start": 34.429,
+   "end": 42.34,
+   "len": 7.911,
+   "text": "Along the way, they practice communication, teamwork, problem-solving, and the professional habits expected in Japanese workplaces."
+  },
+  {
+   "key": "s2_04",
+   "start": 43.158,
+   "end": 46.476,
+   "len": 3.318,
+   "text": "Our goal is not simply to help students pass a language test."
+  },
+  {
+   "key": "s2_05",
+   "start": 46.897,
+   "end": 53.745,
+   "len": 6.849,
+   "text": "It is to help them become IT professionals who can communicate, contribute to a team, and continue growing in Japan."
+  },
+  {
+   "key": "s3_01",
+   "start": 54.689,
+   "end": 59.772,
+   "len": 5.083,
+   "text": "This opportunity exists because the Cambodian government believes in the potential of its young people."
+  },
+  {
+   "key": "s3_02",
+   "start": 60.409,
+   "end": 70.606,
+   "len": 10.197,
+   "text": "With financial support from the Ministry of Post and Telecommunications, M P T C, this program makes specialized Japanese language and IT education accessible to students."
+  },
+  {
+   "key": "s3_03",
+   "start": 71.434,
+   "end": 73.954,
+   "len": 2.52,
+   "text": "This is more than support for individual careers."
+  },
+  {
+   "key": "s3_04",
+   "start": 74.311,
+   "end": 82.596,
+   "len": 8.286,
+   "text": "It reflects the government's hope that Cambodian students will gain international experience, strengthen their abilities, and contribute to Cambodia's future."
+  },
+  {
+   "key": "s3_05",
+   "start": 83.336,
+   "end": 87.513,
+   "len": 4.177,
+   "text": "The government is investing in education because it believes your growth matters."
+  },
+  {
+   "key": "s3_06",
+   "start": 88.079,
+   "end": 91.64,
+   "len": 3.561,
+   "text": "Your education is an investment in the future of Cambodia."
+  }
+ ],
+ "partB": [
+  {
+   "key": "s4_01",
+   "start": 0.0,
+   "end": 3.703,
+   "len": 3.703,
+   "text": "This government support gives you a valuable opportunity."
+  },
+  {
+   "key": "s4_02",
+   "start": 4.498,
+   "end": 14.002,
+   "len": 9.503,
+   "text": "Your university, your teachers, Next Make, and the government are working together to create an environment where you can learn and grow."
+  },
+  {
+   "key": "s4_03",
+   "start": 14.734,
+   "end": 17.067,
+   "len": 2.333,
+   "text": "But there is one thing they cannot do for you."
+  },
+  {
+   "key": "s4_04",
+   "start": 17.735,
+   "end": 19.73,
+   "len": 1.995,
+   "text": "They cannot make the effort for you."
+  },
+  {
+   "key": "s4_05",
+   "start": 20.737,
+   "end": 25.668,
+   "len": 4.931,
+   "text": "Learning Japanese takes patience. Developing IT skills takes practice."
+  },
+  {
+   "key": "s4_06",
+   "start": 26.376,
+   "end": 27.93,
+   "len": 1.553,
+   "text": "Some days will be difficult."
+  },
+  {
+   "key": "s4_07",
+   "start": 28.583,
+   "end": 35.443,
+   "len": 6.861,
+   "text": "What matters is attending class, asking questions, and continuing to learn, even when things are challenging."
+  },
+  {
+   "key": "s4_08",
+   "start": 36.087,
+   "end": 38.251,
+   "len": 2.165,
+   "text": "The opportunity is being provided."
+  },
+  {
+   "key": "s4_09",
+   "start": 38.855,
+   "end": 40.868,
+   "len": 2.013,
+   "text": "What you do with it is up to you."
+  },
+  {
+   "key": "s5_01",
+   "start": 41.59,
+   "end": 47.517,
+   "len": 5.926,
+   "text": "Now, let's hear from two CADT students who have completed their first year of Japanese language study."
+  },
+  {
+   "key": "s6_01",
+   "start": 48.342,
+   "end": 52.625,
+   "len": 4.283,
+   "text": "You have just heard from two students after their first year of Japanese language study."
+  },
+  {
+   "key": "s6_02",
+   "start": 53.257,
+   "end": 54.728,
+   "len": 1.471,
+   "text": "They are still on their journey."
+  },
+  {
+   "key": "s6_03",
+   "start": 55.255,
+   "end": 59.606,
+   "len": 4.351,
+   "text": "But their experiences show what dedication and consistent effort can achieve."
+  },
+  {
+   "key": "s6_04",
+   "start": 60.237,
+   "end": 63.35,
+   "len": 3.113,
+   "text": "The Cambodian government has helped create this opportunity."
+  },
+  {
+   "key": "s6_05",
+   "start": 64.024,
+   "end": 68.229,
+   "len": 4.205,
+   "text": "Your university, teachers, and Next Make are here to support you."
+  },
+  {
+   "key": "s6_06",
+   "start": 68.872,
+   "end": 73.392,
+   "len": 4.521,
+   "text": "We hope you will appreciate this support and show your gratitude through your actions."
+  },
+  {
+   "key": "s6_07",
+   "start": 73.957,
+   "end": 77.705,
+   "len": 3.748,
+   "text": "Attend class. Keep learning. Support each other."
+  },
+  {
+   "key": "s6_08",
+   "start": 78.378,
+   "end": 80.972,
+   "len": 2.594,
+   "text": "Your future will not be built in a single day."
+  },
+  {
+   "key": "s6_09",
+   "start": 81.691,
+   "end": 84.842,
+   "len": 3.151,
+   "text": "It will be built through the effort you make, day after day."
+  },
+  {
+   "key": "s6_10",
+   "start": 85.538,
+   "end": 86.888,
+   "len": 1.349,
+   "text": "The opportunity is here."
+  },
+  {
+   "key": "s6_11",
+   "start": 87.465,
+   "end": 89.71,
+   "len": 2.245,
+   "text": "Your future begins with your commitment."
+  },
+  {
+   "key": "s6_12",
+   "start": 90.357,
+   "end": 93.56,
+   "len": 3.203,
+   "text": "Welcome to the Japanese IT Pathway Program."
+  }
+ ]
+}

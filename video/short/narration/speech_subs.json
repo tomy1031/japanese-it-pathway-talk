@@ -1,0 +1,64 @@
+{
+ "spk1": {
+  "t0": 15.4,
+  "t1": 33.05,
+  "crop": [
+   1220,
+   610,
+   960
+  ],
+  "gain": 5.8,
+  "lower": [
+   "CADT student",
+   "Completed Year 1 of Japanese"
+  ],
+  "subs": [
+   [
+    15.45,
+    20.6,
+    "What I worked hardest on was being punctual."
+   ],
+   [
+    21.3,
+    25.95,
+    "I always arrived early and prepared for class."
+   ],
+   [
+    26.5,
+    33.0,
+    "By respecting time and rules, I learned about Japanese customs."
+   ]
+  ]
+ },
+ "spk2": {
+  "t0": 377.85,
+  "t1": 408.2,
+  "crop": [
+   1230,
+   630,
+   1120
+  ],
+  "gain": 9.2,
+  "lower": [
+   "CADT student",
+   "Completed Year 1 of Japanese"
+  ],
+  "subs": [
+   [
+    378.0,
+    389.4,
+    "After joining the Japanese IT Pathway Program and studying hard,"
+   ],
+   [
+    390.3,
+    396.1,
+    "I never imagined I could improve so quickly."
+   ],
+   [
+    398.3,
+    408.2,
+    "Thanks to my teachers, I reached the N3 level in just one year."
+   ]
+  ]
+ }
+}

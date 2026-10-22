@@ -1,0 +1,298 @@
+{
+ "s1_01": {
+  "part": "partA",
+  "a": 0.0,
+  "b": 2.698,
+  "match": 1.0,
+  "cps": 13.3,
+  "heard": "Where could your IT skills take you?"
+ },
+ "s1_02": {
+  "part": "partA",
+  "a": 2.698,
+  "b": 9.675,
+  "match": 1.0,
+  "cps": 16.1,
+  "heard": "Imagine building a career in Japan Learning a new language? and working with people from different backgrounds"
+ },
+ "s1_03": {
+  "part": "partA",
+  "a": 9.675,
+  "b": 13.4,
+  "match": 1.0,
+  "cps": 13.4,
+  "heard": "for Cambodian students This is more than a dream"
+ },
+ "s1_04": {
+  "part": "partA",
+  "a": 13.4,
+  "b": 18.177,
+  "match": 1.0,
+  "cps": 13.6,
+  "heard": "It is the opportunity offered by the Japanese IT pathway program."
+ },
+ "s2_01": {
+  "part": "partA",
+  "a": 18.177,
+  "b": 25.26,
+  "match": 1.0,
+  "cps": 13.7,
+  "heard": "The Japanese IT Pathway program prepares Cambodian IT students for professional careers in Japan"
+ },
+ "s2_02": {
+  "part": "partA",
+  "a": 25.26,
+  "b": 34.098,
+  "match": 1.0,
+  "cps": 14.3,
+  "heard": "Over two years, students first focus on learning Japanese. then develop their IT skills through classes conducted in Japanese"
+ },
+ "s2_03": {
+  "part": "partA",
+  "a": 34.098,
+  "b": 42.729,
+  "match": 1.0,
+  "cps": 15.2,
+  "heard": "along the way They practice communication Teamwork problem solving and the professional habits expected in Japanese workplaces."
+ },
+ "s2_04": {
+  "part": "partA",
+  "a": 42.729,
+  "b": 46.666,
+  "match": 1.0,
+  "cps": 15.5,
+  "heard": "our goal is not simply to help students pass a language test,"
+ },
+ "s2_05": {
+  "part": "partA",
+  "a": 46.666,
+  "b": 54.197,
+  "match": 1.0,
+  "cps": 15.4,
+  "heard": "It is to help them become IT professionals who can communicate contribute to a team and continue growing in Japan."
+ },
+ "s3_01": {
+  "part": "partA",
+  "a": 54.197,
+  "b": 60.07,
+  "match": 1.0,
+  "cps": 17.5,
+  "heard": "This opportunity exists because the Cambodian government believes in the potential of its young people."
+ },
+ "s3_02": {
+  "part": "partA",
+  "a": 60.07,
+  "b": 71.0,
+  "match": 1.0,
+  "cps": 15.6,
+  "heard": "With financial support from the Ministry of Post and Telecommunications, MPTC, This program makes specialized Japanese language and IT education accessible to students."
+ },
+ "s3_03": {
+  "part": "partA",
+  "a": 71.0,
+  "b": 74.112,
+  "match": 1.0,
+  "cps": 15.7,
+  "heard": "This is more than support for individual careers,"
+ },
+ "s3_04": {
+  "part": "partA",
+  "a": 74.112,
+  "b": 82.946,
+  "match": 0.99,
+  "cps": 17.9,
+  "heard": "It reflects the government's hope that Cambodian students will gain international experience strength in their abilities, and contribute to Cambodia's future."
+ },
+ "s3_05": {
+  "part": "partA",
+  "a": 82.946,
+  "b": 87.776,
+  "match": 1.0,
+  "cps": 16.8,
+  "heard": "The government is investing in education because it believes your growth matters."
+ },
+ "s3_06": {
+  "part": "partA",
+  "a": 87.776,
+  "b": 91.64,
+  "match": 1.0,
+  "cps": 15.0,
+  "heard": "Your education is an investment in the future of Cambodia."
+ },
+ "s4_01": {
+  "part": "partB",
+  "a": 0.0,
+  "b": 4.08,
+  "match": 1.0,
+  "cps": 14.0,
+  "heard": "This government support gives you a valuable opportunity"
+ },
+ "s4_02": {
+  "part": "partB",
+  "a": 4.08,
+  "b": 14.348,
+  "match": 1.0,
+  "cps": 13.3,
+  "heard": "Your university? your teachers. Next make and the government are working together to create an environment where you can learn and grow."
+ },
+ "s4_03": {
+  "part": "partB",
+  "a": 14.348,
+  "b": 17.381,
+  "match": 1.0,
+  "cps": 15.2,
+  "heard": "But there is one thing they cannot do for you."
+ },
+ "s4_04": {
+  "part": "partB",
+  "a": 17.381,
+  "b": 20.213,
+  "match": 1.0,
+  "cps": 12.7,
+  "heard": "they cannot make the effort for you."
+ },
+ "s4_05": {
+  "part": "partB",
+  "a": 20.213,
+  "b": 26.002,
+  "match": 1.0,
+  "cps": 12.1,
+  "heard": "Learning Japanese takes patience. Developing IT skills takes practice."
+ },
+ "s4_06": {
+  "part": "partB",
+  "a": 26.002,
+  "b": 28.236,
+  "match": 1.0,
+  "cps": 12.5,
+  "heard": "Some days will be difficult."
+ },
+ "s4_07": {
+  "part": "partB",
+  "a": 28.236,
+  "b": 35.745,
+  "match": 1.0,
+  "cps": 14.5,
+  "heard": "What matters is attending class. asking questions and continuing to learn even when things are challenging."
+ },
+ "s4_08": {
+  "part": "partB",
+  "a": 35.745,
+  "b": 38.533,
+  "match": 1.0,
+  "cps": 12.2,
+  "heard": "The opportunity is being provided"
+ },
+ "s4_09": {
+  "part": "partB",
+  "a": 38.533,
+  "b": 41.209,
+  "match": 1.0,
+  "cps": 12.3,
+  "heard": "what you do with it? is up to you."
+ },
+ "s5_01": {
+  "part": "partB",
+  "a": 41.209,
+  "b": 47.909,
+  "match": 1.0,
+  "cps": 15.2,
+  "heard": "Now, let's hear from two CADT students who have completed their first year of Japanese language study."
+ },
+ "s6_01": {
+  "part": "partB",
+  "a": 47.909,
+  "b": 52.921,
+  "match": 1.0,
+  "cps": 17.6,
+  "heard": "You have just heard from two students after their first year of Japanese language study."
+ },
+ "s6_02": {
+  "part": "partB",
+  "a": 52.921,
+  "b": 54.972,
+  "match": 1.0,
+  "cps": 15.6,
+  "heard": "They are still on their journey."
+ },
+ "s6_03": {
+  "part": "partB",
+  "a": 54.972,
+  "b": 59.901,
+  "match": 1.0,
+  "cps": 15.6,
+  "heard": "But their experiences show what dedication and consistent effort can achieve."
+ },
+ "s6_04": {
+  "part": "partB",
+  "a": 59.901,
+  "b": 63.667,
+  "match": 1.0,
+  "cps": 15.9,
+  "heard": "The Cambodian government has helped create this opportunity."
+ },
+ "s6_05": {
+  "part": "partB",
+  "a": 63.667,
+  "b": 68.53,
+  "match": 1.0,
+  "cps": 13.4,
+  "heard": "Your university teachers, and NextMec are here to support you."
+ },
+ "s6_06": {
+  "part": "partB",
+  "a": 68.53,
+  "b": 73.655,
+  "match": 1.0,
+  "cps": 16.8,
+  "heard": "We hope you will appreciate this support and show your gratitude through your actions."
+ },
+ "s6_07": {
+  "part": "partB",
+  "a": 73.655,
+  "b": 78.022,
+  "match": 1.0,
+  "cps": 11.0,
+  "heard": "attend class keep learning Support each other."
+ },
+ "s6_08": {
+  "part": "partB",
+  "a": 78.022,
+  "b": 81.312,
+  "match": 1.0,
+  "cps": 14.0,
+  "heard": "Your future will not be built in a single day."
+ },
+ "s6_09": {
+  "part": "partB",
+  "a": 81.312,
+  "b": 85.17,
+  "match": 1.0,
+  "cps": 15.6,
+  "heard": "It will be built through the effort you make, day after day"
+ },
+ "s6_10": {
+  "part": "partB",
+  "a": 85.17,
+  "b": 87.156,
+  "match": 1.0,
+  "cps": 12.1,
+  "heard": "The opportunity is here."
+ },
+ "s6_11": {
+  "part": "partB",
+  "a": 87.156,
+  "b": 90.013,
+  "match": 1.0,
+  "cps": 14.0,
+  "heard": "Your future begins with your commitment."
+ },
+ "s6_12": {
+  "part": "partB",
+  "a": 90.013,
+  "b": 93.56,
+  "match": 1.0,
+  "cps": 12.1,
+  "heard": "Welcome to the Japanese IT Pathway Program."
+ }
+}
