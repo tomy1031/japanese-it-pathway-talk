@@ -3,9 +3,13 @@
 video/src/build/
 video/short/build/
 *.mp4
+# the slide deck plays this web-sized copy of the short video
+!video/japanese-it-pathway-program_short.mp4
 # full-size PNG masters of the illustrations (the deck uses the JPEGs in img/)
 img/original/
 # AUPP photos that are not used anywhere
 video/src/web_aupp_unused/
 # old picture-only PowerPoint (made before the video slide; out of date)
 *.pptx
+# Pixabay music files may not be redistributed on their own (they stay local)
+video/src/music/
