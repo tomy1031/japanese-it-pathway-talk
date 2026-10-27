@@ -13,3 +13,5 @@ video/src/web_aupp_unused/
 *.pptx
 # Pixabay music files may not be redistributed on their own (they stay local)
 video/src/music/
+# full 32-slide deck before slides were hidden for the 2026-10-27 talk (local reference only)
+index_full_*.html

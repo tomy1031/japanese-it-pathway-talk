@@ -8,6 +8,7 @@ CADTの学生向けキャリアトークのスライド（HTML）と、紹介動
 - オンラインで見る: https://tomy1031.github.io/japanese-it-pathway-talk/ （検索エンジンには出ない設定です）
 - 2枚目の動画は、Web用に軽くした版（`video/japanese-it-pathway-program_short.mp4`）を同梱しています。元の高画質版は **Releases** にあります。
 - ネットなしで動きます（フォント・画像はすべてフォルダ内）。持ち出すときはフォルダごとコピー。
+- 2026-10-27の発表では8枚（AI関連4枚・不安/サポート/コミュニティ/体験クラス4枚）を外しました。外す前の全32枚版は `index_full_2026-10-27.html`（ローカルのみ・git管理外）に保管しています。
 
 ## 紹介動画（`video/`）
 - `video/src/build.py` — 動画を組み立てるスクリプト（ffmpeg-full が必要）。
