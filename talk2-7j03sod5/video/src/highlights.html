@@ -131,7 +131,8 @@ function seek(t) {
       pol.style.transform = `translate(${(1 - q) * 160}px, ${(1 - q) * 30}px) rotate(${rot + (1 - q) * 8}deg) scale(${1 + 0.03 * p})`;
     }
     const cap = el.querySelector('.cap');
-    if (cap) { const q = easeOut((u - 0.25) / 0.8); cap.style.opacity = q; cap.style.transform = `translateY(${(1 - q) * 50}px)`; }
+    // the caption leaves early and the next one arrives late, so two captions never overlap in a cross-fade
+    if (cap) { const q = easeOut((u - 0.5) / 0.8), out = clamp((sc.d - u - XF * 0.55) / (XF * 0.4)); cap.style.opacity = q * out; cap.style.transform = `translateY(${(1 - q) * 50}px)`; }
     rise(el.querySelector('.a1'), u, 0.35);
     rise(el.querySelector('.a2'), u, 0.55);
     rise(el.querySelector('.a3'), u, 0.85);

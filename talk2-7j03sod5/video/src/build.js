@@ -38,12 +38,35 @@ const FPS = 30;
     '-t', total.toFixed(3), '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const done = new Promise((res, rej) => ff.on('close', c => (c === 0 ? res() : rej(new Error('ffmpeg exit ' + c)))));
 
-  for (let i = 0; i < frames; i++) {
-    await page.evaluate(t => FILM.seek(t), i / FPS);
-    const buf = await page.screenshot({ type: 'jpeg', quality: 93 });
-    if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
-    if (i % 150 === 0) console.log(`frame ${i} / ${frames}`);
+  // several pages render frames side by side; frames are written to ffmpeg in order
+  const WORKERS = 3;
+  const pages = [page];
+  for (let w = 1; w < WORKERS; w++) {
+    const p = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+    await p.goto('file://' + path.join(here, 'highlights.html') + '?render');
+    await p.evaluate(() => FILM.ready());
+    pages.push(p);
   }
+  const ready = new Map();
+  let nextWrite = 0, waiting = null;
+  const flush = async () => {
+    while (ready.has(nextWrite)) {
+      const buf = ready.get(nextWrite); ready.delete(nextWrite);
+      if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
+      if (nextWrite % 150 === 0) console.log(`frame ${nextWrite} / ${frames}`);
+      nextWrite++;
+    }
+  };
+  const kick = () => { if (!waiting && ready.has(nextWrite)) waiting = flush().finally(() => { waiting = null; }); };
+  await Promise.all(pages.map(async (p, w) => {
+    for (let i = w; i < frames; i += WORKERS) {
+      while (i - nextWrite > 60) { kick(); await new Promise(r => setTimeout(r, 20)); } // keep memory small
+      await p.evaluate(t => FILM.seek(t), i / FPS);
+      ready.set(i, await p.screenshot({ type: 'jpeg', quality: 93 }));
+      kick();
+    }
+  }));
+  while (waiting || ready.size) { if (waiting) await waiting; else await flush(); }
   ff.stdin.end();
   await done;
 

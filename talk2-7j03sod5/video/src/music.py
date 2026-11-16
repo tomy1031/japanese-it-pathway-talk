@@ -107,7 +107,7 @@ t = np.arange(total) / SR
 env = np.minimum(1, t / 1.5) * np.clip((dur - t) / 3.5, 0, 1)
 L *= env; R *= env
 peak = max(np.abs(L).max(), np.abs(R).max())
-L *= 0.6 / peak; R *= 0.6 / peak
+L *= 0.78 / peak; R *= 0.78 / peak
 pcm = (np.stack([L, R], axis=1) * 32767).astype('<i2')
 with wave.open(out, 'wb') as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
