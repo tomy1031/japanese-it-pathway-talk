@@ -632,6 +632,50 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .sum3 p{margin:4px 0 0;font-size:25px;color:var(--muted);line-height:1.4}
 .closing{margin-top:40px;font-size:31px;line-height:1.45;font-weight:700;color:var(--ink);border-left:6px solid var(--coral);padding-left:26px}
 
+
+/* Japanese IT Pathway section */
+.facts3{position:absolute;left:930px;right:110px;top:760px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;z-index:5}
+.facts3 .card{padding:22px 26px}
+.facts3 b{display:block;font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.facts3 span{display:block;font-size:20px;line-height:1.35;color:var(--muted);margin-top:6px;font-weight:600}
+.snaps5{position:absolute;left:110px;right:110px;top:370px;display:grid;grid-template-columns:repeat(5,1fr);gap:30px;z-index:5}
+.snaps5 .snap .ph{height:300px}
+.snaps5 .snap figcaption{font-size:23px;gap:10px}
+.snaps5 .snap figcaption b{width:34px;height:34px;font-size:19px;flex:none}
+.ic2{position:absolute;left:130px;top:360px;width:1080px;display:grid;grid-template-columns:1fr 1fr;gap:30px;z-index:5}
+.ic2 .card{padding:16px 16px 28px}
+.ic2 .pimg{height:380px}
+.ic2 h3{font-size:38px;margin:22px 12px 8px;letter-spacing:-.02em}
+.ic2 p{font-size:26px;line-height:1.42;color:var(--muted);margin:0 12px}
+.partners{position:absolute;left:1260px;right:110px;top:360px;padding:30px 30px 26px;z-index:5}
+.partners img{display:block;width:100%;margin-top:14px}
+.join3{position:absolute;left:130px;right:130px;top:360px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px;z-index:5}
+.join3 .card{padding:40px 42px 44px}
+.join3 .ic{width:90px;height:90px;border-radius:28px;display:grid;place-items:center;font-size:48px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#fff)}
+.join3 h3{font-size:42px;margin:26px 0 14px;letter-spacing:-.02em}
+.join3 ul{margin:0;padding-left:28px;display:grid;gap:14px}
+.join3 li{font-size:27px;line-height:1.42;color:var(--muted)}
+.join3 li b{color:var(--ink)}
+.intake{display:grid;gap:22px;margin-top:50px}
+.intake div{display:grid;grid-template-columns:76px 1fr;gap:24px;align-items:center}
+.intake .num-badge{width:76px;height:76px;border-radius:24px;font-size:34px}
+.intake b{display:block;font-size:38px;letter-spacing:-.02em}
+.intake small{display:block;font-size:25px;color:var(--muted);margin-top:4px}
+
+
+.date-pill{display:inline-flex;align-items:center;gap:14px;margin-top:40px;padding:16px 32px;border-radius:99px;background:var(--grad2);color:#fff;font-weight:800;font-size:38px;box-shadow:0 18px 40px rgba(47,123,255,.35)}
+.date-pill .icon{font-size:40px}
+.next4{display:grid;gap:16px;margin-top:40px}
+.next4>div{position:relative;display:grid;grid-template-columns:72px 1fr auto;gap:22px;align-items:center;padding:16px 26px 16px 18px;border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 34px rgba(20,33,61,.08)}
+.next4 .num-badge{width:72px;height:72px;border-radius:22px;font-size:32px;background:#C9D0DE}
+.next4 .num-badge .icon{font-size:36px;color:#fff}
+.next4 b{display:block;font-size:34px;letter-spacing:-.02em}
+.next4 small{display:block;font-size:22px;color:var(--muted);margin-top:2px;font-weight:600}
+.next4 i{font-style:normal;font-weight:800;font-size:22px;letter-spacing:.1em}
+.next4 .done{opacity:.7}.next4 .done .num-badge{background:var(--mint)}.next4 .done i{color:var(--mint);font-size:34px}
+.next4 .now{border:3px solid var(--coral);box-shadow:0 22px 50px rgba(255,77,109,.25)}.next4 .now .num-badge{background:var(--grad)}.next4 .now i{color:#fff;background:var(--grad);padding:8px 16px;border-radius:99px}
+.next4 .trial .num-badge{background:var(--grad3)}
+
 /* section divider */
 .divider .h{color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.35)}
 </style>
@@ -743,7 +787,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) 2025: AI was an assistant. It was often "almost right, but not quite", so engineers had to read and check everything (in the 2025 Stack Overflow survey, 66% named that as their top frustration and 46% did not trust AI accuracy; a 2025 study even found experienced developers were 19% slower with AI). Click: 2026: agents do most of the typing. The engineer's job moves to deciding what to build and reviewing the result.</aside>
 </section>
 
-<!-- 5 NUMBERS -->
+<!-- 4 NUMBERS -->
 <section class="slide" data-title="The numbers">
   <div class="pad">
     <div class="kicker a">The numbers</div>
@@ -762,7 +806,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Four independent sources, same direction. 1) Stack Overflow: AI agents at work went from about 31% of developers (2025 survey) to 59% (April 2026 pulse survey). 2) JetBrains asked the same question both years: developers willing to let AI write application logic went from 18% to 50%. 3) Google: "75% of all new code at Google is now AI-generated and approved by engineers, up from 50% last fall" (Sundar Pichai, April 2026). 4) GitHub: more than 40% of all pull requests started as an AI agent's first draft in September 2026, up from 17% in March, in just six months. Anthropic says more than 80% of the code it merges is written by Claude (May 2026).</aside>
 </section>
 
-<!-- 6 NOT EVEN READING -->
+<!-- 5 NOT EVEN READING -->
 <section class="slide" data-title="Not writing, not even reading">
   <div class="pad">
     <div class="kicker a">2026</div>
@@ -778,7 +822,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Read the three quotes. The head of Claude Code said in January he writes 0% by hand; Spotify's co-CEO said its best developers had not written a line since December; Ryan Dahl, who created Node.js, said "the era of humans writing code is over". Then the Asia number: in JetBrains' 2026 survey, 32–35% of developers in Japan, China and Korea get more than 80% of their code from agents, about twice Europe. Click: and reading is changing too: only 48% always check AI code before committing (Sonar, Jan 2026), and at some companies every change is first reviewed by another AI. Be honest: most developers still keep a person in the loop. The shift is from writing code to supervising it.</aside>
 </section>
 
-<!-- 7 CODING STILL MATTERS -->
+<!-- 6 CODING STILL MATTERS -->
 <section class="slide" data-title="Coding still matters">
   <div class="pad" style="width:860px;top:200px">
     <div class="kicker a">Part 2 · What skills matter now?</div>
@@ -792,7 +836,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Don't drop programming. AI-written code still fails security checks about 44% of the time (Veracode, July 2026) and had about 1.7 times more issues per pull request in one study (CodeRabbit, Dec 2025). You need real skill to judge what AI writes. But if everyone has the same AI, coding speed alone no longer makes you stand out.</aside>
 </section>
 
-<!-- 8 TOP GRADUATES -->
+<!-- 7 TOP GRADUATES -->
 <section class="slide" data-title="Even top graduates">
   <div class="bg"><div class="kbi" data-img="grads" style="--kbo:30% 50%"></div></div>
   <div class="glass a left" style="--d:.3s;left:90px;top:80px;width:1000px;padding:46px 54px">
@@ -808,7 +852,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Keep the tone calm, not scary. Verbal detail (not on the slide): these numbers are from the United States. LinkedIn: in 2023 and 2024, 55% of new CS degree holders started in non-software-engineering jobs (49% in 2016). Stanford "Canaries in the Coal Mine": employment of software developers aged 22–25 fell nearly 20% from late 2022; experienced workers showed no comparable gap; the drop is mostly fewer hires of young people. Harvard Crimson 2026 senior survey: about 1 in 5 seniors changed career plans because of AI (about 36% among those going into tech). Careful: LinkedIn itself says the main cause is a general hiring slowdown and AI's role is still unclear. The message: entry-level coding jobs are the first to change.</aside>
 </section>
 
-<!-- 9 KNOW-HOW -->
+<!-- 8 KNOW-HOW -->
 <section class="slide" data-title="Know-how can be copied">
   <div class="frame a right" style="--d:.15s;left:1080px;top:150px;width:720px;height:720px"><div class="kbi" data-img="knowhow"></div></div>
   <div class="pad" style="width:860px;top:170px">
@@ -826,7 +870,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Neutral tone; do not blame any country or company. Verbal detail if asked: in China in spring 2026, a GitHub project called "colleague.skill" (同事.skill) went viral. It turns a coworker's chats and documents into an AI agent "skill". Its author said it started as a stunt about AI layoffs. MIT Technology Review (Apr 2026) reported that bosses encouraged staff to "document their workflows" for agents, and Chinese media reported individual workers who were let go after their work was "distilled". These cases are anonymous; there are no statistics. The lesson: if your whole job fits in a manual, AI can learn it. Click: so what is hard to write down? Understanding people, asking the right question, and trust.</aside>
 </section>
 
-<!-- 10 SO WHAT SKILLS -->
+<!-- 9 SO WHAT SKILLS -->
 <section class="slide" data-title="So what skills?">
   <div class="pad" style="text-align:center;top:330px">
     <div class="kicker a">The big question</div>
@@ -836,7 +880,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~0.5 min) Pause. Let the question land, then move on.</aside>
 </section>
 
-<!-- 11 AI WRITES, YOU DECIDE -->
+<!-- 10 AI WRITES, YOU DECIDE -->
 <section class="slide" data-title="AI writes. You decide.">
   <div class="pad">
     <div class="kicker a">The AI era</div>
@@ -854,7 +898,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Click 1: AI takes Build and Test. Click 2: the human parts light up: understanding the client, UX design (how it should feel for the user), review, reporting. Click 3: the one thing AI cannot do for you is communicate with your clients: listen, ask, build trust. That needs language, and it is exactly the part Japanese companies care most about.</aside>
 </section>
 
-<!-- 12 NOTICE -->
+<!-- 11 NOTICE -->
 <section class="slide" data-title="Learn to notice">
   <div class="pad" style="width:860px;top:130px">
     <div class="kicker a">What you learn in Japan</div>
@@ -885,7 +929,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) AI cannot talk with your clients, and clients rarely say everything they want. Japan is a high-context culture: people expect you to understand what is not said. The Japanese word is 察する, sassuru. Example: the client only says "Please make a booking app." Under the surface they want it to be easy for older customers, to work without mistakes on busy days, and to get quick help when stuck. Working in Japan trains you to notice (気づく), think ahead (先回り) and care about every detail (心配り). Click: that is Japan Quality, service that clients trust and come back for.</aside>
 </section>
 
-<!-- 13 EQUATION -->
+<!-- 12 EQUATION -->
 <section class="slide" data-title="Few people have all three">
   <div class="pad" style="text-align:center">
     <div class="kicker a">Your chance</div>
@@ -904,7 +948,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) AI makes every engineer faster, so speed alone is not rare any more. What is rare: someone who can build software, use AI, and understand clients the Japanese way: notice the real need and deliver Japan Quality. That person leads the AI. Next: let's practise the first step of that, right now.</aside>
 </section>
 
-<!-- 14 GOOD QUESTIONS -->
+<!-- 13 GOOD QUESTIONS -->
 <section class="slide" data-title="Good questions">
   <div class="frame a right" style="--d:.15s;left:900px;top:110px;width:920px;height:860px"><div class="kbi" data-img="ask" style="--kbo:60% 50%"></div></div>
   <div class="pad" style="width:720px;top:200px">
@@ -916,7 +960,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Requirements definition, 要件定義, is the first phase of almost every Japanese IT project, and it is where projects succeed or fail. The tool for it is not code. It is questions. Now you will try it.</aside>
 </section>
 
-<!-- 15 THE CLIENT -->
+<!-- 14 THE CLIENT -->
 <section class="slide" data-title="The client's request">
   <div class="bg"><div class="kbi" data-img="client" style="--kbo:30% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.75) 56%,rgba(255,255,255,.95) 70%);z-index:1"></div>
@@ -932,7 +976,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Read Mr. Sato's request slowly, in a client's voice. That's all he says. (HONDO is a made-up company name; say so if asked.) Ask the room to imagine the app for 10 seconds: what do you see?</aside>
 </section>
 
-<!-- 16 CAN YOU START? -->
+<!-- 15 CAN YOU START? -->
 <section class="slide" data-title="Can you start?">
   <div class="pad" style="text-align:center;top:180px">
     <div class="kicker a">Quick question</div>
@@ -942,7 +986,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Ask for a show of hands: "Who could start building today?" Some will say yes: AI can build an app in an hour. Click: No. Because halfway through, the client will say…</aside>
 </section>
 
-<!-- 17 MANGA -->
+<!-- 16 MANGA -->
 <section class="slide" data-title="That's not what we imagined">
   <div class="bg"><div class="kbi" data-img="manga" style="animation:none"></div></div>
   <div class="glass manga-cap a left" style="--d:.2s">
@@ -954,7 +998,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Read the manga left to right. You heard "more fun" and built a racing app: speed rankings, records, badges. Click: Mr. Sato: "This isn't what we imagined!" (思ってたのと違う). Everyone in IT has heard this sentence. It costs weeks of work, money, and trust. It happens when we start building before we understand.</aside>
 </section>
 
-<!-- 18 YOUR TURN -->
+<!-- 17 YOUR TURN -->
 <section class="slide" data-title="Your turn: rules">
   <div class="pad">
     <div class="kicker a">Your turn</div>
@@ -970,7 +1014,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Explain the rules, then go to the QR code. Tip if they get stuck: "Imagine one real person using this app tomorrow morning. What don't you know about them?" Don't give category hints; the dashboard will show which areas nobody asked about.</aside>
 </section>
 
-<!-- 19 QR -->
+<!-- 18 QR -->
 <section class="slide" data-title="Scan and ask" data-live>
   <div class="qr-left">
     <div class="kicker a">Question time</div>
@@ -984,7 +1028,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~8 min) Start the timer (button), then walk around. The counters update live as questions arrive. If someone cannot scan, read out the short address under the code. At about 1 minute left, say "one more question each". For rehearsals open the deck with ?s=test so test questions stay separate (the QR code then carries the same session).</aside>
 </section>
 
-<!-- 20 DASHBOARD -->
+<!-- 19 DASHBOARD -->
 <section class="slide" data-title="Your questions, sorted by AI" data-live>
   <div class="dash-h">
     <div class="kicker a">Live · sorted by AI</div>
@@ -994,7 +1038,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~5 min) gemini-decision-1, a Google AI model made only for classifying, sorts every question into one of 8 areas of the requirements, and marks open questions and deep ones (about goals or context). The small grey line is a Japanese translation for me. Click a card to open it full size; click again to close. The "people · questions" button opens the totals. Talk about: which area got the most questions? Which got none (dashed cards)? Those are the blind spots. Read two or three great questions aloud, especially "Deep" ones. If the cards say "keywords (backup)", the AI key is not set or the API failed; the sorting is then a simple keyword guess (press ↻ Re-sort after fixing it).</aside>
 </section>
 
-<!-- 21 WHAT HE DIDN'T SAY -->
+<!-- 20 WHAT HE DIDN'T SAY -->
 <section class="slide" data-title="What Mr. Sato didn't say">
   <div class="rv-img a fade" style="--d:.1s"><div class="kbi" data-img="rider" style="--kbo:40% 50%"></div></div>
   <div class="rv">
@@ -1014,7 +1058,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2.5 min) Reveal Mr. Sato's real situation, one area at a time. Each fact sits in the same colour as the dashboard area that would have found it. Compare with the dashboard: did anyone ask who the riders are? Why "safer"? What happens in April? A single good question ("Who will use it, and when?") would have changed the whole app. Click for the punchline.</aside>
 </section>
 
-<!-- 22 LESSON -->
+<!-- 21 LESSON -->
 <section class="slide" data-title="Good questions find what wasn't said">
   <div class="pad">
     <div class="kicker a">The lesson</div>
@@ -1029,7 +1073,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Three habits: ask why (purpose), ask who and when (the real situation), ask how we'll know it worked (success criteria). Click: then confirm. Show a rough sketch early and ask "Is this what you mean?" Japanese clients appreciate this (確認, 報連相). This is what AI cannot do for you, and what makes you the person the AI works for.</aside>
 </section>
 
-<!-- 23 SECURITY IN JAPAN -->
+<!-- 22 SECURITY IN JAPAN -->
 <section class="slide" data-title="Security in Japan">
   <div class="pad">
     <div class="kicker a">Keep sharpening your skills</div>
@@ -1049,7 +1093,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2.5 min) Technical skills still matter, and security is a good example. Names for verbal use only: Asahi Group (Sep 2025, Qilin ransomware; orders by hand for about 2 months; Oct–Dec sales fell to about 70–80% of the year before; up to 1.91 million people's data). Askul (Oct 2025; ASKUL, LOHACO, and partner stores like Muji's online store stopped; logistics fully back in Feb 2026; net loss ¥22.1bn). Nara City Hospital (Apr 2026, care stopped Apr 21–24). IDC Frontier's IDCF Cloud (Oct 2026, East Japan region 1, 495 companies and local governments). National Police Agency: 123 ransomware reports in H1 2026, record; about half came in through VPN devices. IPA 2026 list: #1 ransomware, #2 supply chain, #3 AI-related risks (new).</aside>
 </section>
 
-<!-- 24 AI DEFENDS, PEOPLE EXPLAIN -->
+<!-- 23 AI DEFENDS, PEOPLE EXPLAIN -->
 <section class="slide" data-title="AI defends. People explain.">
   <div class="frame a left" style="--d:.15s;left:100px;top:110px;width:860px;height:860px"><div class="kbi" data-img="security" style="--kbo:50% 50%"></div></div>
   <div class="pad" style="left:1040px;right:110px;top:130px">
@@ -1068,7 +1112,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) AI is now on both sides. Defense: in Anthropic's Project Glasswing, about 50 partner organisations found more than 10,000 high or critical vulnerabilities with AI (update, May 2026). Attack: Japan's police reported a 19-year-old who used generative AI to build ransomware (arrested June 2026). Automated defense will keep improving. Click: but in a crisis, managers and clients ask three questions, and a person has to answer them clearly: what is happening, what do we do, what do we tell customers. That needs both the technical skill to understand and the communication skill to explain.</aside>
 </section>
 
-<!-- 25 SKILL x COMMUNICATION -->
+<!-- 24 SKILL x COMMUNICATION -->
 <section class="slide" data-title="Skill × communication">
   <div class="pad" style="text-align:center">
     <div class="kicker a">The formula</div>
@@ -1085,7 +1129,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) It is multiplication, not addition. Great skill with no way to explain it is not trusted; great talk with no skill is empty. Keep building both: study the technology, and practise asking and explaining.</aside>
 </section>
 
-<!-- 26 SUMMARY -->
+<!-- 25 SUMMARY -->
 <section class="slide" data-title="Summary" data-fx="petals">
   <div class="bg"><div class="kbi" data-img="together" style="--kbo:70% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 44%,rgba(255,255,255,0) 68%);z-index:1"></div>
@@ -1102,7 +1146,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) AI keeps getting better, so the value of what only people can do keeps rising. Three verbs: ask, care, explain. Click for the closing message: Japan built its reputation for quality on two human skills: attention to every detail, and understanding what customers feel but don't say. Learning that high-context communication is a first step to working anywhere in the world. (日本語: AIが進化するほど、人にしかできない仕事の価値は上がる。Japan Qualityを支えてきた「細部への心配り」と「言葉にされない想いを汲み取る力」を身につけることが、世界で活躍するエンジニアへの第一歩。)</aside>
 </section>
 
-<!-- 27 JITP DIVIDER -->
+<!-- 26 JITP DIVIDER -->
 <section class="slide" data-title="Japanese IT Pathway" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg);--kbo:70% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 40%,rgba(255,255,255,0) 66%);z-index:1"></div>
@@ -1111,14 +1155,37 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
     <h1 class="h l split" style="--d:.2s">Japanese <span class="g">IT Pathway</span></h1>
     <p class="sub a" style="--d:1.1s">A way to learn all of this, and to start your career in Japan.</p>
   </div>
-  <aside class="notes">(~0.5 min) Switch to the program. About 7 minutes. (Provisional section: built from the session 1 program slides until the program deck from Google Slides is added.)</aside>
+  <aside class="notes">(~0.5 min) Switch to the program. First a short video (about 1 minute), then the details. About 10 minutes in all. No QR code for questions in this part; questions come at the end.</aside>
 </section>
 
-<!-- 28 PROGRAM -->
-<section class="slide" data-title="The program">
-  <div class="pad" style="top:96px">
+<!-- 27 VIDEO -->
+<section class="slide" data-title="Program highlights (video)" data-video>
+  <video class="deckvid" src="video/jitp_highlights.mp4" poster="video/jitp_poster.jpg" preload="auto" playsinline></video>
+  <button class="vid-play" type="button" aria-label="Play the video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+  <aside class="notes">(~1 min) Highlight video, about 65 seconds, with music. It starts by itself; click it to pause or resume; → moves on. Let it play without talking, then explain on the next slides: how the program began, two years from zero, JLPT, life outside class, internship and career support, the first batch, and the CADT seniors going to Japan in January.</aside>
+</section>
+
+<!-- 28 PARTNERSHIP -->
+<section class="slide" data-title="AUPP × NEXT MAKE">
+  <div class="frame a right" style="--d:.15s;left:930px;top:120px;width:880px;height:590px"><div class="kbi" style="background-image:url(img/jitp/signing.jpg);--kbo:50% 40%"></div></div>
+  <div class="pad" style="width:740px;top:150px">
     <div class="kicker a">The program</div>
-    <h1 class="h split" style="--d:.2s">Four steps,<br><span class="g">from zero to Japan.</span></h1>
+    <h1 class="h m split" style="--d:.2s">A university and a Japanese IT company, <span class="g">building your path together.</span></h1>
+    <p class="sub a" style="--d:1.1s;font-size:30px">The pathway began in August 2024, between AUPP and NEXT MAKE, so that IT students in Cambodia can build a career in Japan.</p>
+  </div>
+  <div class="facts3">
+    <div class="card a up" style="--d:1.4s"><b class="g">Aug 2024</b><span>Program launched</span></div>
+    <div class="card a up" style="--d:1.55s"><b class="g2">MPTC</b><span>Supported by the Ministry of Post and Telecommunications</span></div>
+    <div class="card a up" style="--d:1.7s"><b class="g3">JCA</b><span>Supported by the Japan-Cambodia Association</span></div>
+  </div>
+  <aside class="notes">(~1 min) The Japanese IT Pathway is a partnership between AUPP and NEXT MAKE, a Japanese IT company in Osaka. The agreement was signed in August 2024 (photo), supported by Cambodia's Ministry of Post and Telecommunications (MPTC) and the Japan-Cambodia Association (JCA). Goal: broaden career options for IT students by preparing them to work in Japan after graduation.</aside>
+</section>
+
+<!-- 29 TWO YEARS -->
+<section class="slide" data-title="Two years">
+  <div class="pad" style="top:96px">
+    <div class="kicker a">How it works</div>
+    <h1 class="h split" style="--d:.2s">Two years,<br><span class="g">from zero to Japan.</span></h1>
   </div>
   <svg class="road" viewBox="0 0 1920 1080"><path class="track" d="M 105 895 C 330 885 560 862 714 850 S 1010 805 1157 761 S 1460 650 1613 585 S 1765 515 1820 496"/><path class="draw grow" d="M 105 895 C 330 885 560 862 714 850 S 1010 805 1157 761 S 1460 650 1613 585 S 1765 515 1820 496"/></svg>
   <span class="rdot a pop" style="--d:1.2s;left:278px;top:878px;--c:#FF4D6D"></span>
@@ -1126,89 +1193,120 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <span class="rdot a pop" style="--d:3.2s;left:1157px;top:761px;--c:#12B886"></span>
   <span class="rdot a pop" style="--d:4.2s;left:1613px;top:585px;--c:#2F7BFF"></span>
   <div class="plane grow"><svg class="icon"><use href="#i-plane"/></svg></div>
-  <div class="card ms a pop" style="--d:1.0s;left:106px;top:465px"><div class="pimg" style="background-image:url(img/spot/r_japanese.jpg)"></div><div><div class="yr">STEP 1 · YEAR 1</div><h3>Japanese: zero → N3</h3><p>Start from hiragana.<br>Reach JLPT N3 in one year.</p></div></div>
-  <div class="card ms a pop" style="--d:2.0s;left:522px;top:411px"><div class="pimg" style="background-image:url(img/spot/r_it.jpg)"></div><div><div class="yr" style="color:var(--orange)">STEP 2 · IT</div><h3>IT, the Japanese way</h3><p>Requirements, design and team projects.</p></div></div>
-  <div class="card ms a pop" style="--d:3.0s;left:939px;top:333px"><div class="pimg" style="background-image:url(img/spot/r_intern.jpg)"></div><div><div class="yr" style="color:var(--mint)">STEP 3 · INTERNSHIP</div><h3>Real projects</h3><p>NEXT MAKE Internship Lab: a small student team with a Japanese project manager.</p></div></div>
-  <div class="card ms a pop" style="--d:4.0s;left:1340px;top:157px"><div class="pimg" style="background-image:url(img/spot/r_japan.jpg)"></div><div><div class="yr" style="color:var(--sky)">STEP 4 · JAPAN</div><h3>Your first day</h3><p>Interviews, then your first day as an engineer.</p></div></div>
+  <div class="card ms a pop" style="--d:1.0s;left:106px;top:465px"><div class="pimg" style="background-image:url(img/spot/r_japanese.jpg)"></div><div><div class="yr">YEAR 1 · JAPANESE</div><h3>N5 → N4 → N3</h3><p>Speaking, writing and listening, from zero to JLPT N3.</p></div></div>
+  <div class="card ms a pop" style="--d:2.0s;left:522px;top:411px"><div class="pimg" style="background-image:url(img/spot/r_it.jpg)"></div><div><div class="yr" style="color:var(--orange)">YEAR 2 · JAPANESE IT</div><h3>Practical IT, in Japanese</h3><p>Industry skills, Japanese projects and career planning.</p></div></div>
+  <div class="card ms a pop" style="--d:3.0s;left:939px;top:333px"><div class="pimg" style="background-image:url(img/spot/r_intern.jpg)"></div><div><div class="yr" style="color:var(--mint)">INTERNSHIP</div><h3>Real projects</h3><p>Work in a team with a Japanese project manager.</p></div></div>
+  <div class="card ms a pop" style="--d:4.0s;left:1340px;top:157px"><div class="pimg" style="background-image:url(img/spot/r_japan.jpg)"></div><div><div class="yr" style="color:var(--sky)">GOAL · JAPAN</div><h3>Your first job</h3><p>Applications, interviews, then your first day in a Japanese company.</p></div></div>
   <p class="sub a" style="--d:4.6s;position:absolute;right:138px;top:940px;text-align:right;font-weight:800;font-size:40px;color:var(--ink)">You don't need Japanese today. <span class="g">You need to start.</span></p>
-  <aside class="notes">(~2 min) Four steps from zero to Japan. Step 1, year 1: Japanese only, from zero to JLPT N3. Step 2: IT training the Japanese way, including requirements definition like today's exercise. Step 3: an internship in the NEXT MAKE Internship Lab, a team of two or three students with a Japanese project manager, working on real projects for Japanese companies (development, testing, using AI). Step 4: interviews and your first day in Japan.</aside>
+  <aside class="notes">(~1.5 min) A two-year program, in addition to your regular courses. Year 1: Japanese only, N5, N4, then N3 by the end. Year 2: practical Japanese IT: industry skills, Japanese projects, and career planning and preparation for job applications. Internship: real projects with a Japanese project manager. Goal: employment at a Japanese company. Requirements definition, like today's exercise, is part of "IT the Japanese way".</aside>
 </section>
 
-<!-- 29 JAPANESE STEPS -->
+<!-- 30 JAPANESE STEPS -->
 <section class="slide" data-title="Japanese for work">
   <div class="pad">
     <div class="kicker a">How much Japanese?</div>
     <h1 class="h m split" style="--d:.2s">Step one: N3. <span class="g">Then keep climbing.</span></h1>
     <p class="sub a" style="--d:.9s;margin-top:16px">Every level you pass opens more doors.</p>
   </div>
+  <figure class="snap a" style="--d:1.0s;--r:3deg;position:absolute;right:170px;top:70px;width:270px;z-index:6"><div class="ph" style="height:250px;background-image:url(img/jitp/jlpt.jpg);background-position:50% 30%"></div><figcaption><b>★</b>JLPT certificate</figcaption></figure>
   <div class="stairs">
     <div class="stp s1" style="--h:240px;--d:.9s"><div class="lv">START</div><h3>Hiragana and greetings</h3><p>Everyone starts here.</p></div>
     <div class="stp s2" style="--h:400px;--d:1.3s"><span class="flag a pop" style="--d:2.4s">Your first goal · 1 year</span><div class="lv">N3</div><h3>Everyday conversation</h3><p>Talk with your team: ask, confirm and report.</p></div>
     <div class="stp s3" style="--h:560px;--d:1.7s"><div class="lv">N2</div><h3>Business level</h3><p>Even more jobs and roles open up.</p></div>
   </div>
-  <aside class="notes">(~1 min) JLPT runs from N5 (easiest) to N1 (hardest). N3 is everyday conversation: enough to ask, confirm and report in a Japanese team, which is exactly what today's exercise needed. N2 is business level.</aside>
+  <aside class="notes">(~1 min) JLPT, the Japanese-Language Proficiency Test, runs from N5 (easiest) to N1 (hardest). Students take it during the program (photo: a student with their certificate). N3 is everyday conversation: enough to ask, confirm and report in a Japanese team, exactly what today's exercise needed. N2 is business level.</aside>
 </section>
 
-<!-- 30 HENDRI -->
-<section class="slide" data-title="Hendri">
+<!-- 31 BEYOND THE CLASSROOM -->
+<section class="slide" data-title="Beyond the classroom">
   <div class="pad">
-    <div class="kicker a">Meet Hendri · Next Make, Osaka</div>
-    <h1 class="h m split" style="--d:.2s">Japanese first. Then IT. <span class="g">Now he leads a team.</span></h1>
+    <div class="kicker a">Not only classes</div>
+    <h1 class="h m split" style="--d:.2s">Real Japanese, <span class="g">outside the classroom too.</span></h1>
   </div>
-  <div class="hphoto a zoom" style="--d:.4s"><div class="kbi" style="background-image:url(img/hendri_work.jpg);background-position:38% 30%;--kbo:45% 30%"></div></div>
-  <div class="hname a up" style="--d:.8s"><b>Hendri Simarmata</b><span>From Indonesia · IT project manager</span></div>
-  <div class="hchips">
-    <span class="pill a pop" style="--d:3.4s;--c:var(--coral)"><svg class="icon" style="color:var(--coral)"><use href="#i-lang"/></svg>Indonesian · Japanese · English</span>
-    <span class="pill a pop" style="--d:3.6s"><svg class="icon" style="color:var(--lav)"><use href="#i-spark"/></svg>Builds AI tools for his team</span>
+  <div class="snaps5">
+    <figure class="snap a" style="--d:.7s;--r:-3deg"><div class="ph" style="background-image:url(img/jitp/undokai.jpg)"></div><figcaption><b>1</b>Undokai sports day</figcaption></figure>
+    <figure class="snap a" style="--d:.9s;--r:2deg"><div class="ph" style="background-image:url(img/jitp/company.jpg)"></div><figcaption><b>2</b>Company sessions</figcaption></figure>
+    <figure class="snap a" style="--d:1.1s;--r:-2deg"><div class="ph" style="background-image:url(img/jitp/manga_event.jpg)"></div><figcaption><b>3</b>Manga event</figcaption></figure>
+    <figure class="snap a" style="--d:1.3s;--r:3deg"><div class="ph" style="background-image:url(img/jitp/online.jpg)"></div><figcaption><b>4</b>Online exchange</figcaption></figure>
+    <figure class="snap a" style="--d:1.5s;--r:-2deg"><div class="ph" style="background-image:url(img/jitp/jp_students.jpg)"></div><figcaption><b>5</b>Japanese students visit</figcaption></figure>
   </div>
-  <div class="hlog">
-    <div class="hrail grow"></div>
-    <div class="hc a left" style="--d:1.0s"><b>2018</b><div><h4>Came to Japan. Started Japanese at a language school.</h4></div></div>
-    <div class="hc a left" style="--d:1.5s"><b>2020</b><div><h4>Passed JLPT N3. Then studied IT in Tokyo.</h4></div></div>
-    <div class="hc a left" style="--d:2.0s"><b>2022</b><div><h4>System engineer at Next Make, Osaka.</h4></div></div>
-    <div class="hc now a left" style="--d:2.5s"><b>2026</b><div><h4>IT project manager. <span class="g">Leads a team, including engineers in Cambodia.</span></h4></div></div>
-  </div>
-  <div class="quote step a">“I build software for Japanese companies and manage the people who build it with me.” <small>— Hendri</small></div>
-  <aside class="notes">(~1.5 min) Hendri is today's message in one person: he uses AI tools, and his value is understanding Japanese clients and leading people. Japanese first (N3 in 2020), then IT, then engineer, now project manager leading a team that includes engineers in Cambodia.</aside>
+  <p class="sub a" style="--d:2s;position:absolute;left:130px;right:130px;top:860px;text-align:center">Sports day, sessions with Japanese companies, a manga event with a professional Japanese illustrator, and <b>real Japanese practice</b> with students from Japan, online and in person.</p>
+  <aside class="notes">(~1.5 min) Japanese is not only grammar. Walk through the photos: Undokai (a Japanese-style sports day), sessions with Japanese companies, a manga event with a professional Japanese illustrator, online exchanges with students in Japan, and Japanese students visiting in person (calligraphy, games). This is where you practise high-context communication for real.</aside>
 </section>
 
-<!-- 31 SUPPORT -->
-<section class="slide" data-title="Our support">
-  <div class="pad">
-    <div class="kicker a">Your worries, our support</div>
-    <h1 class="h split" style="--d:.2s">We prepare it <span class="g">with you.</span></h1>
+<!-- 32 INTERNSHIP & CAREER -->
+<section class="slide" data-title="Internship and career support">
+  <div class="pad" style="width:820px">
+    <div class="kicker a">From class to career</div>
+    <h1 class="h m split" style="--d:.2s">Real projects. <span class="g">Real career support.</span></h1>
   </div>
-  <div class="sup">
-    <div class="card a up" style="--d:.6s;--c:#FF8E3C"><div class="pimg" style="background-image:url(img/spot/sp_daily.jpg)"></div><h3>Japanese</h3><p>Classes from zero, plus Japanese for daily life: the hospital, city office and bank.</p></div>
-    <div class="card a up" style="--d:.75s;--c:#E9A400"><div class="pimg" style="background-image:url(img/spot/sp_housing.jpg)"></div><h3>Housing</h3><p>Help finding a safe, affordable home, like a share house.</p></div>
-    <div class="card a up" style="--d:.9s;--c:#12B886"><div class="pimg" style="background-image:url(img/spot/sp_work.jpg)"></div><h3>Work culture</h3><p>Training in reporting, stand-ups and teamwork.</p></div>
-    <div class="card a up" style="--d:1.05s;--c:#2F7BFF"><div class="pimg" style="background-image:url(img/spot/sp_contact.jpg)"></div><h3>Far from family</h3><p>A contact at NEXT MAKE in Osaka from day one, and classmates who go with you.</p></div>
+  <div class="ic2">
+    <div class="card a up" style="--d:.8s"><div class="pimg" style="background-image:url(img/jitp/internship.jpg)"></div><h3>Internship program</h3><p>Build real software in a small team, with a Japanese project manager.</p></div>
+    <div class="card a up" style="--d:1.0s"><div class="pimg" style="background-image:url(img/jitp/career.jpg)"></div><h3>Career support</h3><p>Talk one on one about your path, your applications and your interviews.</p></div>
   </div>
-  <aside class="notes">(~1 min) Frame this as "we are building this with you". Japanese, housing, work culture, and a contact person in Osaka from day one.</aside>
+  <div class="card partners a right" style="--d:1.3s"><div class="kicker" style="font-size:18px">Industry partners</div><img src="img/jitp/partners.png" alt="Logos of the program's industry partner companies"></div>
+  <aside class="notes">(~1 min) The internship gives real project experience with a Japanese project manager, the same way of working as in Japan (reporting, confirming, client care). Career support: one-on-one talks about which path fits you, help with applications and interview practice. On the right: Japanese companies that partner with the program.</aside>
 </section>
 
-<!-- 32 ON THEIR WAY -->
-<section class="slide" data-title="On their way">
-  <div class="pad">
+<!-- 33 FIRST BATCH -->
+<section class="slide" data-title="Our first batch">
+  <div class="frame a left" style="--d:.15s;left:100px;top:300px;width:1000px;height:560px"><div class="kbi" style="background-image:url(img/jitp/completion.jpg);--kbo:50% 50%"></div></div>
+  <figure class="snap a" style="--d:.9s;--r:3deg;position:absolute;left:1180px;top:330px;width:560px;z-index:6"><div class="ph" style="height:380px;background-image:url(img/jitp/first_batch.jpg)"></div><figcaption><b>★</b>Completion ceremony</figcaption></figure>
+  <div class="pad" style="top:96px">
     <div class="kicker a">It's already happening</div>
-    <h1 class="h m split" style="--d:.2s">Students like you are <span class="g">already on their way.</span></h1>
+    <h1 class="h m split" style="--d:.2s">Our first batch <span class="g">finished the program.</span></h1>
   </div>
-  <div class="snaps">
-    <figure class="snap a" style="--d:.8s;--r:-3deg"><div class="ph" style="background-image:url(img/news/news_006.jpg)"></div><figcaption><b>1</b>Japanese class</figcaption></figure>
-    <figure class="snap a" style="--d:1.1s;--r:2deg"><div class="ph" style="background-image:url(img/news/news_041.jpg)"></div><figcaption><b>2</b>Team projects</figcaption></figure>
-    <figure class="snap a" style="--d:1.4s;--r:-2deg"><div class="ph" style="background-image:url(img/news/news_101c.jpg)"></div><figcaption><b>3</b>Completion ceremony</figcaption></figure>
-    <figure class="snap a" style="--d:1.7s;--r:3deg"><div class="ph" style="background-image:url(img/news/news_071.jpg)"></div><figcaption><b>4</b>Ready for Japan</figcaption></figure>
-  </div>
-  <div class="newsbar a up" style="--d:2.2s">
+  <div class="newsbar a up" style="--d:1.6s;top:900px">
     <span class="nb-tag">ON CAMBODIAN NEWS</span>
     <span class="nb-text"><span class="km">និស្សិតកម្ពុជា នឹងត្រូវបញ្ជូនទៅធ្វើការងារក្នុងជំនាញឌីជីថលនៅប្រទេសជប៉ុន</span>Cambodian students will go to work in digital jobs in Japan.</span>
     <a class="nb-play" href="https://www.facebook.com/reel/1920207232028819" target="_blank" rel="noopener">▶ Watch the video</a>
   </div>
-  <div class="src">Photos and headline: Thmey Thmey news video on Facebook.</div>
-  <aside class="notes">(~1 min) Cambodian news (Thmey Thmey) about the first students: Japanese class, team projects, the completion ceremony, and getting ready for Japan.</aside>
+  <aside class="notes">(~1 min) The first students have completed the two-year program; the photos are from the Japanese Language Completion Ceremony (August 2025). Cambodian news (Thmey Thmey) reported on them going to work in digital jobs in Japan; with internet, click "Watch the video" (about 2 minutes).</aside>
 </section>
 
-<!-- 33 THANK YOU -->
+<!-- 34 JANUARY -->
+<section class="slide" data-title="January: CADT seniors to Japan">
+  <div class="frame a right" style="--d:.15s;left:1080px;top:150px;width:720px;height:720px"><div class="kbi" style="background-image:url(img/spot/r_japan.jpg);--kbo:50% 40%"></div></div>
+  <div class="pad" style="width:900px;top:200px">
+    <div class="kicker a">Coming up</div>
+    <h1 class="h split" style="--d:.2s">CADT seniors fly to Japan <span class="g">for their internship.</span></h1>
+    <span class="date-pill a pop" style="--d:1.2s"><svg class="icon"><use href="#i-plane"/></svg>January 2027</span>
+    <p class="sub a" style="--d:1.5s">Students from your own university, one step ahead of you.</p>
+  </div>
+  <aside class="notes">(~1 min) Big news for CADT: in January, CADT seniors go to Japan for their internship. They sat where you sit now. Add any details you can share (how many students, where, how long) and say that they will be able to tell you what it is really like.</aside>
+</section>
+
+<!-- 35 BEFORE YOU JOIN -->
+<section class="slide" data-title="Before you join">
+  <div class="pad">
+    <div class="kicker a">Before you join</div>
+    <h1 class="h m split" style="--d:.2s">Honest facts, <span class="g">before you decide.</span></h1>
+  </div>
+  <div class="join3">
+    <div class="card a up" style="--d:.7s;--c:var(--sky)"><span class="ic"><svg class="icon"><use href="#i-users"/></svg></span><h3>Who can join</h3><ul><li>IT students, mainly from the second year</li><li>Ready to learn Japanese, and IT the Japanese way</li></ul></div>
+    <div class="card a up" style="--d:.9s;--c:var(--coral)"><span class="ic"><svg class="icon"><use href="#i-book"/></svg></span><h3>What it takes</h3><ul><li>Pathway courses come <b>on top of</b> your regular courses</li><li><b>High commitment</b> and intensive Japanese study</li></ul></div>
+    <div class="card a up" style="--d:1.1s;--c:var(--mint)"><span class="ic"><svg class="icon"><use href="#i-pen"/></svg></span><h3>The agreement</h3><ul><li>You sign an agreement to join</li><li>It sets out <b>all the conditions, including costs</b>. Read it carefully and ask us anything.</li></ul></div>
+  </div>
+  <aside class="notes">(~1 min) Be honest; this builds trust. Who: AUPP IT students, mainly from sophomore year on, committed to Japanese and IT in a Japanese context. What it takes: the pathway courses are additional to regular coursework, and Japanese study is intensive. Agreement: students sign an agreement that sets out all conditions, including costs. (For reference, at AUPP students repay about $200 a month for 4 years once they have a job. Confirm the terms for CADT before quoting any number.) For scale: session 1 showed a first salary in Japan is about 3.4 times the average IT salary in Cambodia.</aside>
+</section>
+
+<!-- 36 WHAT'S NEXT -->
+<section class="slide" data-title="What's next">
+  <div class="diag a wipe" style="left:58%"><div class="kbi" style="background-image:url(img/trial_class.jpg);background-position:62% 50%;--kbo:62% 50%"></div></div>
+  <div class="pad" style="width:960px;top:120px">
+    <div class="kicker a">What's next</div>
+    <h1 class="h m split" style="--d:.2s">Three info sessions, <span class="g">then a trial lesson.</span></h1>
+    <div class="next4">
+      <div class="done a left" style="--d:1.0s"><span class="num-badge">1</span><span><b>Japan as your career option</b><small>Session 1 · done</small></span><i>✓</i></div>
+      <div class="now a left" style="--d:1.2s"><span class="num-badge">2</span><span><b>AI and the skills you need</b><small>Session 2 · today</small></span><i>TODAY</i></div>
+      <div class="a left" style="--d:1.4s"><span class="num-badge">3</span><span><b>Session 3</b><small>Next session</small></span></div>
+      <div class="trial a left" style="--d:1.6s"><span class="num-badge"><svg class="icon"><use href="#i-book"/></svg></span><span><b>Trial lessons</b><small>After session 3: try a real Japanese class</small></span></div>
+    </div>
+  </div>
+  <aside class="notes">(~1 min) This time the schedule is different from the usual fall intake, and the start date is not decided yet. Plan: three info sessions, each with its own theme. Session 1 was "Japan as your career option", today is session 2 (AI and skills), session 3 comes next. After the three sessions, there are trial lessons. Then the agreement and the start. Say how students will hear about session 3 and the trial lessons.</aside>
+</section>
+
+<!-- 37 THANK YOU -->
 <section class="slide" data-title="Thank you" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg)"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 42%,rgba(255,255,255,0) 70%);z-index:1"></div>
