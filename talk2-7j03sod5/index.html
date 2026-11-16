@@ -805,6 +805,17 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .co-bars .hb-t{height:44px}
 .co-bars .hb-row b{font-size:44px}
 
+
+.sv-count{display:inline-flex;align-items:baseline;gap:16px;margin-top:50px;padding:22px 34px;border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 44px rgba(20,33,61,.1)}
+.sv-count b{font-size:84px;font-weight:800;letter-spacing:-.04em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sv-count b.bump{animation:lqbump .6s cubic-bezier(.2,.85,.25,1)}
+.sv-count span{font-size:28px;font-weight:700;color:var(--muted)}
+.ty-qr{display:inline-flex;align-items:center;gap:22px;margin-top:50px;padding:16px 26px 16px 16px;border-radius:26px;background:#fff;box-shadow:0 18px 44px rgba(20,33,61,.14)}
+.ty-qr .qr{width:150px;height:150px;border:0;border-radius:12px;overflow:hidden;background:#fff}
+.ty-qr .qr svg{width:100%;height:100%;display:block}
+.ty-qr span{font-size:22px;color:var(--muted);font-weight:600;line-height:1.4}
+.ty-qr span b{display:block;font-size:30px;color:var(--ink)}
+
 /* section divider */
 .divider .h{color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.35)}
 </style>
@@ -1461,7 +1472,19 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) This time the schedule is different from the usual fall intake, and the start date is not decided yet. Plan: three info sessions, each with its own theme. Session 1 was "Japan as your career option", today is session 2 (AI and skills), session 3 comes next. After the three sessions, there are trial lessons. Then the agreement and the start. Say how students will hear about session 3 and the trial lessons.</aside>
 </section>
 
-<!-- 39 THANK YOU -->
+<!-- 39 SURVEY -->
+<section class="slide" data-title="1-minute survey" data-survey>
+  <div class="pad" style="width:900px;top:230px">
+    <div class="kicker a">Before you go</div>
+    <h1 class="h split" style="--d:.2s">One minute: <span class="g">tell us what you think.</span></h1>
+    <p class="sub a" style="--d:1.0s">No names needed. Your answers shape session 3 and the trial lessons.</p>
+    <div class="sv-count a up" id="svCount" style="--d:1.3s"></div>
+  </div>
+  <div class="card qrbox a zoom" style="--d:.4s;top:150px"><div class="qr" id="svQr"></div><div class="scan"><svg class="icon"><use href="#i-phone"/></svg>Scan with your phone camera</div><div class="url" id="svUrl"></div></div>
+  <aside class="notes">(~2 min) Ask everyone to answer now, before Q&amp;A: it takes one minute, no names needed. The counter shows answers as they arrive. Answers are stored in Supabase (table survey_responses) and can be read or exported as CSV in the Supabase dashboard; the public key can only add answers and read the totals. The QR code stays on the next slide during Q&amp;A.</aside>
+</section>
+
+<!-- 40 THANK YOU -->
 <section class="slide" data-title="Thank you" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg)"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 42%,rgba(255,255,255,0) 70%);z-index:1"></div>
@@ -1469,9 +1492,10 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
     <div class="kicker a">Japanese IT Pathway Program</div>
     <h1 class="h xl split" style="--d:.3s">Thank <span class="g">you.</span></h1>
     <p class="sub a" style="--d:1.1s;font-size:44px;color:var(--ink);font-weight:700">Keep asking good questions.</p>
+    <div class="ty-qr a up" style="--d:1.8s"><div class="qr" id="tyQr"></div><span><b>1-minute survey</b>Scan before you leave</span></div>
     <img class="a up" src="img/nextmake-logo.png" alt="NEXT MAKE" style="--d:1.5s;display:block;margin-top:70px;height:56px">
   </div>
-  <aside class="notes">Leave this slide up during Q and A.</aside>
+  <aside class="notes">Leave this slide up during Q and A. The small QR code is the same survey.</aside>
 </section>
 
 <div id="progress"><i></i></div>
@@ -1889,7 +1913,17 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   if (cnt) LiveQ.mountCounter(cnt);
   const qr = document.getElementById('qr');
   if (qr) { LiveQ.qr(qr, 640); document.getElementById('qrUrl').textContent = LiveQ.askLink().replace(/^https?:\/\//, ''); }
-  const startIfLive = s => { if (s && s.hasAttribute('data-live')) LiveQ.start(); };
+  const svQr = document.getElementById('svQr');
+  if (svQr) { LiveQ.qr(svQr, 640, LiveQ.surveyLink()); document.getElementById('svUrl').textContent = LiveQ.surveyLink().replace(/^https?:\/\//, ''); }
+  const tyQr = document.getElementById('tyQr');
+  if (tyQr) LiveQ.qr(tyQr, 300, LiveQ.surveyLink());
+  const svCount = document.getElementById('svCount');
+  if (svCount) LiveQ.mountSurveyCount(svCount);
+  const startIfLive = s => {
+    if (!s) return;
+    if (s.hasAttribute('data-live')) LiveQ.start();
+    if (s.hasAttribute('data-survey')) LiveQ.startSurvey();
+  };
   document.addEventListener('slidechange', e => startIfLive(e.detail.slide));
   startIfLive(document.querySelector('section.slide.active'));
 

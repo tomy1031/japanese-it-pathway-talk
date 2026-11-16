@@ -24,6 +24,12 @@ CADTの学生向けキャリアトークのスライド（HTML）と、紹介動
 - イラストは `img/<名前>.jpg`（なければ `.png`）を自動で読みます。まだないものは薄い仮画像が出ます。作成指示は `img/_codex/PROMPTS.md`。
 - `ask/` スマホ用の質問フォーム、`live/` ダッシュボード単体ページと共通部品（`config.js`, `live.js`, `live.css`）。
 
+### 終了後アンケート（`survey/`）
+- 39枚目（アンケート用QR＋回答数がリアルタイムで増える）と40枚目（お礼。小さいQRつき）から、スマホで1分のアンケートに答えてもらいます。
+- 質問: 学年、役立ち度(1-5)、役立った内容(最大2つ)、日本で働くことへの関心(1-5)、関心の変化、体験授業に参加したいか、第3回で聞きたいこと、質問・感想、（任意）連絡先。
+- 回答は Supabase のテーブル `survey_responses`（セッション `session2`。リハーサルは `?s=test`）。公開キーでは「回答の追加」と「件数・集計（自由記述・連絡先を除く）」しかできません。中身は Supabase ダッシュボードの Table Editor で見る／CSV で書き出す。
+- 1台につき1回だけ回答できます（同じ端末からの2回目は「回答済み」になります）。
+
 ### 質問の自動分類（Supabase + gemini-decision-1）
 - Supabase プロジェクト `it-pathway-live`（シンガポール）。テーブル `questions`（ダッシュボードが読む）と `questions_private`（元の文章。サービスロールのみ）。
 - Edge Function `questions`（ソース: `server/supabase/functions/questions/index.ts`）が保存 → `gemini-decision-1` で8つの観点に分類＋「オープンな質問か」「本質に迫るか（0〜3）」「話題に沿っているか」「不適切か」を1回で判定 → Flash-Lite で英訳・和訳。
