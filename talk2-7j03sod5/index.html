@@ -939,6 +939,17 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .tl4-c.hl{background:#FFF4F6;border-color:#FFC2CF;box-shadow:0 30px 70px rgba(255,77,109,.2)}
 .tl4-c.hl b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tl4-c.hl .when{color:var(--coral)}
+
+.bt-axis{position:relative;margin-left:380px;margin-right:150px;height:30px;font-size:19px;font-weight:600;color:#8A93A6}
+.bt-axis span{position:absolute;transform:translateX(-50%)}
+.bt-row{display:grid;grid-template-columns:360px 1fr 150px;gap:20px;align-items:center;height:90px;border-top:1px solid var(--line)}
+.bt-lab b{display:block;font-size:32px;letter-spacing:-.02em;line-height:1.1}
+.bt-lab small{display:block;font-size:19px;color:#8A93A6;font-weight:600;margin-top:2px}
+.bt-t{position:relative;height:40px;background:linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--line)}
+.bt-t .hfill{height:100%;border-radius:0 10px 10px 0;background:var(--grad)}
+.bt-v{font-size:40px;font-weight:800;letter-spacing:-.03em;white-space:nowrap}
+.bt-row.old .hfill{background:#C9D0DE}
+.bt-row.old .bt-v,.bt-row.old .bt-lab b{color:#8A93A6}
 /* section divider */
 .divider .h{color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.35)}
 </style>
@@ -1037,20 +1048,17 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 </section>
 
 <!-- 4 BIG TECH -->
-<section class="slide" data-title="Big tech: a quarter to almost all">
+<section class="slide" data-title="Big tech: AI writes most code">
   <div class="pad">
     <div class="kicker a">World-famous companies</div>
-    <h1 class="h m split" style="--d:.2s">Big tech: from a quarter <span class="g">to almost all.</span></h1>
+    <h1 class="h m split" style="--d:.2s">Big tech: AI now writes <span class="g">most of the code.</span></h1>
   </div>
-  <div class="tl4">
-    <div class="tl4-rail"><i class="grow" style="--d:.6s"></i></div>
-    <div class="card tl4-c a up" style="--d:.7s;--k:.25"><span class="when">APR 2025</span><span class="cname">Microsoft</span><b>20–30%</b><span class="what">of code written by AI</span></div>
-    <div class="card tl4-c a up" style="--d:1.0s;--k:.5"><span class="when">DEC 2025</span><span class="cname">OpenAI</span><b>80%</b><span class="what">of code by AI agents, up from 20% in one month</span></div>
-    <div class="card tl4-c a up" style="--d:1.3s;--k:.75"><span class="when">MAY 2026</span><span class="cname">Spotify</span><b>73%+</b><span class="what">of code made with AI</span></div>
-    <div class="card tl4-c hl a up" style="--d:1.6s;--k:1"><span class="when">NOV 2026</span><span class="cname">Amazon</span><b>Almost all</b><span class="what">code written by AI agents</span></div>
+  <div class="card chart-card bt a up" style="--d:.5s;left:130px;right:130px;top:310px;padding:34px 60px 30px">
+    <div class="bt-axis"><span style="left:0">0%</span><span style="left:25%">25%</span><span style="left:50%">50%</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div>
+    <div class="bt-row "><span class="bt-lab"><b>Amazon</b><small>Nov 2026</small></span><div class="bt-t"><div class="hfill grow" style="--v:100%;--d:0.80s"></div></div><b class="bt-v">~100%</b></div><div class="bt-row "><span class="bt-lab"><b>Anthropic (Claude)</b><small>May 2026</small></span><div class="bt-t"><div class="hfill grow" style="--v:80%;--d:0.95s"></div></div><b class="bt-v">80%+</b></div><div class="bt-row "><span class="bt-lab"><b>OpenAI</b><small>Dec 2025</small></span><div class="bt-t"><div class="hfill grow" style="--v:80%;--d:1.10s"></div></div><b class="bt-v">80%</b></div><div class="bt-row "><span class="bt-lab"><b>Google</b><small>Apr 2026</small></span><div class="bt-t"><div class="hfill grow" style="--v:75%;--d:1.25s"></div></div><b class="bt-v">75%</b></div><div class="bt-row "><span class="bt-lab"><b>Spotify</b><small>May 2026</small></span><div class="bt-t"><div class="hfill grow" style="--v:73%;--d:1.40s"></div></div><b class="bt-v">73%+</b></div><div class="bt-row old"><span class="bt-lab"><b>Microsoft</b><small>Apr 2025</small></span><div class="bt-t"><div class="hfill grow" style="--v:30%;--d:1.55s"></div></div><b class="bt-v">20–30%</b></div>
+    <div class="cc-note">Share of code written by AI, as each company has said (Microsoft: latest figure, 2025). Each measures it a little differently.</div>
   </div>
-  <div class="src">Each company's own statement (they measure slightly different things)</div>
-  <aside class="notes">(~1.5 min) Famous companies, in time order. Microsoft, Apr 2025: Satya Nadella said "maybe 20%, 30% of the code … in our repos … written by software". OpenAI, Dec 2025: president Greg Brockman said that during December, agentic coding tools went from "writing 20% of your code to writing 80% of your code" (developers' code in general). Spotify, May 2026 (Investor Day): "more than 73% of code contributions are AI-assisted"; in February its co-CEO said the best developers "have not written a single line of code since December". Amazon, Nov 2026: an AWS vice president said "for the vast majority of our developer population, almost all of their implementation code is agent generated rather than human written" (two years earlier most wrote by hand). These are each company's own statements and measure slightly different things, but the direction is the same.</aside>
+  <aside class="notes">(~1.5 min) Famous companies, highest first. Amazon (Nov 2026): an AWS vice president said "for the vast majority of our developer population, almost all of their implementation code is agent generated" (shown as about 100%). Anthropic, maker of Claude (May 2026): "more than 80% of the code we merge … was authored by Claude". OpenAI (Dec 2025): president Greg Brockman said agentic coding tools went from writing 20% to 80% of developers' code during December. Google (Apr 2026): "75% of all new code … AI-generated and approved by engineers". Spotify (May 2026): "more than 73% of code contributions are AI-assisted". Microsoft: Satya Nadella's latest figure is from April 2025, "maybe 20%, 30%"; no newer number has been published. Each company measures this a little differently, but the direction is clear.</aside>
 </section>
 
 <!-- 5 AGENTS AT WORK -->
