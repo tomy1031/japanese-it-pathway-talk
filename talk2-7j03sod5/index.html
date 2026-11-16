@@ -578,7 +578,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .fact{display:grid;grid-template-columns:270px 1fr;align-items:center;gap:22px;padding:14px 22px 14px 14px}
 .cat{display:inline-flex;align-items:center;gap:10px;justify-self:start;padding:9px 16px;border-radius:99px;font-weight:800;font-size:19px;color:var(--c);background:color-mix(in srgb,var(--c) 13%,#fff);white-space:nowrap}
 .cat svg{width:22px;height:22px}
-.fact p{margin:0;font-size:25px;line-height:1.35;font-weight:600}
+.fact p{margin:0;font-size:30px;line-height:1.35;font-weight:600}
 .rv-punch{margin-top:22px;font-size:32px;font-weight:800;color:var(--coral)}
 
 /* tips */
@@ -630,7 +630,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .sum3 .num-badge{width:76px;height:76px;border-radius:24px;font-size:34px}
 .sum3 h3{margin:0;font-size:38px;letter-spacing:-.02em}
 .sum3 p{margin:4px 0 0;font-size:25px;color:var(--muted);line-height:1.4}
-.closing{margin-top:40px;font-size:31px;line-height:1.45;font-weight:700;color:var(--ink);border-left:6px solid var(--coral);padding-left:26px}
+.closing{max-width:880px;margin-top:40px;font-size:31px;line-height:1.45;font-weight:700;color:var(--ink);border-left:6px solid var(--coral);padding-left:26px}
 
 
 /* Japanese IT Pathway section */
@@ -683,7 +683,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .cc-title b{color:var(--ink)}
 .cc-note{font-size:19px;color:#8A93A6;margin-top:14px;font-weight:600}
 .hb{display:grid;gap:22px;margin-top:26px}
-.hb-row{display:grid;grid-template-columns:270px 1fr 130px;align-items:center;gap:18px}
+.hb-row{display:grid;grid-template-columns:var(--lab,270px) 1fr 130px;align-items:center;gap:18px}
 .hb-lab{font-size:26px;font-weight:700;color:var(--muted);line-height:1.2}
 .hb-t{height:36px;border-radius:0 8px 8px 0;background:#F1F3F8;overflow:hidden}
 .hb-t .hfill{background:#C9D0DE;border-radius:0 8px 8px 0}
@@ -726,6 +726,61 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .learn2 .hl{background:#FFF4F6;border-color:#FFC2CF;box-shadow:0 30px 70px rgba(255,77,109,.18)}
 .learn2 .hl .l2-h{color:var(--coral)}.learn2 .hl li{color:var(--ink)}.learn2 .hl li::before{background:var(--grad)}
 .l2-ar{text-align:center;font-size:40px;font-weight:800;color:#B4BCCD}
+
+.cc-big{margin-top:46px;font-size:31px;line-height:1.35;font-weight:600;color:var(--muted)}
+.cc-big b{color:var(--ink)}
+.tiles2{position:absolute;left:1070px;top:690px;width:720px;display:grid;grid-template-columns:1fr 1fr;gap:20px;z-index:5}
+.tiles2 .card{padding:24px 28px 22px}
+.tiles2 .card>b{display:block;font-size:80px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.tiles2 span{display:block;font-size:22px;line-height:1.35;color:var(--muted);margin-top:10px;font-weight:600}
+.tiles2 span b{color:var(--ink)}
+.tiles2 small{display:block;font-size:16px;color:#8A93A6;margin-top:8px;font-weight:600}
+/* column chart */
+.cols{display:grid;grid-template-columns:repeat(9,1fr);gap:14px;align-items:end;height:240px;margin:44px 0 46px;border-bottom:1px solid var(--line)}
+.col{position:relative;height:100%;display:flex;align-items:flex-end}
+.col i{display:block;width:100%;height:0;border-radius:6px 6px 0 0;background:#C9D0DE;transition:height 1.2s var(--ease) var(--d)!important}
+.col i.run,.shot .col i,#deck.ov .col i{height:calc(var(--v) / 130 * 100%)}
+.col.hl i{background:var(--grad)}
+.col em{position:absolute;left:50%;bottom:calc(var(--v) / 130 * 100% + 8px);transform:translateX(-50%);font-style:normal;font-weight:800;font-size:34px;color:var(--ink)}
+.col span{position:absolute;top:100%;left:calc(100% + 7px);transform:translateX(-50%);margin-top:10px;font-size:19px;color:#8A93A6;font-weight:700}
+.col.hl span{left:50%}
+.incs3{position:absolute;left:130px;top:330px;width:720px;display:grid;gap:18px;z-index:5}
+.incs3 .card{display:grid;grid-template-columns:140px 1fr;column-gap:18px;align-items:center;padding:20px 28px;border-left:8px solid var(--c)}
+.incs3 .when{grid-row:span 2;font-weight:800;font-size:20px;letter-spacing:.1em;color:var(--c)}
+.incs3 b{font-size:30px;letter-spacing:-.02em}
+.incs3 span:last-child{font-size:23px;color:var(--muted);font-weight:600}
+.sec-tile{position:absolute;left:130px;top:770px;width:720px;padding:22px 30px;display:grid;grid-template-columns:auto 1fr;column-gap:26px;align-items:center;z-index:5}
+.sec-tile>b{grid-row:span 2;font-size:70px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.sec-tile span{font-size:25px;color:var(--muted);font-weight:600;line-height:1.3}
+.sec-tile span b{color:var(--ink)}
+.sec-tile small{font-size:16px;color:#8A93A6;font-weight:600}
+
+
+.bigq{position:absolute;left:130px;right:130px;top:380px;display:grid;grid-template-columns:1fr 1fr;gap:40px;z-index:5}
+.bigq .qcard{padding:46px 50px 40px 110px}
+.bigq .qcard::before{left:36px;top:18px;font-size:140px}
+.bigq .qcard p{font-size:44px;line-height:1.3}
+.bigq .qcard small{font-size:23px;margin-top:20px}
+.waf10{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.waf10 i{display:block;aspect-ratio:1;border-radius:18px;background:#E7EBF3}
+.waf10 i.bad{background:var(--grad)}
+.wf-big{display:flex;align-items:baseline;gap:22px;margin-top:34px}
+.wf-big b{font-size:84px;font-weight:800;letter-spacing:-.04em;line-height:1;white-space:nowrap}
+.wf-big span{font-size:28px;line-height:1.35;color:var(--muted);font-weight:600}
+.wf-big span b{font-size:inherit;letter-spacing:0;color:var(--ink);font-weight:800;white-space:normal}
+.picto-row{display:grid;grid-template-columns:230px 1fr 110px;align-items:center;gap:20px;margin-top:46px}
+.pr-lab{display:flex;align-items:center;gap:12px;font-size:28px;font-weight:800;color:var(--muted)}
+.pr-lab .icon{font-size:34px}
+.picto-row.hl .pr-lab{color:var(--ink)}
+.picto{display:grid;grid-template-columns:repeat(6,56px);gap:12px 14px}
+.picto .icon{font-size:56px;color:#B4BCCD;stroke-width:1.8}
+.picto .icon.on{color:var(--coral)}
+.picto-row b{font-size:84px;font-weight:800;letter-spacing:-.04em;color:var(--muted);text-align:right}
+.picto-row.hl b{color:var(--ink)}
+.waf100{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;width:270px;margin:0 auto}
+.waf100 i{display:block;aspect-ratio:1;border-radius:5px;background:#E7EBF3}
+.waf100 i.on{background:linear-gradient(120deg,#2F7BFF,#7C5CFF)}
+.wf-big b.g2{font-size:96px}
 
 /* section divider */
 .divider .h{color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.35)}
@@ -857,47 +912,52 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 
 <!-- 6 ENGINEERS DIRECT AI -->
 <section class="slide" data-title="Engineers direct the AI">
-  <div class="pad" style="width:860px">
+  <div class="pad">
     <div class="kicker a">2026</div>
     <h1 class="h m split" style="--d:.2s">Top engineers now <span class="g">direct the AI.</span></h1>
   </div>
-  <div class="quotes" style="top:400px;width:860px">
-    <div class="card qcard a left" style="--d:.8s"><p>I don't even make small edits by hand.</p><small>Head of Claude Code, Anthropic · Jan 2026</small></div>
-    <div class="card qcard a left" style="--d:1.1s"><p>Our best developers haven't written a line of code since December.</p><small>Co-CEO, Spotify · Feb 2026</small></div>
+  <div class="bigq">
+    <div class="card qcard a up" style="--d:.8s"><p>I don't even make small edits by hand.</p><small>Head of Claude Code, Anthropic · Jan 2026</small></div>
+    <div class="card qcard a up" style="--d:1.1s"><p>Our best developers haven't written a line of code since December.</p><small>Co-CEO, Spotify · Feb 2026</small></div>
   </div>
-  <div class="card chart-card a right" style="--d:1.0s;left:1020px;top:330px;width:790px">
-    <div class="cc-title">Developers who get <b>80%+ of their code</b> from AI agents</div>
-    <div class="hb">
-      <div class="hb-row hl"><span class="hb-lab">Japan · China · Korea</span><div class="hb-t"><div class="hfill grow" style="--v:66%;--d:1.4s"></div></div><b>1 in 3</b></div>
-      <div class="hb-row"><span class="hb-lab">Europe · UK</span><div class="hb-t"><div class="hfill grow" style="--v:32%;--d:1.6s"></div></div><b>1 in 6</b></div>
-    </div>
-    <div class="cc-note">East Asia leads the world. JetBrains survey of 15,000+ developers, 2026.</div>
-  </div>
-  <aside class="notes">(~1.5 min) Two short quotes: the head of Claude Code said in January he no longer makes even small edits by hand; Spotify's co-CEO said its best developers had not written a line since December. They are still engineers, and the best ones: they direct the AI. The chart: in JetBrains' 2026 survey, 32–35% of developers in Japan, China and Korea get more than 80% of their code from AI agents, about twice Europe. Japan is part of the region moving fastest, so learning AI tools there is a plus. (Bars are drawn on a 0–50% scale.)</aside>
+  <p class="sub step a" style="position:absolute;left:0;right:0;top:880px;text-align:center;font-size:40px;color:var(--ink);font-weight:800">They still build. <span class="g">They just type less.</span></p>
+  <aside class="notes">(~1 min) Two short quotes. The head of Claude Code said in January he no longer makes even small edits by hand; Spotify's co-CEO said its best developers had not written a line of code since December (they work through an internal tool built on Claude Code). Click: they are still engineers, and the best ones. They build by directing the AI.</aside>
 </section>
 
 <!-- 7 AI STILL NEEDS PEOPLE -->
 <section class="slide" data-title="AI still needs people who know code">
-  <div class="pad" style="width:820px;top:200px">
+  <div class="pad" style="width:820px;top:220px">
     <div class="kicker a">Part 2 · What skills matter now?</div>
     <h1 class="h m split" style="--d:.2s">AI still needs people <span class="g">who understand code.</span></h1>
-    <p class="sub a" style="--d:1.2s">Someone has to check it, fix it and take responsibility. <b>Your coding skill stays valuable.</b></p>
+    <p class="sub a" style="--d:1.2s"><b>Your coding skill stays valuable.</b></p>
   </div>
-  <div class="card chart-card a right" style="--d:.8s;left:1010px;top:200px;width:800px">
-    <div class="cc-title">AI-written code that <b>failed security tests</b></div>
-    <div class="meter"><div class="mt-t"><div class="hfill grow" style="--v:44%;--d:1.2s"></div></div><b>44%</b></div>
-    <div class="cc-note">Veracode, Jul 2026</div>
-    <div class="cc-title" style="margin-top:40px">Issues per code change</div>
-    <div class="hb">
-      <div class="hb-row"><span class="hb-lab">Written by people</span><div class="hb-t"><div class="hfill grow" style="--v:50%;--d:1.4s"></div></div><b>1.0×</b></div>
-      <div class="hb-row hl"><span class="hb-lab">Written by AI</span><div class="hb-t"><div class="hfill grow" style="--v:85%;--d:1.6s"></div></div><b>1.7×</b></div>
-    </div>
-    <div class="cc-note">CodeRabbit, 470 pull requests, Dec 2025</div>
+  <div class="card chart-card a right" style="--d:.8s;left:1010px;top:250px;width:800px;padding:46px 50px">
+    <div class="waf10"><i class="bad a pop" style="--d:1.00s"></i><i class="bad a pop" style="--d:1.08s"></i><i class="bad a pop" style="--d:1.16s"></i><i class="bad a pop" style="--d:1.24s"></i><i class=" a pop" style="--d:1.32s"></i><i class=" a pop" style="--d:1.40s"></i><i class=" a pop" style="--d:1.48s"></i><i class=" a pop" style="--d:1.56s"></i><i class=" a pop" style="--d:1.64s"></i><i class=" a pop" style="--d:1.72s"></i></div>
+    <div class="wf-big"><b>4 in 10</b><span>pieces of AI-written code <b>failed security tests</b></span></div>
+    <div class="cc-note">Veracode, Jul 2026 (44%)</div>
   </div>
-  <aside class="notes">(~1.5 min) Good news for anyone learning to code: AI is fast, but not yet reliable on its own. AI-written code failed security tests about 44% of the time (Veracode, July 2026) and had about 1.7 times more issues per pull request in one study (CodeRabbit, Dec 2025). So companies need people who can read, judge and fix code. Coding skill stays valuable; it just isn't the only thing that counts.</aside>
+  <aside class="notes">(~1.5 min) Good news for anyone learning to code: AI is fast, but not reliable on its own. In Veracode's July 2026 test, AI-written code failed security checks about 44% of the time: more than 4 in 10. Someone has to read, judge and fix it, and take responsibility. (Another study, CodeRabbit Dec 2025, found 1.7 times more issues per AI-written change.) Coding skill stays valuable; it just isn't the only thing that counts.</aside>
 </section>
 
-<!-- COMPARE -->
+<!-- 8 JAPAN NEEDS IT PEOPLE -->
+<section class="slide" data-title="Japan still needs IT people">
+  <div class="pad">
+    <div class="kicker a">Good news for you</div>
+    <h1 class="h m split" style="--d:.2s">Japan still needs <span class="g">more IT people.</span></h1>
+  </div>
+  <div class="card chart-card a up" style="--d:.6s;left:130px;top:330px;width:1060px;height:600px">
+    <div class="cc-title">Jobs open <b>for each person</b> looking for work</div>
+    <div class="picto-row hl"><span class="pr-lab"><svg class="icon"><use href="#i-code"/></svg>IT engineers</span><span class="picto"><svg class="icon on a pop" style="--d:1.00s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.06s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.12s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.18s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.24s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.30s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.36s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.42s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.48s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.54s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.60s"><use href="#i-brief"/></svg><svg class="icon on a pop" style="--d:1.66s"><use href="#i-brief"/></svg></span><b>12</b></div>
+    <div class="picto-row"><span class="pr-lab"><svg class="icon"><use href="#i-users"/></svg>All jobs</span><span class="picto"><svg class="icon  a pop" style="--d:1.00s"><use href="#i-brief"/></svg><svg class="icon  a pop" style="--d:1.06s"><use href="#i-brief"/></svg><svg class="icon  a pop" style="--d:1.12s"><use href="#i-brief"/></svg></span><b>3</b></div>
+    <div class="cc-note" style="position:absolute;left:44px;bottom:30px">Japan, Sep 2026 · doda (people changing jobs)</div>
+  </div>
+  <div class="card chart-card a up" style="--d:.9s;left:1230px;top:330px;width:560px;height:600px;text-align:center">
+    <div class="waf100"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></div>
+    <div class="wf-big" style="justify-content:center;flex-direction:column;align-items:center;gap:4px"><b class="g2">98%</b><span>of new graduates who looked for a job <b>found one</b></span></div>
+    <div class="cc-note">Japan, 2026 · MHLW / MEXT</div>
+  </div>
+  <aside class="notes">(~2 min) Calm, positive message: Japan is short of people. Left: for people changing jobs, there are about 12 openings for every IT engineer looking for work, against about 3 for all jobs (doda, Sep 2026: 12.04 vs 2.89). Right: 98.0% of university graduates who looked for a job had one on 1 April 2026 (MHLW/MEXT), and there are 1.62 openings per new graduate for the class of 2027 (Recruit Works). Why: an ageing population, and companies that hire new graduates and train them. Background if asked: in IPA's 2025 survey, 85% of Japanese companies said they lack digital talent (Germany 45%, US 24%).</aside>
+</section>
 
 <!-- 9 AI LEARNS / PEOPLE BUILD -->
 <section class="slide" data-title="What AI learns, what people build">
@@ -913,7 +973,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) A calm way to see it: anything that can be written as steps (manuals, rules, routine code) AI can learn quickly. What is hard to write down grows in value: understanding people, asking the right question, and the trust clients give you. Optional background if asked (keep it neutral): in 2026 some companies asked employees to write their know-how down as "skills" for AI agents (e.g. the viral "colleague.skill" project in China, MIT Technology Review, Apr 2026). The lesson is not fear; it is where to invest your learning.</aside>
 </section>
 
-<!-- 9 SO WHAT SKILLS -->
+<!-- 10 SO WHAT SKILLS -->
 <section class="slide" data-title="So what skills?">
   <div class="pad" style="text-align:center;top:330px">
     <div class="kicker a">The big question</div>
@@ -923,7 +983,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~0.5 min) Pause. Let the question land, then move on.</aside>
 </section>
 
-<!-- 10 AI WRITES, YOU DECIDE -->
+<!-- 11 AI WRITES, YOU DECIDE -->
 <section class="slide" data-title="AI writes. You decide.">
   <div class="pad">
     <div class="kicker a">The AI era</div>
@@ -941,7 +1001,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Click 1: AI takes Build and Test. Click 2: the human parts light up: understanding the client, UX design (how it should feel for the user), review, reporting. Click 3: the one thing AI cannot do for you is communicate with your clients: listen, ask, build trust. That needs language, and it is exactly the part Japanese companies care most about.</aside>
 </section>
 
-<!-- 11 NOTICE -->
+<!-- 12 NOTICE -->
 <section class="slide" data-title="Learn to notice">
   <div class="pad" style="width:860px;top:130px">
     <div class="kicker a">What you learn in Japan</div>
@@ -972,7 +1032,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) AI cannot talk with your clients, and clients rarely say everything they want. Japan is a high-context culture: people expect you to understand what is not said. The Japanese word is 察する, sassuru. Example: the client only says "Please make a booking app." Under the surface they want it to be easy for older customers, to work without mistakes on busy days, and to get quick help when stuck. Working in Japan trains you to notice (気づく), think ahead (先回り) and care about every detail (心配り). Click: that is Japan Quality, service that clients trust and come back for.</aside>
 </section>
 
-<!-- 12 EQUATION -->
+<!-- 13 EQUATION -->
 <section class="slide" data-title="Few people have all three">
   <div class="pad" style="text-align:center">
     <div class="kicker a">Your chance</div>
@@ -991,7 +1051,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) AI makes every engineer faster, so speed alone is not rare any more. What is rare: someone who can build software, use AI, and understand clients the Japanese way: notice the real need and deliver Japan Quality. That person leads the AI. Next: let's practise the first step of that, right now.</aside>
 </section>
 
-<!-- 13 GOOD QUESTIONS -->
+<!-- 14 GOOD QUESTIONS -->
 <section class="slide" data-title="Good questions">
   <div class="frame a right" style="--d:.15s;left:900px;top:110px;width:920px;height:860px"><div class="kbi" data-img="ask" style="--kbo:60% 50%"></div></div>
   <div class="pad" style="width:720px;top:200px">
@@ -1003,7 +1063,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Requirements definition, 要件定義, is the first phase of almost every Japanese IT project, and it is where projects succeed or fail. The tool for it is not code. It is questions. Now you will try it.</aside>
 </section>
 
-<!-- 14 THE CLIENT -->
+<!-- 15 THE CLIENT -->
 <section class="slide" data-title="The client's request">
   <div class="bg"><div class="kbi" data-img="client" style="--kbo:30% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.75) 56%,rgba(255,255,255,.95) 70%);z-index:1"></div>
@@ -1019,7 +1079,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Read Mr. Sato's request slowly, in a client's voice. That's all he says. (HONDO is a made-up company name; say so if asked.) Ask the room to imagine the app for 10 seconds: what do you see?</aside>
 </section>
 
-<!-- 15 CAN YOU START? -->
+<!-- 16 CAN YOU START? -->
 <section class="slide" data-title="Can you start?">
   <div class="pad" style="text-align:center;top:180px">
     <div class="kicker a">Quick question</div>
@@ -1029,7 +1089,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Ask for a show of hands: "Who could start building today?" Some will say yes: AI can build an app in an hour. Click: No. Because halfway through, the client will say…</aside>
 </section>
 
-<!-- 16 MANGA -->
+<!-- 17 MANGA -->
 <section class="slide" data-title="That's not what we imagined">
   <div class="bg"><div class="kbi" data-img="manga" style="animation:none"></div></div>
   <div class="glass manga-cap a left" style="--d:.2s">
@@ -1041,7 +1101,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Read the manga left to right. You heard "more fun" and built a racing app: speed rankings, records, badges. Click: Mr. Sato: "This isn't what we imagined!" (思ってたのと違う). Everyone in IT has heard this sentence. It costs weeks of work, money, and trust. It happens when we start building before we understand.</aside>
 </section>
 
-<!-- 17 YOUR TURN -->
+<!-- 18 YOUR TURN -->
 <section class="slide" data-title="Your turn: rules">
   <div class="pad">
     <div class="kicker a">Your turn</div>
@@ -1057,7 +1117,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Explain the rules, then go to the QR code. Tip if they get stuck: "Imagine one real person using this app tomorrow morning. What don't you know about them?" Don't give category hints; the dashboard will show which areas nobody asked about.</aside>
 </section>
 
-<!-- 18 QR -->
+<!-- 19 QR -->
 <section class="slide" data-title="Scan and ask" data-live>
   <div class="qr-left">
     <div class="kicker a">Question time</div>
@@ -1071,7 +1131,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~8 min) Start the timer (button), then walk around. The counters update live as questions arrive. If someone cannot scan, read out the short address under the code. At about 1 minute left, say "one more question each". For rehearsals open the deck with ?s=test so test questions stay separate (the QR code then carries the same session).</aside>
 </section>
 
-<!-- 19 DASHBOARD -->
+<!-- 20 DASHBOARD -->
 <section class="slide" data-title="Your questions, sorted by AI" data-live>
   <div class="dash-h">
     <div class="kicker a">Live · sorted by AI</div>
@@ -1081,7 +1141,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~5 min) gemini-decision-1, a Google AI model made only for classifying, sorts every question into one of 8 areas of the requirements, and marks open questions and deep ones (about goals or context). The small grey line is a Japanese translation for me. Click a card to open it full size; click again to close. The "people · questions" button opens the totals. Talk about: which area got the most questions? Which got none (dashed cards)? Those are the blind spots. Read two or three great questions aloud, especially "Deep" ones. If the cards say "keywords (backup)", the AI key is not set or the API failed; the sorting is then a simple keyword guess (press ↻ Re-sort after fixing it).</aside>
 </section>
 
-<!-- 20 WHAT HE DIDN'T SAY -->
+<!-- 21 WHAT HE DIDN'T SAY -->
 <section class="slide" data-title="What Mr. Sato didn't say">
   <div class="rv-img a fade" style="--d:.1s"><div class="kbi" data-img="rider" style="--kbo:40% 50%"></div></div>
   <div class="rv">
@@ -1101,7 +1161,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2.5 min) Reveal Mr. Sato's real situation, one area at a time. Each fact sits in the same colour as the dashboard area that would have found it. Compare with the dashboard: did anyone ask who the riders are? Why "safer"? What happens in April? A single good question ("Who will use it, and when?") would have changed the whole app. Click for the punchline.</aside>
 </section>
 
-<!-- 21 LESSON -->
+<!-- 22 LESSON -->
 <section class="slide" data-title="Good questions find what wasn't said">
   <div class="pad">
     <div class="kicker a">The lesson</div>
@@ -1116,27 +1176,37 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Three habits: ask why (purpose), ask who and when (the real situation), ask how we'll know it worked (success criteria). Click: then confirm. Show a rough sketch early and ask "Is this what you mean?" Japanese clients appreciate this (確認, 報連相). This is what AI cannot do for you, and what makes you the person the AI works for.</aside>
 </section>
 
-<!-- 22 SECURITY IN JAPAN -->
+<!-- 23 SECURITY IN JAPAN -->
 <section class="slide" data-title="Security in Japan">
   <div class="pad">
-    <div class="kicker a">Keep sharpening your skills</div>
-    <h1 class="h m split" style="--d:.2s">Example: security. <span class="g">Japan's wake-up call.</span></h1>
+    <div class="kicker a">Keep sharpening your skills · Security</div>
+    <h1 class="h m split" style="--d:.2s">Japan needs <span class="g">security people.</span></h1>
   </div>
-  <div class="incs">
-    <div class="card inc a up" style="--d:.7s;--c:#FF4D6D"><div class="when">SEP 2025</div><h3>Major beverage maker</h3><p>Ransomware stopped ordering and shipping. <b>Orders by phone and fax for about 2 months.</b> Data of up to 1.9 million people may have leaked.</p></div>
-    <div class="card inc a up" style="--d:.85s;--c:#FF8E3C"><div class="when">OCT 2025</div><h3>Office-supply online shop</h3><p>Orders and shipping stopped, and <b>partner online stores went down too.</b> About 4 months to recover fully.</p></div>
-    <div class="card inc a up" style="--d:1.0s;--c:#7C5CFF"><div class="when">APR 2026</div><h3>City hospital</h3><p>A cyberattack stopped <b>emergency and outpatient care</b> for 3 days.</p></div>
-    <div class="card inc a up" style="--d:1.15s;--c:#2F7BFF"><div class="when">OCT 2026</div><h3>Cloud data center</h3><p>Ransomware hit one region: <b>495 companies and local governments</b> affected.</p></div>
+  <div class="incs3">
+    <div class="card a left" style="--d:.7s;--c:#FF4D6D"><span class="when">SEP 2025</span><b>Beverage maker</b><span>Shipping stopped for about 2 months</span></div>
+    <div class="card a left" style="--d:.85s;--c:#FF8E3C"><span class="when">OCT 2025</span><b>Online shop</b><span>Orders stopped, partner stores too</span></div>
+    <div class="card a left" style="--d:1.0s;--c:#7C5CFF"><span class="when">APR 2026</span><b>City hospital</b><span>Care stopped for 3 days</span></div>
   </div>
-  <div class="secbar">
-    <div class="a up" style="--d:1.4s"><span class="n">123</span><span><b>ransomware cases reported in Jan–Jun 2026</b>, the most for any half-year on record. About 60% hit small and medium companies.</span></div>
-    <div class="a up" style="--d:1.6s"><span><b>Japan's top security threats 2026 (IPA)</b><span class="rank"><span>1 Ransomware</span><span>2 Supply-chain attacks</span><span>3 AI-related risks · new</span></span></span></div>
+  <div class="card chart-card a right" style="--d:.8s;left:900px;top:330px;width:890px;height:440px">
+    <div class="cc-title">Ransomware reports in Japan, <b>per half-year</b></div>
+    <div class="cols">
+      <div class="col" style="--v:114"><i class="grow" style="--d:1.0s"></i><span>2022</span></div>
+      <div class="col" style="--v:116"><i class="grow" style="--d:1.05s"></i><span></span></div>
+      <div class="col" style="--v:103"><i class="grow" style="--d:1.1s"></i><span>2023</span></div>
+      <div class="col" style="--v:94"><i class="grow" style="--d:1.15s"></i><span></span></div>
+      <div class="col" style="--v:114"><i class="grow" style="--d:1.2s"></i><span>2024</span></div>
+      <div class="col" style="--v:108"><i class="grow" style="--d:1.25s"></i><span></span></div>
+      <div class="col" style="--v:116"><i class="grow" style="--d:1.3s"></i><span>2025</span></div>
+      <div class="col" style="--v:110"><i class="grow" style="--d:1.35s"></i><span></span></div>
+      <div class="col hl" style="--v:123"><i class="grow" style="--d:1.4s"></i><em>123</em><span>2026</span></div>
+    </div>
+    <div class="cc-note">National Police Agency, Sep 2026 · 2026 H1 is the highest on record</div>
   </div>
-  <div class="src">Company releases and news reports (2025–2026) · National Police Agency, Sep 2026 · IPA “10 Major Security Threats 2026”</div>
-  <aside class="notes">(~2.5 min) Technical skills still matter, and security is a good example. Names for verbal use only: Asahi Group (Sep 2025, Qilin ransomware; orders by hand for about 2 months; Oct–Dec sales fell to about 70–80% of the year before; up to 1.91 million people's data). Askul (Oct 2025; ASKUL, LOHACO, and partner stores like Muji's online store stopped; logistics fully back in Feb 2026; net loss ¥22.1bn). Nara City Hospital (Apr 2026, care stopped Apr 21–24). IDC Frontier's IDCF Cloud (Oct 2026, East Japan region 1, 495 companies and local governments). National Police Agency: 123 ransomware reports in H1 2026, record; about half came in through VPN devices. IPA 2026 list: #1 ransomware, #2 supply chain, #3 AI-related risks (new).</aside>
+  <div class="card sec-tile a up" style="--d:1.4s"><b class="g">110,000</b><span>more security professionals <b>needed in Japan</b></span><small>ISC2, 2023</small></div>
+  <aside class="notes">(~2 min) Technical skills keep their value, and security is a clear example. Three cases (names for verbal use only): Asahi Group, Sep 2025 (ransomware; ordering and shipping by hand for about 2 months); Askul, Oct 2025 (orders and shipping stopped, partner stores such as Muji's online store too; about 4 months to recover fully); Nara City Hospital, Apr 2026 (care stopped Apr 21–24). The chart: ransomware reports to the National Police Agency per half-year, 2022 H1 to 2026 H1 (114, 116, 103, 94, 114, 108, 116, 110, 123); 123 is the highest since records began. The positive side for you: Japan was short of about 110,000 security professionals (ISC2 Cybersecurity Workforce Study 2023). Every incident needs people who can fix it and explain it.</aside>
 </section>
 
-<!-- 23 AI DEFENDS, PEOPLE EXPLAIN -->
+<!-- 24 AI DEFENDS, PEOPLE EXPLAIN -->
 <section class="slide" data-title="AI defends. People explain.">
   <div class="frame a left" style="--d:.15s;left:100px;top:110px;width:860px;height:860px"><div class="kbi" data-img="security" style="--kbo:50% 50%"></div></div>
   <div class="pad" style="left:1040px;right:110px;top:130px">
@@ -1155,7 +1225,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) AI is now on both sides. Defense: in Anthropic's Project Glasswing, about 50 partner organisations found more than 10,000 high or critical vulnerabilities with AI (update, May 2026). Attack: Japan's police reported a 19-year-old who used generative AI to build ransomware (arrested June 2026). Automated defense will keep improving. Click: but in a crisis, managers and clients ask three questions, and a person has to answer them clearly: what is happening, what do we do, what do we tell customers. That needs both the technical skill to understand and the communication skill to explain.</aside>
 </section>
 
-<!-- 24 SKILL x COMMUNICATION -->
+<!-- 25 SKILL x COMMUNICATION -->
 <section class="slide" data-title="Skill × communication">
   <div class="pad" style="text-align:center">
     <div class="kicker a">The formula</div>
@@ -1172,7 +1242,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) It is multiplication, not addition. Great skill with no way to explain it is not trusted; great talk with no skill is empty. Keep building both: study the technology, and practise asking and explaining.</aside>
 </section>
 
-<!-- 25 SUMMARY -->
+<!-- 26 SUMMARY -->
 <section class="slide" data-title="Summary" data-fx="petals">
   <div class="bg"><div class="kbi" data-img="together" style="--kbo:70% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 44%,rgba(255,255,255,0) 68%);z-index:1"></div>
@@ -1189,7 +1259,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) AI keeps getting better, so the value of what only people can do keeps rising. Three verbs: ask, care, explain. Click for the closing message: Japan built its reputation for quality on two human skills: attention to every detail, and understanding what customers feel but don't say. Learning that high-context communication is a first step to working anywhere in the world. (日本語: AIが進化するほど、人にしかできない仕事の価値は上がる。Japan Qualityを支えてきた「細部への心配り」と「言葉にされない想いを汲み取る力」を身につけることが、世界で活躍するエンジニアへの第一歩。)</aside>
 </section>
 
-<!-- 26 JITP DIVIDER -->
+<!-- 27 JITP DIVIDER -->
 <section class="slide" data-title="Japanese IT Pathway" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg);--kbo:70% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 40%,rgba(255,255,255,0) 66%);z-index:1"></div>
@@ -1201,14 +1271,14 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~0.5 min) Switch to the program. First a short video (about 1 minute), then the details. About 10 minutes in all. No QR code for questions in this part; questions come at the end.</aside>
 </section>
 
-<!-- 27 VIDEO -->
+<!-- 28 VIDEO -->
 <section class="slide" data-title="Program highlights (video)" data-video>
   <video class="deckvid" src="video/jitp_highlights.mp4" poster="video/jitp_poster.jpg" preload="auto" playsinline></video>
   <button class="vid-play" type="button" aria-label="Play the video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
   <aside class="notes">(~1 min) Highlight video, about 65 seconds, with music. It starts by itself; click it to pause or resume; → moves on. Let it play without talking, then explain on the next slides: how the program began, two years from zero, JLPT, life outside class, internship and career support, the first batch, and the CADT seniors going to Japan in January.</aside>
 </section>
 
-<!-- 28 PARTNERSHIP -->
+<!-- 29 PARTNERSHIP -->
 <section class="slide" data-title="AUPP × NEXT MAKE">
   <div class="frame a right" style="--d:.15s;left:930px;top:120px;width:880px;height:590px"><div class="kbi" style="background-image:url(img/jitp/signing.jpg);--kbo:50% 40%"></div></div>
   <div class="pad" style="width:740px;top:150px">
@@ -1224,7 +1294,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) The Japanese IT Pathway is a partnership between AUPP and NEXT MAKE, a Japanese IT company in Osaka. The agreement was signed in August 2024 (photo), supported by Cambodia's Ministry of Post and Telecommunications (MPTC) and the Japan-Cambodia Association (JCA). Goal: broaden career options for IT students by preparing them to work in Japan after graduation.</aside>
 </section>
 
-<!-- 29 TWO YEARS -->
+<!-- 30 TWO YEARS -->
 <section class="slide" data-title="Two years">
   <div class="pad" style="top:96px">
     <div class="kicker a">How it works</div>
@@ -1244,7 +1314,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) A two-year program, in addition to your regular courses. Year 1: Japanese only, N5, N4, then N3 by the end. Year 2: practical Japanese IT: industry skills, Japanese projects, and career planning and preparation for job applications. Internship: real projects with a Japanese project manager. Goal: employment at a Japanese company. Requirements definition, like today's exercise, is part of "IT the Japanese way".</aside>
 </section>
 
-<!-- 30 JAPANESE STEPS -->
+<!-- 31 JAPANESE STEPS -->
 <section class="slide" data-title="Japanese for work">
   <div class="pad">
     <div class="kicker a">How much Japanese?</div>
@@ -1260,7 +1330,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) JLPT, the Japanese-Language Proficiency Test, runs from N5 (easiest) to N1 (hardest). Students take it during the program (photo: a student with their certificate). N3 is everyday conversation: enough to ask, confirm and report in a Japanese team, exactly what today's exercise needed. N2 is business level.</aside>
 </section>
 
-<!-- 31 BEYOND THE CLASSROOM -->
+<!-- 32 BEYOND THE CLASSROOM -->
 <section class="slide" data-title="Beyond the classroom">
   <div class="pad">
     <div class="kicker a">Not only classes</div>
@@ -1276,7 +1346,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Japanese is not only grammar. Walk through the photos: Undokai (a Japanese-style sports day), sessions with Japanese companies, a manga event with a professional Japanese illustrator, online exchanges with students in Japan, and Japanese students visiting in person (calligraphy, games). This is where you practise high-context communication for real.</aside>
 </section>
 
-<!-- 32 INTERNSHIP & CAREER -->
+<!-- 33 INTERNSHIP & CAREER -->
 <section class="slide" data-title="Internship and career support">
   <div class="pad" style="width:820px">
     <div class="kicker a">From class to career</div>
@@ -1290,7 +1360,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) The internship gives real project experience with a Japanese project manager, the same way of working as in Japan (reporting, confirming, client care). Career support: one-on-one talks about which path fits you, help with applications and interview practice. On the right: Japanese companies that partner with the program.</aside>
 </section>
 
-<!-- 33 FIRST BATCH -->
+<!-- 34 FIRST BATCH -->
 <section class="slide" data-title="Our first batch">
   <div class="frame a left" style="--d:.15s;left:100px;top:300px;width:1000px;height:560px"><div class="kbi" style="background-image:url(img/jitp/completion.jpg);--kbo:50% 50%"></div></div>
   <figure class="snap a" style="--d:.9s;--r:3deg;position:absolute;left:1180px;top:330px;width:560px;z-index:6"><div class="ph" style="height:380px;background-image:url(img/jitp/first_batch.jpg)"></div><figcaption><b>★</b>Completion ceremony</figcaption></figure>
@@ -1306,7 +1376,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) The first students have completed the two-year program; the photos are from the Japanese Language Completion Ceremony (August 2025). Cambodian news (Thmey Thmey) reported on them going to work in digital jobs in Japan; with internet, click "Watch the video" (about 2 minutes).</aside>
 </section>
 
-<!-- 34 JANUARY -->
+<!-- 35 JANUARY -->
 <section class="slide" data-title="January: CADT seniors to Japan">
   <div class="frame a right" style="--d:.15s;left:1080px;top:150px;width:720px;height:720px"><div class="kbi" style="background-image:url(img/spot/r_japan.jpg);--kbo:50% 40%"></div></div>
   <div class="pad" style="width:900px;top:200px">
@@ -1318,7 +1388,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Big news for CADT: in January, CADT seniors go to Japan for their internship. They sat where you sit now. Add any details you can share (how many students, where, how long) and say that they will be able to tell you what it is really like.</aside>
 </section>
 
-<!-- 35 BEFORE YOU JOIN -->
+<!-- 36 BEFORE YOU JOIN -->
 <section class="slide" data-title="Before you join">
   <div class="pad">
     <div class="kicker a">Before you join</div>
@@ -1332,7 +1402,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Be honest; this builds trust. Who: AUPP IT students, mainly from sophomore year on, committed to Japanese and IT in a Japanese context. What it takes: the pathway courses are additional to regular coursework, and Japanese study is intensive. Agreement: students sign an agreement that sets out all conditions, including costs. (For reference, at AUPP students repay about $200 a month for 4 years once they have a job. Confirm the terms for CADT before quoting any number.) For scale: session 1 showed a first salary in Japan is about 3.4 times the average IT salary in Cambodia.</aside>
 </section>
 
-<!-- 36 WHAT'S NEXT -->
+<!-- 37 WHAT'S NEXT -->
 <section class="slide" data-title="What's next">
   <div class="diag a wipe" style="left:58%"><div class="kbi" style="background-image:url(img/trial_class.jpg);background-position:62% 50%;--kbo:62% 50%"></div></div>
   <div class="pad" style="width:960px;top:120px">
@@ -1348,7 +1418,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) This time the schedule is different from the usual fall intake, and the start date is not decided yet. Plan: three info sessions, each with its own theme. Session 1 was "Japan as your career option", today is session 2 (AI and skills), session 3 comes next. After the three sessions, there are trial lessons. Then the agreement and the start. Say how students will hear about session 3 and the trial lessons.</aside>
 </section>
 
-<!-- 37 THANK YOU -->
+<!-- 38 THANK YOU -->
 <section class="slide" data-title="Thank you" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg)"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 42%,rgba(255,255,255,0) 70%);z-index:1"></div>
