@@ -782,6 +782,29 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .waf100 i.on{background:linear-gradient(120deg,#2F7BFF,#7C5CFF)}
 .wf-big b.g2{font-size:96px}
 
+
+.glegend{position:absolute;right:130px;top:282px;display:flex;gap:28px;font-size:22px;font-weight:700;color:var(--muted);z-index:5}
+.glegend i{display:inline-block;width:28px;height:16px;border-radius:5px;background:#E7EBF3;margin-right:10px;vertical-align:-1px}
+.glegend i.ai{background:var(--grad)}
+.gtl{position:absolute;left:130px;right:130px;top:330px;display:grid;grid-template-columns:1fr 70px 1fr 70px 1fr;align-items:center;z-index:5}
+.gcol{padding:38px 42px 40px}
+.gcol .when{font-weight:800;font-size:24px;letter-spacing:.14em;color:#8A93A6}
+.glines{display:grid;gap:16px;margin:28px 0 30px}
+.glines i{display:block;height:38px;border-radius:9px;background:#E7EBF3}
+.glines i.ai{background:var(--grad)}
+.gcol b{display:block;font-size:76px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.gcol span{display:block;font-size:26px;color:var(--muted);font-weight:600;margin-top:8px}
+.gcol span b{display:inline;font-size:inherit;letter-spacing:0;color:var(--ink)}
+.gcol.now{border:3px solid #FFC2CF;box-shadow:0 30px 70px rgba(255,77,109,.2)}
+.gcol.now .when{color:var(--coral)}
+.gar{text-align:center;font-size:56px;color:#B4BCCD;font-weight:300}
+.co-bars{gap:30px;margin-top:34px}
+.co-bars .hb-row .hfill{background:var(--grad)}
+.co-bars .hb-row b,.co-bars .hb-lab{color:var(--ink)}
+.co-bars .hb-lab{font-size:32px}
+.co-bars .hb-t{height:44px}
+.co-bars .hb-row b{font-size:44px}
+
 /* section divider */
 .divider .h{color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.35)}
 </style>
@@ -893,24 +916,44 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) 2025: AI was an assistant. It was often "almost right, but not quite", so engineers read and checked everything (2025 Stack Overflow survey: 66% named that as their top frustration). Click: 2026: agents do most of the typing. The engineer's job moves to deciding what to build and reviewing the result.</aside>
 </section>
 
-<!-- 5 NUMBERS -->
-<section class="slide" data-title="The numbers">
+<!-- 5 GOOGLE -->
+<section class="slide" data-title="Google: 3 of every 4 lines">
   <div class="pad">
-    <div class="kicker a">The numbers</div>
-    <h1 class="h m split" style="--d:.2s">Not a trend. <span class="g">A switch.</span></h1>
+    <div class="kicker a">One company, 18 months</div>
+    <h1 class="h m split" style="--d:.2s">Google: AI writes <span class="g">3 of every 4 new lines.</span></h1>
   </div>
-  <div class="dumb a fade" style="--d:.5s">
-    <div class="db-legend"><span><i class="o"></i>Before</span><span><i class="n"></i>Now</span></div>
-    <div class="db-axis"><span style="left:0">0%</span><span style="left:25%">25%</span><span style="left:50%">50%</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div>
-    <div class="db-row" style="--a:31;--b:59;--d:.8s"><div class="db-lab"><b>Developers using AI agents at work</b><small>2025 → Apr 2026 · Stack Overflow</small></div><div class="db-track"><span class="db-line grow"></span><span class="db-dot o"><em>31%</em></span><span class="db-dot n grow"><em>59%</em></span></div></div>
-    <div class="db-row" style="--a:18;--b:50;--d:1.0s"><div class="db-lab"><b>Let AI write the app's main logic</b><small>2025 → 2026 · JetBrains</small></div><div class="db-track"><span class="db-line grow"></span><span class="db-dot o"><em>18%</em></span><span class="db-dot n grow"><em>50%</em></span></div></div>
-    <div class="db-row" style="--a:50;--b:75;--d:1.2s"><div class="db-lab"><b>New code at Google written by AI</b><small>Fall 2025 → Apr 2026 · Google</small></div><div class="db-track"><span class="db-line grow"></span><span class="db-dot o"><em>50%</em></span><span class="db-dot n grow"><em>75%</em></span></div></div>
-    <div class="db-row" style="--a:17;--b:40;--d:1.4s"><div class="db-lab"><b>Code changes first drafted by AI</b><small>Mar → Sep 2026 · GitHub</small></div><div class="db-track"><span class="db-line grow"></span><span class="db-dot o"><em>17%</em></span><span class="db-dot n grow"><em>40%+</em></span></div></div>
+  <div class="glegend a fade" style="--d:.6s"><span><i class="ai"></i>Written by AI</span><span><i></i>Written by people</span></div>
+  <div class="gtl">
+    <div class="card gcol a up" style="--d:.7s"><div class="when">OCT 2024</div><div class="glines"><i class="ai a fromleft" style="width:100%;--d:1.00s"></i><i class="a fromleft" style="width:82%;--d:1.08s"></i><i class="a fromleft" style="width:94%;--d:1.16s"></i><i class="a fromleft" style="width:68%;--d:1.24s"></i></div><b>1 in 4</b><span>new lines of code</span></div>
+    <div class="gar a fade" style="--d:1.3s">→</div>
+    <div class="card gcol a up" style="--d:1.4s"><div class="when">FALL 2025</div><div class="glines"><i class="ai a fromleft" style="width:100%;--d:1.70s"></i><i class="ai a fromleft" style="width:82%;--d:1.78s"></i><i class="a fromleft" style="width:94%;--d:1.86s"></i><i class="a fromleft" style="width:68%;--d:1.94s"></i></div><b>2 in 4</b><span>about half</span></div>
+    <div class="gar a fade" style="--d:2.0s">→</div>
+    <div class="card gcol now a up" style="--d:2.1s"><div class="when">APR 2026</div><div class="glines"><i class="ai a fromleft" style="width:100%;--d:2.40s"></i><i class="ai a fromleft" style="width:82%;--d:2.48s"></i><i class="ai a fromleft" style="width:94%;--d:2.56s"></i><i class="a fromleft" style="width:68%;--d:2.64s"></i></div><b>3 in 4</b><span>75%, <b>approved by engineers</b></span></div>
   </div>
-  <aside class="notes">(~2 min) Four independent sources, same direction. Grey dot = before, coloured dot = now. 1) Stack Overflow: developers using AI agents at work, about 31% (2025 survey) → 59% (April 2026 pulse survey). 2) JetBrains asked the same question both years: willing to let AI write application logic 18% → 50%. 3) Google: "75% of all new code at Google is now AI-generated and approved by engineers, up from 50% last fall" (Sundar Pichai, April 2026). 4) GitHub: more than 40% of pull requests started as an AI agent's first draft in September 2026, up from 17% in March. Note "approved by engineers": people are still in charge.</aside>
+  <div class="src">Alphabet earnings calls (Oct 2024, Oct 2025) · Sundar Pichai, Google Cloud Next, Apr 2026</div>
+  <aside class="notes">(~1.5 min) One company, three moments. Oct 2024: "more than a quarter of all new code at Google is generated by AI, then reviewed and accepted by engineers" (Sundar Pichai). Fall 2025: "nearly half" (CFO, Q3 2025 call; "about 50%" again in Feb 2026). April 2026: "75% of all new code at Google is now AI-generated and approved by engineers, up from 50% last fall". From 1 in 4 to 3 in 4 lines in about 18 months. Note the last words: approved by engineers. People are still in charge.</aside>
 </section>
 
-<!-- 6 ENGINEERS DIRECT AI -->
+<!-- 6 COMPANIES -->
+<section class="slide" data-title="Other big companies">
+  <div class="pad">
+    <div class="kicker a">Not only Google</div>
+    <h1 class="h m split" style="--d:.2s">Other big companies: <span class="g">half or more.</span></h1>
+  </div>
+  <div class="card chart-card a up" style="--d:.6s;left:130px;right:130px;top:330px;padding:44px 60px 40px">
+    <div class="cc-title">Share of code <b>written by AI</b>, as reported by each company in 2026</div>
+    <div class="hb co-bars" style="--lab:300px">
+      <div class="hb-row"><span class="hb-lab">Anthropic</span><div class="hb-t"><div class="hfill grow" style="--v:80%;--d:.9s"></div></div><b>80%+</b></div>
+      <div class="hb-row"><span class="hb-lab">Google</span><div class="hb-t"><div class="hfill grow" style="--v:75%;--d:1.0s"></div></div><b>75%</b></div>
+      <div class="hb-row"><span class="hb-lab">Airbnb</span><div class="hb-t"><div class="hfill grow" style="--v:60%;--d:1.1s"></div></div><b>~60%</b></div>
+      <div class="hb-row"><span class="hb-lab">Shopify</span><div class="hb-t"><div class="hfill grow" style="--v:50%;--d:1.2s"></div></div><b>50%+</b></div>
+    </div>
+    <div class="cc-note">Company statements, Apr–Jun 2026. Each company measures it a little differently.</div>
+  </div>
+  <aside class="notes">(~1 min) Not only Google. Anthropic: "more than 80% of the code we merge into Anthropic's codebase was authored by Claude" (as of May 2026; it was "low single digits" before Feb 2025). Google: 75% of new code (Apr 2026). Airbnb: "nearly 60% of the code our engineers produce is now written by AI" (Brian Chesky, May 2026). Shopify: "AI right now writes well over 50% of our code" (Harley Finkelstein, May 2026). These are the companies' own figures and definitions differ. In Japan, CyberAgent said AI now covers about 40% of its engineers' development work hours (June 2025). The point: at the leading companies, AI already writes about half or more.</aside>
+</section>
+
+<!-- 7 ENGINEERS DIRECT AI -->
 <section class="slide" data-title="Engineers direct the AI">
   <div class="pad">
     <div class="kicker a">2026</div>
@@ -924,7 +967,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Two short quotes. The head of Claude Code said in January he no longer makes even small edits by hand; Spotify's co-CEO said its best developers had not written a line of code since December (they work through an internal tool built on Claude Code). Click: they are still engineers, and the best ones. They build by directing the AI.</aside>
 </section>
 
-<!-- 7 AI STILL NEEDS PEOPLE -->
+<!-- 8 AI STILL NEEDS PEOPLE -->
 <section class="slide" data-title="AI still needs people who know code">
   <div class="pad" style="width:820px;top:220px">
     <div class="kicker a">Part 2 · What skills matter now?</div>
@@ -939,7 +982,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Good news for anyone learning to code: AI is fast, but not reliable on its own. In Veracode's July 2026 test, AI-written code failed security checks about 44% of the time: more than 4 in 10. Someone has to read, judge and fix it, and take responsibility. (Another study, CodeRabbit Dec 2025, found 1.7 times more issues per AI-written change.) Coding skill stays valuable; it just isn't the only thing that counts.</aside>
 </section>
 
-<!-- 8 JAPAN NEEDS IT PEOPLE -->
+<!-- 9 JAPAN NEEDS IT PEOPLE -->
 <section class="slide" data-title="Japan still needs IT people">
   <div class="pad">
     <div class="kicker a">Good news for you</div>
@@ -959,7 +1002,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Calm, positive message: Japan is short of people. Left: for people changing jobs, there are about 12 openings for every IT engineer looking for work, against about 3 for all jobs (doda, Sep 2026: 12.04 vs 2.89). Right: 98.0% of university graduates who looked for a job had one on 1 April 2026 (MHLW/MEXT), and there are 1.62 openings per new graduate for the class of 2027 (Recruit Works). Why: an ageing population, and companies that hire new graduates and train them. Background if asked: in IPA's 2025 survey, 85% of Japanese companies said they lack digital talent (Germany 45%, US 24%).</aside>
 </section>
 
-<!-- 9 AI LEARNS / PEOPLE BUILD -->
+<!-- 10 AI LEARNS / PEOPLE BUILD -->
 <section class="slide" data-title="What AI learns, what people build">
   <div class="pad" style="text-align:center">
     <div class="kicker a">A useful way to think</div>
@@ -973,7 +1016,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) A calm way to see it: anything that can be written as steps (manuals, rules, routine code) AI can learn quickly. What is hard to write down grows in value: understanding people, asking the right question, and the trust clients give you. Optional background if asked (keep it neutral): in 2026 some companies asked employees to write their know-how down as "skills" for AI agents (e.g. the viral "colleague.skill" project in China, MIT Technology Review, Apr 2026). The lesson is not fear; it is where to invest your learning.</aside>
 </section>
 
-<!-- 10 SO WHAT SKILLS -->
+<!-- 11 SO WHAT SKILLS -->
 <section class="slide" data-title="So what skills?">
   <div class="pad" style="text-align:center;top:330px">
     <div class="kicker a">The big question</div>
@@ -983,7 +1026,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~0.5 min) Pause. Let the question land, then move on.</aside>
 </section>
 
-<!-- 11 AI WRITES, YOU DECIDE -->
+<!-- 12 AI WRITES, YOU DECIDE -->
 <section class="slide" data-title="AI writes. You decide.">
   <div class="pad">
     <div class="kicker a">The AI era</div>
@@ -1001,7 +1044,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Click 1: AI takes Build and Test. Click 2: the human parts light up: understanding the client, UX design (how it should feel for the user), review, reporting. Click 3: the one thing AI cannot do for you is communicate with your clients: listen, ask, build trust. That needs language, and it is exactly the part Japanese companies care most about.</aside>
 </section>
 
-<!-- 12 NOTICE -->
+<!-- 13 NOTICE -->
 <section class="slide" data-title="Learn to notice">
   <div class="pad" style="width:860px;top:130px">
     <div class="kicker a">What you learn in Japan</div>
@@ -1032,7 +1075,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) AI cannot talk with your clients, and clients rarely say everything they want. Japan is a high-context culture: people expect you to understand what is not said. The Japanese word is 察する, sassuru. Example: the client only says "Please make a booking app." Under the surface they want it to be easy for older customers, to work without mistakes on busy days, and to get quick help when stuck. Working in Japan trains you to notice (気づく), think ahead (先回り) and care about every detail (心配り). Click: that is Japan Quality, service that clients trust and come back for.</aside>
 </section>
 
-<!-- 13 EQUATION -->
+<!-- 14 EQUATION -->
 <section class="slide" data-title="Few people have all three">
   <div class="pad" style="text-align:center">
     <div class="kicker a">Your chance</div>
@@ -1051,7 +1094,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) AI makes every engineer faster, so speed alone is not rare any more. What is rare: someone who can build software, use AI, and understand clients the Japanese way: notice the real need and deliver Japan Quality. That person leads the AI. Next: let's practise the first step of that, right now.</aside>
 </section>
 
-<!-- 14 GOOD QUESTIONS -->
+<!-- 15 GOOD QUESTIONS -->
 <section class="slide" data-title="Good questions">
   <div class="frame a right" style="--d:.15s;left:900px;top:110px;width:920px;height:860px"><div class="kbi" data-img="ask" style="--kbo:60% 50%"></div></div>
   <div class="pad" style="width:720px;top:200px">
@@ -1063,7 +1106,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Requirements definition, 要件定義, is the first phase of almost every Japanese IT project, and it is where projects succeed or fail. The tool for it is not code. It is questions. Now you will try it.</aside>
 </section>
 
-<!-- 15 THE CLIENT -->
+<!-- 16 THE CLIENT -->
 <section class="slide" data-title="The client's request">
   <div class="bg"><div class="kbi" data-img="client" style="--kbo:30% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.75) 56%,rgba(255,255,255,.95) 70%);z-index:1"></div>
@@ -1079,7 +1122,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Read Mr. Sato's request slowly, in a client's voice. That's all he says. (HONDO is a made-up company name; say so if asked.) Ask the room to imagine the app for 10 seconds: what do you see?</aside>
 </section>
 
-<!-- 16 CAN YOU START? -->
+<!-- 17 CAN YOU START? -->
 <section class="slide" data-title="Can you start?">
   <div class="pad" style="text-align:center;top:180px">
     <div class="kicker a">Quick question</div>
@@ -1089,7 +1132,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Ask for a show of hands: "Who could start building today?" Some will say yes: AI can build an app in an hour. Click: No. Because halfway through, the client will say…</aside>
 </section>
 
-<!-- 17 MANGA -->
+<!-- 18 MANGA -->
 <section class="slide" data-title="That's not what we imagined">
   <div class="bg"><div class="kbi" data-img="manga" style="animation:none"></div></div>
   <div class="glass manga-cap a left" style="--d:.2s">
@@ -1101,7 +1144,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Read the manga left to right. You heard "more fun" and built a racing app: speed rankings, records, badges. Click: Mr. Sato: "This isn't what we imagined!" (思ってたのと違う). Everyone in IT has heard this sentence. It costs weeks of work, money, and trust. It happens when we start building before we understand.</aside>
 </section>
 
-<!-- 18 YOUR TURN -->
+<!-- 19 YOUR TURN -->
 <section class="slide" data-title="Your turn: rules">
   <div class="pad">
     <div class="kicker a">Your turn</div>
@@ -1117,7 +1160,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Explain the rules, then go to the QR code. Tip if they get stuck: "Imagine one real person using this app tomorrow morning. What don't you know about them?" Don't give category hints; the dashboard will show which areas nobody asked about.</aside>
 </section>
 
-<!-- 19 QR -->
+<!-- 20 QR -->
 <section class="slide" data-title="Scan and ask" data-live>
   <div class="qr-left">
     <div class="kicker a">Question time</div>
@@ -1131,7 +1174,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~8 min) Start the timer (button), then walk around. The counters update live as questions arrive. If someone cannot scan, read out the short address under the code. At about 1 minute left, say "one more question each". For rehearsals open the deck with ?s=test so test questions stay separate (the QR code then carries the same session).</aside>
 </section>
 
-<!-- 20 DASHBOARD -->
+<!-- 21 DASHBOARD -->
 <section class="slide" data-title="Your questions, sorted by AI" data-live>
   <div class="dash-h">
     <div class="kicker a">Live · sorted by AI</div>
@@ -1141,7 +1184,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~5 min) gemini-decision-1, a Google AI model made only for classifying, sorts every question into one of 8 areas of the requirements, and marks open questions and deep ones (about goals or context). The small grey line is a Japanese translation for me. Click a card to open it full size; click again to close. The "people · questions" button opens the totals. Talk about: which area got the most questions? Which got none (dashed cards)? Those are the blind spots. Read two or three great questions aloud, especially "Deep" ones. If the cards say "keywords (backup)", the AI key is not set or the API failed; the sorting is then a simple keyword guess (press ↻ Re-sort after fixing it).</aside>
 </section>
 
-<!-- 21 WHAT HE DIDN'T SAY -->
+<!-- 22 WHAT HE DIDN'T SAY -->
 <section class="slide" data-title="What Mr. Sato didn't say">
   <div class="rv-img a fade" style="--d:.1s"><div class="kbi" data-img="rider" style="--kbo:40% 50%"></div></div>
   <div class="rv">
@@ -1161,7 +1204,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2.5 min) Reveal Mr. Sato's real situation, one area at a time. Each fact sits in the same colour as the dashboard area that would have found it. Compare with the dashboard: did anyone ask who the riders are? Why "safer"? What happens in April? A single good question ("Who will use it, and when?") would have changed the whole app. Click for the punchline.</aside>
 </section>
 
-<!-- 22 LESSON -->
+<!-- 23 LESSON -->
 <section class="slide" data-title="Good questions find what wasn't said">
   <div class="pad">
     <div class="kicker a">The lesson</div>
@@ -1176,7 +1219,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Three habits: ask why (purpose), ask who and when (the real situation), ask how we'll know it worked (success criteria). Click: then confirm. Show a rough sketch early and ask "Is this what you mean?" Japanese clients appreciate this (確認, 報連相). This is what AI cannot do for you, and what makes you the person the AI works for.</aside>
 </section>
 
-<!-- 23 SECURITY IN JAPAN -->
+<!-- 24 SECURITY IN JAPAN -->
 <section class="slide" data-title="Security in Japan">
   <div class="pad">
     <div class="kicker a">Keep sharpening your skills · Security</div>
@@ -1206,7 +1249,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) Technical skills keep their value, and security is a clear example. Three cases (names for verbal use only): Asahi Group, Sep 2025 (ransomware; ordering and shipping by hand for about 2 months); Askul, Oct 2025 (orders and shipping stopped, partner stores such as Muji's online store too; about 4 months to recover fully); Nara City Hospital, Apr 2026 (care stopped Apr 21–24). The chart: ransomware reports to the National Police Agency per half-year, 2022 H1 to 2026 H1 (114, 116, 103, 94, 114, 108, 116, 110, 123); 123 is the highest since records began. The positive side for you: Japan was short of about 110,000 security professionals (ISC2 Cybersecurity Workforce Study 2023). Every incident needs people who can fix it and explain it.</aside>
 </section>
 
-<!-- 24 AI DEFENDS, PEOPLE EXPLAIN -->
+<!-- 25 AI DEFENDS, PEOPLE EXPLAIN -->
 <section class="slide" data-title="AI defends. People explain.">
   <div class="frame a left" style="--d:.15s;left:100px;top:110px;width:860px;height:860px"><div class="kbi" data-img="security" style="--kbo:50% 50%"></div></div>
   <div class="pad" style="left:1040px;right:110px;top:130px">
@@ -1225,7 +1268,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) AI is now on both sides. Defense: in Anthropic's Project Glasswing, about 50 partner organisations found more than 10,000 high or critical vulnerabilities with AI (update, May 2026). Attack: Japan's police reported a 19-year-old who used generative AI to build ransomware (arrested June 2026). Automated defense will keep improving. Click: but in a crisis, managers and clients ask three questions, and a person has to answer them clearly: what is happening, what do we do, what do we tell customers. That needs both the technical skill to understand and the communication skill to explain.</aside>
 </section>
 
-<!-- 25 SKILL x COMMUNICATION -->
+<!-- 26 SKILL x COMMUNICATION -->
 <section class="slide" data-title="Skill × communication">
   <div class="pad" style="text-align:center">
     <div class="kicker a">The formula</div>
@@ -1242,7 +1285,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) It is multiplication, not addition. Great skill with no way to explain it is not trusted; great talk with no skill is empty. Keep building both: study the technology, and practise asking and explaining.</aside>
 </section>
 
-<!-- 26 SUMMARY -->
+<!-- 27 SUMMARY -->
 <section class="slide" data-title="Summary" data-fx="petals">
   <div class="bg"><div class="kbi" data-img="together" style="--kbo:70% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 44%,rgba(255,255,255,0) 68%);z-index:1"></div>
@@ -1259,7 +1302,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~2 min) AI keeps getting better, so the value of what only people can do keeps rising. Three verbs: ask, care, explain. Click for the closing message: Japan built its reputation for quality on two human skills: attention to every detail, and understanding what customers feel but don't say. Learning that high-context communication is a first step to working anywhere in the world. (日本語: AIが進化するほど、人にしかできない仕事の価値は上がる。Japan Qualityを支えてきた「細部への心配り」と「言葉にされない想いを汲み取る力」を身につけることが、世界で活躍するエンジニアへの第一歩。)</aside>
 </section>
 
-<!-- 27 JITP DIVIDER -->
+<!-- 28 JITP DIVIDER -->
 <section class="slide" data-title="Japanese IT Pathway" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg);--kbo:70% 50%"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 40%,rgba(255,255,255,0) 66%);z-index:1"></div>
@@ -1271,14 +1314,14 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~0.5 min) Switch to the program. First a short video (about 1 minute), then the details. About 10 minutes in all. No QR code for questions in this part; questions come at the end.</aside>
 </section>
 
-<!-- 28 VIDEO -->
+<!-- 29 VIDEO -->
 <section class="slide" data-title="Program highlights (video)" data-video>
   <video class="deckvid" src="video/jitp_highlights.mp4" poster="video/jitp_poster.jpg" preload="auto" playsinline></video>
   <button class="vid-play" type="button" aria-label="Play the video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
   <aside class="notes">(~1 min) Highlight video, about 65 seconds, with music. It starts by itself; click it to pause or resume; → moves on. Let it play without talking, then explain on the next slides: how the program began, two years from zero, JLPT, life outside class, internship and career support, the first batch, and the CADT seniors going to Japan in January.</aside>
 </section>
 
-<!-- 29 PARTNERSHIP -->
+<!-- 30 PARTNERSHIP -->
 <section class="slide" data-title="AUPP × NEXT MAKE">
   <div class="frame a right" style="--d:.15s;left:930px;top:120px;width:880px;height:590px"><div class="kbi" style="background-image:url(img/jitp/signing.jpg);--kbo:50% 40%"></div></div>
   <div class="pad" style="width:740px;top:150px">
@@ -1294,7 +1337,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) The Japanese IT Pathway is a partnership between AUPP and NEXT MAKE, a Japanese IT company in Osaka. The agreement was signed in August 2024 (photo), supported by Cambodia's Ministry of Post and Telecommunications (MPTC) and the Japan-Cambodia Association (JCA). Goal: broaden career options for IT students by preparing them to work in Japan after graduation.</aside>
 </section>
 
-<!-- 30 TWO YEARS -->
+<!-- 31 TWO YEARS -->
 <section class="slide" data-title="Two years">
   <div class="pad" style="top:96px">
     <div class="kicker a">How it works</div>
@@ -1314,7 +1357,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) A two-year program, in addition to your regular courses. Year 1: Japanese only, N5, N4, then N3 by the end. Year 2: practical Japanese IT: industry skills, Japanese projects, and career planning and preparation for job applications. Internship: real projects with a Japanese project manager. Goal: employment at a Japanese company. Requirements definition, like today's exercise, is part of "IT the Japanese way".</aside>
 </section>
 
-<!-- 31 JAPANESE STEPS -->
+<!-- 32 JAPANESE STEPS -->
 <section class="slide" data-title="Japanese for work">
   <div class="pad">
     <div class="kicker a">How much Japanese?</div>
@@ -1330,7 +1373,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) JLPT, the Japanese-Language Proficiency Test, runs from N5 (easiest) to N1 (hardest). Students take it during the program (photo: a student with their certificate). N3 is everyday conversation: enough to ask, confirm and report in a Japanese team, exactly what today's exercise needed. N2 is business level.</aside>
 </section>
 
-<!-- 32 BEYOND THE CLASSROOM -->
+<!-- 33 BEYOND THE CLASSROOM -->
 <section class="slide" data-title="Beyond the classroom">
   <div class="pad">
     <div class="kicker a">Not only classes</div>
@@ -1346,7 +1389,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) Japanese is not only grammar. Walk through the photos: Undokai (a Japanese-style sports day), sessions with Japanese companies, a manga event with a professional Japanese illustrator, online exchanges with students in Japan, and Japanese students visiting in person (calligraphy, games). This is where you practise high-context communication for real.</aside>
 </section>
 
-<!-- 33 INTERNSHIP & CAREER -->
+<!-- 34 INTERNSHIP & CAREER -->
 <section class="slide" data-title="Internship and career support">
   <div class="pad" style="width:820px">
     <div class="kicker a">From class to career</div>
@@ -1360,7 +1403,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) The internship gives real project experience with a Japanese project manager, the same way of working as in Japan (reporting, confirming, client care). Career support: one-on-one talks about which path fits you, help with applications and interview practice. On the right: Japanese companies that partner with the program.</aside>
 </section>
 
-<!-- 34 FIRST BATCH -->
+<!-- 35 FIRST BATCH -->
 <section class="slide" data-title="Our first batch">
   <div class="frame a left" style="--d:.15s;left:100px;top:300px;width:1000px;height:560px"><div class="kbi" style="background-image:url(img/jitp/completion.jpg);--kbo:50% 50%"></div></div>
   <figure class="snap a" style="--d:.9s;--r:3deg;position:absolute;left:1180px;top:330px;width:560px;z-index:6"><div class="ph" style="height:380px;background-image:url(img/jitp/first_batch.jpg)"></div><figcaption><b>★</b>Completion ceremony</figcaption></figure>
@@ -1376,7 +1419,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) The first students have completed the two-year program; the photos are from the Japanese Language Completion Ceremony (August 2025). Cambodian news (Thmey Thmey) reported on them going to work in digital jobs in Japan; with internet, click "Watch the video" (about 2 minutes).</aside>
 </section>
 
-<!-- 35 JANUARY -->
+<!-- 36 JANUARY -->
 <section class="slide" data-title="January: CADT seniors to Japan">
   <div class="frame a right" style="--d:.15s;left:1080px;top:150px;width:720px;height:720px"><div class="kbi" style="background-image:url(img/spot/r_japan.jpg);--kbo:50% 40%"></div></div>
   <div class="pad" style="width:900px;top:200px">
@@ -1388,7 +1431,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Big news for CADT: in January, CADT seniors go to Japan for their internship. They sat where you sit now. Add any details you can share (how many students, where, how long) and say that they will be able to tell you what it is really like.</aside>
 </section>
 
-<!-- 36 BEFORE YOU JOIN -->
+<!-- 37 BEFORE YOU JOIN -->
 <section class="slide" data-title="Before you join">
   <div class="pad">
     <div class="kicker a">Before you join</div>
@@ -1402,7 +1445,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) Be honest; this builds trust. Who: AUPP IT students, mainly from sophomore year on, committed to Japanese and IT in a Japanese context. What it takes: the pathway courses are additional to regular coursework, and Japanese study is intensive. Agreement: students sign an agreement that sets out all conditions, including costs. (For reference, at AUPP students repay about $200 a month for 4 years once they have a job. Confirm the terms for CADT before quoting any number.) For scale: session 1 showed a first salary in Japan is about 3.4 times the average IT salary in Cambodia.</aside>
 </section>
 
-<!-- 37 WHAT'S NEXT -->
+<!-- 38 WHAT'S NEXT -->
 <section class="slide" data-title="What's next">
   <div class="diag a wipe" style="left:58%"><div class="kbi" style="background-image:url(img/trial_class.jpg);background-position:62% 50%;--kbo:62% 50%"></div></div>
   <div class="pad" style="width:960px;top:120px">
@@ -1418,7 +1461,7 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1 min) This time the schedule is different from the usual fall intake, and the start date is not decided yet. Plan: three info sessions, each with its own theme. Session 1 was "Japan as your career option", today is session 2 (AI and skills), session 3 comes next. After the three sessions, there are trial lessons. Then the agreement and the start. Say how students will hear about session 3 and the trial lessons.</aside>
 </section>
 
-<!-- 38 THANK YOU -->
+<!-- 39 THANK YOU -->
 <section class="slide" data-title="Thank you" data-fx="petals">
   <div class="bg"><div class="kbi" style="background-image:url(img/hero.jpg)"></div></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 42%,rgba(255,255,255,0) 70%);z-index:1"></div>
