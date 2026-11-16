@@ -114,3 +114,13 @@ A bright meeting room in Japan with a view of cherry blossoms. The protagonist p
 finished app prototype on a tablet to Mr. Sato and two Japanese team members. Small sticky notes and a
 neat checklist on the table show care for details. Mr. Sato smiles and nods; everyone looks happy and
 trusting. Warm spring light, petals outside. Keep the left 40% calmer for text.
+
+---
+
+### 13 `colleague.png` — "We don't read the source code anymore" · portrait 4:5 (or square)
+A Japanese software engineer in his 30s (short black hair, smart-casual shirt, friendly and confident;
+not the protagonist and not Mr. Sato) in a bright Osaka office, leaning back in his chair with a coffee
+cup and a relaxed smile, talking to a colleague off-frame. Behind him, two or three friendly blue
+holographic AI agents are busily writing code on floating screens (abstract code lines only). On his own
+desk he is looking at a simple plan sketch / sticky notes, not at code. Calm, positive, modern mood;
+same shared style as the other images. No text, no logos.
