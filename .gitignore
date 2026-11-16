@@ -15,3 +15,5 @@ video/src/web_aupp_unused/
 video/src/music/
 # full 32-slide deck before slides were hidden for the 2026-10-27 talk (local reference only)
 index_full_*.html
+# hub plaintext + key (the published root page only holds ciphertext)
+private/
