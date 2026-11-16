@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Japanese IT Pathway highlights (video source)</title>
+<link rel="stylesheet" href="../../fonts/fonts.css">
+<style>
+/* A short film rendered frame by frame (see build.js). FILM.seek(t) draws the frame at t seconds.
+   Open this page in a browser to preview it; it plays in real time. */
+:root{--ink:#14213D;--muted:#56627A;--coral:#FF4D6D;--grad:linear-gradient(95deg,#FF4D6D 0%,#FF8E3C 100%);--grad2:linear-gradient(120deg,#2F7BFF 0%,#7C5CFF 100%);
+  --font:'Plus Jakarta Sans','Hiragino Sans','Noto Sans JP',system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:#fff;font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased;transform-origin:0 0}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden;background:#fff}
+.bg{position:absolute;inset:-2%;background-size:cover;background-position:center;will-change:transform}
+.bg.blur{filter:blur(28px) brightness(1.08) saturate(1.1);inset:-8%}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,48,0) 45%,rgba(14,22,48,.38) 100%)}
+.cap{position:absolute;left:90px;bottom:90px;max-width:1060px;padding:34px 46px 38px;border-radius:34px;background:rgba(255,255,255,.9);box-shadow:0 30px 70px rgba(14,22,48,.28);backdrop-filter:blur(16px)}
+.k{display:flex;align-items:center;gap:14px;font-weight:800;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral)}
+.k::before{content:"";width:44px;height:4px;border-radius:4px;background:var(--grad)}
+.t{font-weight:800;font-size:66px;line-height:1.06;letter-spacing:-.035em;margin-top:14px}
+.s{font-size:29px;line-height:1.4;color:var(--muted);font-weight:600;margin-top:12px}
+.polar{position:absolute;right:120px;top:120px;width:640px;padding:16px 16px 22px;background:#fff;border-radius:20px;box-shadow:0 34px 80px rgba(14,22,48,.35)}
+.polar .ph{height:430px;border-radius:12px;background-size:cover;background-position:center}
+.polar.portrait{width:480px;right:auto;left:50%;top:90px;margin-left:-240px}
+.polar.portrait .ph{height:620px;background-position:50% 30%}
+.logo{position:absolute;right:56px;top:46px;padding:12px 22px;border-radius:99px;background:rgba(255,255,255,.9);box-shadow:0 10px 24px rgba(14,22,48,.18)}
+.logo img{height:24px;display:block}
+/* intro / outro / january */
+.white-l{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.9) 38%,rgba(255,255,255,0) 64%)}
+.big{position:absolute;left:120px;top:300px;width:1000px}
+.big .t{font-size:104px;line-height:1.02}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.blobs i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.75}
+.jan-card{position:absolute;right:130px;top:150px;width:720px;height:720px;border-radius:44px;overflow:hidden;box-shadow:0 40px 90px rgba(14,22,48,.25);background-size:cover;background-position:center}
+.date{display:inline-block;margin-top:34px;padding:14px 30px;border-radius:99px;background:var(--grad2);color:#fff;font-weight:800;font-size:36px;letter-spacing:.02em;box-shadow:0 18px 40px rgba(47,123,255,.35)}
+.route{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+.plane{position:absolute;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--grad);display:grid;place-items:center;box-shadow:0 14px 30px rgba(255,77,109,.45)}
+.plane svg{width:44px;height:44px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lbl{position:absolute;font-weight:800;font-size:26px;color:var(--ink);background:#fff;padding:10px 20px;border-radius:99px;box-shadow:0 12px 26px rgba(14,22,48,.14)}
+.outro .logo-big{height:64px;display:block;margin-top:60px}
+#fade{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const IMG = '../../img/', JITP = '../../img/jitp/', PH = 'photos/';
+const XF = 0.8; // cross-fade
+const SCENES = [
+  { d: 5.0, type: 'intro' },
+  { d: 5.4, bg: JITP + 'signing.jpg', k: '2024', t: 'A new pathway begins', s: 'With support from MPTC and the Japan-Cambodia Association', pan: [-20, 10] },
+  { d: 5.2, bg: PH + 'study.jpg', k: 'Year 1', t: 'Japanese, from zero', s: 'Speaking, writing and listening, step by step', pan: [24, 0] },
+  { d: 4.8, bg: JITP + 'jlpt.jpg', blur: true, card: JITP + 'jlpt.jpg', portrait: true, k: 'JLPT', t: 'Proof of your Japanese', pan: [0, 0] },
+  { d: 5.6, bg: JITP + 'undokai.jpg', card: PH + 'tug.jpg', k: 'Undokai', t: 'A Japanese sports day', s: 'Teams, cheering and a lot of laughing', pan: [-24, 6] },
+  { d: 5.4, bg: JITP + 'manga_event.jpg', card: PH + 'manga_portrait.jpg', k: 'Culture', t: 'Manga with a Japanese illustrator', pan: [20, -8] },
+  { d: 5.6, bg: JITP + 'jp_students.jpg', card: PH + 'calligraphy.jpg', k: 'Friends from Japan', t: 'Japanese students come to visit', s: 'Calligraphy, games and real conversation', pan: [-18, 0] },
+  { d: 4.8, bg: JITP + 'online.jpg', k: 'Online exchange', t: 'Real Japanese practice', s: 'With students in Japan', pan: [16, 4] },
+  { d: 5.2, bg: JITP + 'company.jpg', card: PH + 'company2.jpg', k: 'Companies', t: 'Meet Japanese companies', pan: [-20, 0] },
+  { d: 5.2, bg: JITP + 'internship.jpg', card: PH + 'internship2.jpg', k: 'Internship', t: 'Real projects, real teams', s: 'With a Japanese project manager', pan: [18, -6] },
+  { d: 4.8, bg: JITP + 'career.jpg', card: PH + 'career2.jpg', k: 'Career support', t: 'One on one, all the way', pan: [-16, 0] },
+  { d: 5.8, bg: JITP + 'completion.jpg', card: JITP + 'first_batch.jpg', k: 'August 2025', t: 'Our first batch finished the program', pan: [0, -10] },
+  { d: 6.0, type: 'january' },
+  { d: 6.4, type: 'outro' }
+];
+const PLANE = '<svg viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>';
+const BLOBS = '<div class="blobs"><i style="width:760px;height:760px;background:#FFD6DF;left:-6%;top:-14%"></i><i style="width:680px;height:680px;background:#D8E7FF;right:-4%;top:6%"></i><i style="width:620px;height:620px;background:#FFF0C2;left:34%;bottom:-22%"></i></div>';
+
+const stage = document.getElementById('stage');
+let t0 = 0;
+SCENES.forEach((sc, i) => {
+  sc.start = t0; t0 += sc.d - XF;
+  const el = document.createElement('div');
+  el.className = 'scene ' + (sc.type || '');
+  if (sc.type === 'intro') {
+    el.innerHTML = `<div class="bg" style="left:30%;background-image:url(${IMG}hero.jpg);background-position:15% 50%"></div><div class="white-l" style="background:linear-gradient(90deg,#fff 0%,#fff 30%,rgba(255,255,255,.85) 38%,rgba(255,255,255,0) 52%)"></div>
+      <div class="big" style="width:960px"><div class="k a1">Japanese IT Pathway</div><div class="t a2" style="font-size:94px">From Cambodia<br><span class="g">to a career in Japan.</span></div></div>`;
+  } else if (sc.type === 'january') {
+    el.innerHTML = `${BLOBS}<div class="jan-card a0" style="background-image:url(../../img/spot/r_japan.jpg)"></div>
+      <svg class="route" viewBox="0 0 1920 1080"><path id="arc" d="M 250 930 C 520 1010 860 930 1050 780" fill="none" stroke="#FF8E3C" stroke-width="6" stroke-dasharray="14 14" stroke-linecap="round" opacity=".0"/></svg>
+      <div class="big" style="top:250px;width:880px"><div class="k a1">Coming up</div><div class="t a2" style="font-size:88px">CADT seniors fly to Japan <span class="g">for their internship.</span></div><div class="date a3">January 2027</div></div>
+      <div class="lbl a3" style="left:110px;top:960px">Phnom Penh</div><div class="lbl a3" style="left:930px;top:690px">Japan</div>
+      <div class="plane">${PLANE}</div>`;
+  } else if (sc.type === 'outro') {
+    el.innerHTML = `${BLOBS}<div class="jan-card a0" style="background-image:url(${IMG}together.jpg);width:820px;height:600px;top:240px;right:110px"></div><div class="big" style="top:300px;width:1000px"><div class="k a1">Japanese IT Pathway</div><div class="t a2" style="font-size:108px">Your journey<br><span class="g">can start here.</span></div><img class="logo-big a3" src="${IMG}nextmake-logo.png" alt="NEXT MAKE"></div>`;
+  } else {
+    el.innerHTML = `<div class="bg${sc.blur ? ' blur' : ''}" style="background-image:url(${sc.bg})"></div><div class="shade"></div>
+      ${sc.card ? `<div class="polar${sc.portrait ? ' portrait' : ''}"><div class="ph" style="background-image:url(${sc.card})"></div></div>` : ''}
+      <div class="cap"><div class="k a1">${sc.k}</div><div class="t a2">${sc.t}</div>${sc.s ? `<div class="s a3">${sc.s}</div>` : ''}</div>
+      <div class="logo"><img src="${IMG}nextmake-logo.png" alt=""></div>`;
+  }
+  stage.appendChild(el);
+  sc.el = el;
+});
+const TOTAL = t0 + XF;
+const fade = document.createElement('div'); fade.id = 'fade'; stage.appendChild(fade);
+
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const easeOut = x => 1 - Math.pow(1 - clamp(x), 3);
+const easeIO = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+function rise(node, u, at, dist = 40) {
+  if (!node) return;
+  const p = easeOut((u - at) / 0.7);
+  node.style.opacity = p;
+  node.style.transform = `translateY(${(1 - p) * dist}px)`;
+}
+const arcPath = () => document.querySelector('#arc');
+
+function seek(t) {
+  SCENES.forEach(sc => {
+    const u = t - sc.start;
+    const el = sc.el;
+    if (u < -0.01 || u > sc.d + 0.01) { el.style.opacity = 0; el.style.display = 'none'; return; }
+    el.style.display = 'block';
+    const fin = clamp(u / XF), fout = clamp((sc.d - u) / XF);
+    el.style.opacity = sc === SCENES[0] ? fout : Math.min(fin, fout);
+    el.style.zIndex = 1 + SCENES.indexOf(sc);
+    const p = clamp(u / sc.d);
+    const bg = el.querySelector('.bg');
+    if (bg) {
+      const pan = sc.pan || [0, 0];
+      bg.style.transform = `scale(${1.13 - 0.09 * easeIO(p)}) translate(${pan[0] * p}px, ${pan[1] * p}px)`;
+    }
+    const pol = el.querySelector('.polar');
+    if (pol) {
+      const q = easeOut((u - 0.45) / 0.9);
+      const rot = sc.portrait ? -2 : 3;
+      pol.style.opacity = q;
+      pol.style.transform = `translate(${(1 - q) * 160}px, ${(1 - q) * 30}px) rotate(${rot + (1 - q) * 8}deg) scale(${1 + 0.03 * p})`;
+    }
+    const cap = el.querySelector('.cap');
+    if (cap) { const q = easeOut((u - 0.25) / 0.8); cap.style.opacity = q; cap.style.transform = `translateY(${(1 - q) * 50}px)`; }
+    rise(el.querySelector('.a1'), u, 0.35);
+    rise(el.querySelector('.a2'), u, 0.55);
+    rise(el.querySelector('.a3'), u, 0.85);
+    const a0 = el.querySelector('.a0');
+    if (a0) { const q = easeOut((u - 0.2) / 1.0); a0.style.opacity = q; a0.style.transform = `scale(${0.92 + 0.08 * q}) rotate(${(1 - q) * 4}deg)`; }
+    if (sc.type === 'january') {
+      const arc = arcPath(), plane = el.querySelector('.plane');
+      const q = easeIO((u - 1.0) / 3.2);
+      const len = arc.getTotalLength(), pt = arc.getPointAtLength(len * q);
+      arc.style.opacity = clamp((u - 0.8) / 0.4) * 0.9;
+      arc.style.strokeDasharray = `14 14`;
+      arc.setAttribute('stroke-dashoffset', 0);
+      arc.style.clipPath = 'none';
+      plane.style.left = pt.x + 'px'; plane.style.top = pt.y + 'px';
+      plane.style.opacity = clamp((u - 0.9) / 0.3);
+      const pt2 = arc.getPointAtLength(Math.min(len, len * q + 2));
+      plane.style.transform = `rotate(${Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI + 45}deg)`;
+    }
+    if (sc.type === 'outro') {
+      const bgb = el.querySelector('.blobs');
+      if (bgb) bgb.style.transform = `translateX(${-40 * p}px)`;
+    }
+  });
+  fade.style.opacity = clamp((t - (TOTAL - 1.2)) / 1.2) * 1 + clamp(1 - t / 0.6);
+}
+
+async function ready() {
+  const urls = [...new Set([...document.querySelectorAll('[style*="url("]')].map(n => n.style.backgroundImage.replace(/^url\("?|"?\)$/g, '')))];
+  await Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = () => (im.decode ? im.decode().catch(() => 0).then(r) : r()); im.src = u; })));
+  await Promise.all([...document.images].map(im => im.decode().catch(() => 0)));
+  await document.fonts.ready;
+}
+window.FILM = { seek, ready, total: TOTAL, fps: 30 };
+
+// preview in a normal browser: scale to fit and play in real time
+if (!/[?&]render/.test(location.search)) {
+  const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `scale(${s})`; stage.style.left = (innerWidth - 1920 * s) / 2 + 'px'; stage.style.top = (innerHeight - 1080 * s) / 2 + 'px'; };
+  addEventListener('resize', fit); fit();
+  ready().then(() => { const start = performance.now(); const loop = now => { const t = ((now - start) / 1000) % TOTAL; seek(t); requestAnimationFrame(loop); }; requestAnimationFrame(loop); });
+} else { seek(0); }
+</script>
+</body>
+</html>
