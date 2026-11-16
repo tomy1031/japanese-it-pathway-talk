@@ -230,10 +230,12 @@
   }
 
   function askLink() { return C.askUrl + (S === C.defaultSession ? '' : '?s=' + encodeURIComponent(S)); }
-  function qr(el, size) {
-    if (typeof window.qrcode !== 'function') { el.textContent = askLink(); return; }
+  const SS = C.surveySession();
+  function surveyLink() { return C.surveyUrl + (SS === C.surveyDefault ? '' : '?s=' + encodeURIComponent(SS)); }
+  function qr(el, size, link = askLink()) {
+    if (typeof window.qrcode !== 'function') { el.textContent = link; return; }
     const q = window.qrcode(0, 'M');
-    q.addData(askLink());
+    q.addData(link);
     q.make();
     const n = q.getModuleCount(), cell = size / (n + 8);
     let path = '';
@@ -241,5 +243,22 @@
     el.innerHTML = `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" shape-rendering="crispEdges"><rect width="${size}" height="${size}" fill="#fff"/><path d="${path}" fill="#14213D"/></svg>`;
   }
 
-  window.LiveQ = { start, mountBoard, mountCounter, qr, retry, askLink, session: S, stats };
+  // live number of survey answers (only the count is readable with the public key)
+  let svTimer = null;
+  const svViews = [];
+  async function surveyTick() {
+    try {
+      const r = await fetch(C.url + '/rest/v1/rpc/survey_count', { method: 'POST', headers: { 'Content-Type': 'application/json', 'apikey': C.anon, 'Authorization': 'Bearer ' + C.anon }, body: JSON.stringify({ p_session: SS }) });
+      const n = await r.json();
+      if (typeof n === 'number') svViews.forEach(f => f(n));
+    } catch (e) {}
+  }
+  function mountSurveyCount(el) {
+    el.innerHTML = '<b>0</b><span>answers so far</span>';
+    const b = el.querySelector('b');
+    svViews.push(n => { if (b.textContent !== String(n)) { b.textContent = n; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); } });
+  }
+  function startSurvey() { if (svTimer) return; surveyTick(); svTimer = setInterval(surveyTick, 6000); }
+
+  window.LiveQ = { start, mountBoard, mountCounter, qr, retry, askLink, surveyLink, mountSurveyCount, startSurvey, session: S, stats };
 })();

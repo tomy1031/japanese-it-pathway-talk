@@ -13,6 +13,13 @@ window.LIVEQ = {
     const s = new URLSearchParams(location.search).get('s') || '';
     return /^[A-Za-z0-9_-]{1,40}$/.test(s) ? s : this.defaultSession;
   },
+  // the end-of-talk survey (same ?s= switch for rehearsals)
+  surveyUrl: 'https://tomy1031.github.io/japanese-it-pathway-talk/talk2-7j03sod5/survey/',
+  surveyDefault: 'session2',
+  surveySession() {
+    const s = new URLSearchParams(location.search).get('s') || '';
+    return /^[A-Za-z0-9_-]{1,40}$/.test(s) ? s : this.surveyDefault;
+  },
   // the case
   client: {
     company: 'HONDO Motor',
