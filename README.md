@@ -16,7 +16,7 @@ CADTの学生向けキャリアトークのスライド（HTML）と、紹介動
 - 2026-10-27の発表では8枚（AI関連4枚・不安/サポート/コミュニティ/体験クラス4枚）を外しました。外す前の全32枚版は `index_full_2026-10-27.html`（ローカルのみ・git管理外）に保管しています。
 
 ## 第2回スライド（`talk2-*/`）「AI writes the code. What will you bring?」
-- `index.html` を開いて操作は第1回と同じ（F 全画面、P 発表者ウィンドウ、N ノート、G 一覧）。全33枚・約60分（本編 約50分＋Japanese IT Pathway 約8分）。
+- `index.html` を開いて操作は第1回と同じ（F 全画面、P 発表者ウィンドウ、N ノート、G 一覧）。全36枚・約60分（本編 約50分＋Japanese IT Pathway 約9分）。Japanese IT Pathway 部分（27〜35枚目）は Google Slides「Japanese IT Pathway Program」の内容と写真（`img/jitp/`）から作成。質問用QRは載せていません。
 - 質問タイム（19枚目のQR → スマホで質問 → 20枚目のダッシュボード）はネット接続が必要です。それ以外はオフラインで動きます。
 - **リハーサル**はURLに `?s=test` を付けて開く（例 `index.html?s=test`）。QRコードも同じセッションを指すので、本番（セッション `live`）のデータと混ざりません。
 - イラストは `img/<名前>.jpg`（なければ `.png`）を自動で読みます。まだないものは薄い仮画像が出ます。作成指示は `img/_codex/PROMPTS.md`。
