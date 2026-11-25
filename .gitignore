@@ -19,3 +19,4 @@ index_full_*.html
 private/
 # the session 2 deck plays this highlight video (rebuilt by talk2-*/video/src/build.js)
 !talk2-7j03sod5/video/jitp_highlights.mp4
+!talk2-hyho55ic/video/jitp_highlights.mp4

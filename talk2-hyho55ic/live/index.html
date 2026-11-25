@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Live Questions</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="live.css">
+<style>
+:root{--ink:#14213D;--font:'Plus Jakarta Sans','Hiragino Sans','Noto Sans JP',system-ui,sans-serif}
+html,body{margin:0;height:100%;overflow:hidden;background:#F6F7FB;font-family:var(--font);color:var(--ink)}
+#stage{width:1920px;height:1080px;position:absolute;left:50%;top:50%;transform-origin:center;transform:translate(-50%,-50%)}
+.kicker{position:absolute;left:80px;top:56px;display:inline-flex;align-items:center;gap:14px;font-weight:800;font-size:22px;letter-spacing:.22em;text-transform:uppercase;color:#FF4D6D}
+.kicker::before{content:"";width:44px;height:4px;border-radius:4px;background:linear-gradient(95deg,#FF4D6D,#FF8E3C)}
+h1{position:absolute;left:80px;top:88px;margin:0;font-size:58px;letter-spacing:-.03em;font-weight:800}
+h1 small{font-size:24px;font-weight:700;color:#8A93A6;margin-left:14px;letter-spacing:0;font-family:'Hiragino Sans','Noto Sans JP',sans-serif}
+#board{left:80px;right:80px;top:190px;bottom:44px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="kicker">Live · your questions</div>
+  <h1>What did you ask Mr. Sato? <small>みんなの質問</small></h1>
+  <div id="board"></div>
+</div>
+<script src="config.js"></script>
+<script src="vendor/supabase-2.118.0.js"></script>
+<script src="live.js"></script>
+<script>
+  const st = document.getElementById('stage');
+  const fit = () => st.style.transform = `translate(-50%,-50%) scale(${Math.min(innerWidth / 1920, innerHeight / 1080)})`;
+  addEventListener('resize', fit); fit();
+  LiveQ.mountBoard(document.getElementById('board'));
+  LiveQ.start();
+</script>
+</body>
+</html>
