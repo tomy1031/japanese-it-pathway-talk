@@ -1,0 +1,115 @@
+/* Interactive 3-Phone Telegram Queue Bot Prototype (sized for 1920×1080 slide stage) */
+.tg-stage{position:absolute;left:56px;right:56px;top:24px;bottom:38px;display:flex;flex-direction:column;gap:14px;z-index:6;user-select:none}
+.tg-stage *{box-sizing:border-box}
+.tg-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none}
+.tg-title{display:flex;align-items:baseline;gap:12px;flex-shrink:0}
+.tg-title .kicker{font-size:15px;white-space:nowrap}
+.tg-title h2{margin:0;font-size:27px;font-weight:800;letter-spacing:-.025em;color:#14213D;white-space:nowrap}
+.tg-steps{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.tg-sbtn{appearance:none;border:1.5px solid #D8E2F0;background:#fff;color:#14213D;border-radius:99px;padding:8px 13px;font:800 14px var(--font,sans-serif);cursor:pointer;box-shadow:0 6px 16px rgba(20,33,61,.07);transition:all .15s;white-space:nowrap}
+.tg-sbtn:hover{border-color:#2481CC;color:#1668AD;transform:translateY(-1px)}
+.tg-sbtn.active{background:linear-gradient(120deg,#2AABEE,#229ED9);color:#fff;border-color:transparent;box-shadow:0 10px 22px rgba(34,158,217,.32)}
+.tg-sbtn.reset{background:#F1F4FA;color:#56627A;border-color:#E2E8F2}
+
+.tg-phones{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tg-col{display:flex;flex-direction:column;gap:8px;min-height:0}
+.tg-role{display:flex;align-items:center;justify-content:center;gap:8px;font-size:17px;font-weight:800;letter-spacing:.02em;padding:7px 14px;border-radius:99px;background:#fff;border:1px solid #E4EAF3;box-shadow:0 6px 16px rgba(20,33,61,.06);flex:none}
+.tg-role.cust{color:#0D74B8;border-color:#C7E4FA;background:#F0F8FF}
+.tg-role.shopa{color:#0A875E;border-color:#BCEAD9;background:#EEFCF6}
+.tg-role.guard{color:#6B3FA0;border-color:#DECFF5;background:#F7F3FE}
+
+/* Smartphone chassis */
+.tg-phone{flex:1;min-height:0;background:#1A2234;border-radius:38px;padding:10px;box-shadow:0 26px 60px rgba(20,33,61,.24);display:flex;flex-direction:column;position:relative}
+.tg-screen{flex:1;min-height:0;background:#E7EBF0;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+
+/* Telegram App Bar */
+.tg-appbar{background:linear-gradient(120deg,#2481CC,#2AABEE);color:#fff;padding:12px 16px 11px;display:flex;align-items:center;gap:11px;flex:none;box-shadow:0 2px 10px rgba(0,0,0,.12);z-index:2}
+.tg-appbar.shopb{background:linear-gradient(120deg,#4B5E82,#6379A3)}
+.tg-appbar.master{background:linear-gradient(120deg,#1E293B,#334155)}
+.tg-av{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:21px;font-weight:800;flex:none;border:2px solid rgba(255,255,255,.55)}
+.tg-hinfo{flex:1;min-width:0}
+.tg-hinfo b{display:flex;align-items:center;gap:6px;font-size:18px;font-weight:800;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tg-vbadge{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#fff;color:#2481CC;font-size:11px;font-weight:900}
+.tg-hinfo span{display:block;font-size:13px;opacity:.9;font-weight:600;margin-top:1px}
+
+/* Sub-toolbar (shop selector / staff switcher / tabs) */
+.tg-subbar{background:#fff;border-bottom:1px solid #DDE3EC;padding:7px 10px;display:flex;gap:6px;flex:none;z-index:2}
+.tg-tab{flex:1;appearance:none;border:1.5px solid #E2E8F2;background:#F6F8FC;color:#4B5874;border-radius:12px;padding:7px 8px;font:800 13.5px var(--font,sans-serif);cursor:pointer;text-align:center;transition:all .15s;white-space:nowrap}
+.tg-tab.on{background:#E6F4FE;border-color:#2AABEE;color:#0E6EB8}
+.tg-tab.warn{background:#FFF4E5;border-color:#FFB866;color:#9A5200}
+
+/* Scrollable chat body */
+.tg-body{flex:1;min-height:0;overflow-y:auto;padding:12px 12px 14px;display:flex;flex-direction:column;gap:10px;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.55),transparent 55%),linear-gradient(180deg,#DCE8F2 0%,#E5EEF5 100%)}
+.tg-body::-webkit-scrollbar{width:5px}
+.tg-body::-webkit-scrollbar-thumb{background:rgba(20,33,61,.18);border-radius:99px}
+
+/* Rich Bot Banner Card */
+.tg-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(20,33,61,.09);border:1px solid rgba(20,33,61,.06);flex:none}
+.tg-banner{height:108px;background-size:cover;background-position:center;position:relative}
+.tg-banner-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,48,0) 25%,rgba(15,23,48,.78) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:10px 14px;color:#fff}
+.tg-banner-ov b{font-size:18px;letter-spacing:-.01em;line-height:1.15}
+.tg-banner-ov span{font-size:12.5px;opacity:.92;font-weight:600}
+.tg-form{padding:11px 13px 13px;display:flex;flex-direction:column;gap:9px}
+.tg-frow{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:14.5px;font-weight:700;color:#14213D}
+.tg-step{display:inline-flex;align-items:center;gap:6px;background:#F2F5FA;border-radius:10px;padding:3px 6px}
+.tg-step button{appearance:none;border:0;width:26px;height:26px;border-radius:7px;background:#fff;color:#14213D;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.08)}
+.tg-step b{min-width:20px;text-align:center;font-size:16px}
+.tg-chips{display:flex;flex-wrap:wrap;gap:6px}
+.tg-chip{appearance:none;border:1.5px solid #DCE3EE;background:#fff;color:#4B5874;border-radius:99px;padding:5px 11px;font:700 13px var(--font,sans-serif);cursor:pointer}
+.tg-chip.on{background:#E6F4FE;border-color:#2AABEE;color:#0B69B3;font-weight:800}
+.tg-cta{appearance:none;border:0;width:100%;padding:11px 14px;border-radius:13px;background:linear-gradient(120deg,#2AABEE,#1E88E5);color:#fff;font:800 16px var(--font,sans-serif);cursor:pointer;box-shadow:0 8px 18px rgba(34,158,217,.3);transition:transform .12s}
+.tg-cta:active{transform:scale(.98)}
+
+/* Chat bubbles */
+.tg-msg{background:#fff;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 4px 12px rgba(20,33,61,.07);font-size:14.5px;line-height:1.38;color:#14213D;position:relative;animation:tgpop .32s cubic-bezier(.2,.85,.25,1)}
+@keyframes tgpop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.tg-msg.me{background:#EFFDDE;border-radius:16px 16px 4px 16px;align-self:flex-end;max-width:88%;font-weight:700;color:#1E4620}
+.tg-msg.alert{border-left:5px solid #FF8E3C;background:#FFFDF8}
+.tg-msg.ready{border:2px solid #12B886;background:linear-gradient(135deg,#EEFCF6,#FFFFFF);box-shadow:0 10px 24px rgba(18,184,134,.18)}
+.tg-msg.err{border-left:5px solid #FF4D6D;background:#FFF5F7;color:#8E142E}
+.tg-msg.lock{border-left:5px solid #E9A400;background:#FFFBEB;color:#784900}
+.tg-msg b{font-weight:800}
+.tg-msg .ja-sub{display:block;margin-top:5px;padding-top:5px;border-top:1px dashed #E4E9F2;font-size:12.5px;color:#68758E;font-weight:600;font-family:'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif}
+.tg-time{float:right;font-size:11px;color:#8A96A8;margin:4px 0 0 8px;font-weight:600}
+
+/* Queue ticket item with inline Telegram buttons */
+.tg-qbox{background:#fff;border-radius:16px;padding:11px 12px;box-shadow:0 6px 16px rgba(20,33,61,.08);display:flex;flex-direction:column;gap:8px}
+.tg-qhead{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:800;color:#0E6EB8;border-bottom:1px solid #EDF1F7;padding-bottom:6px}
+.tg-qitem{background:#F7F9FC;border:1px solid #E5EAF2;border-radius:13px;padding:9px 11px;display:flex;flex-direction:column;gap:7px}
+.tg-qitem.hl{background:#FFF9EB;border-color:#FFD479}
+.tg-qitem.called{background:#EEFCF6;border-color:#9BE5C8}
+.tg-qitem.cancelled{opacity:.55}
+.tg-qrow{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.tg-tno{font-family:var(--mono,monospace);font-size:18px;font-weight:800;color:#14213D}
+.tg-qstat{font-size:12px;font-weight:800;padding:3px 9px;border-radius:99px;background:#E2EDFF;color:#1D5BD6}
+.tg-qitem.called .tg-qstat{background:#12B886;color:#fff}
+.tg-qmeta{font-size:13.5px;font-weight:700;color:#46536E}
+.tg-ibtn-row{display:grid;grid-template-columns:1.35fr 1fr;gap:6px}
+.tg-ibtn{appearance:none;border:0;border-radius:10px;padding:8px 10px;font:800 13.5px var(--font,sans-serif);cursor:pointer;transition:transform .1s,opacity .15s}
+.tg-ibtn:active{transform:scale(.97)}
+.tg-ibtn.ok{background:#12B886;color:#fff;box-shadow:0 4px 12px rgba(18,184,134,.28)}
+.tg-ibtn.ok.done{background:#94A3B8;box-shadow:none}
+.tg-ibtn.ng{background:#FFE3E9;color:#C81E45}
+
+/* Bottom Bot Menu Bar */
+.tg-botbar{background:#fff;border-top:1px solid #DCE3EC;padding:8px 10px;display:flex;gap:8px;flex:none}
+.tg-menubtn{flex:1;appearance:none;border:0;border-radius:12px;padding:10px 12px;background:#E8F4FD;color:#0D6DB8;font:800 14.5px var(--font,sans-serif);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}
+.tg-menubtn:hover{background:#D6ECFC}
+
+/* Store Master Settings inside Phone 3 */
+.tg-mcard{background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 4px 14px rgba(20,33,61,.07);display:flex;flex-direction:column;gap:9px}
+.tg-mcard h4{margin:0;font-size:14.5px;font-weight:800;color:#14213D;display:flex;align-items:center;justify-content:space-between}
+.tg-inv{display:flex;align-items:center;gap:10px;background:#F4F7FC;border:1px dashed #B9C6DC;border-radius:12px;padding:8px 11px}
+.tg-inv-qr{width:44px;height:44px;border-radius:8px;background:repeating-conic-gradient(#14213D 0% 25%,#fff 0% 50%) 50%/11px 11px;flex:none;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.tg-inv code{font-family:var(--mono,monospace);font-size:14px;font-weight:800;color:#0E6EB8;display:block}
+.tg-inv small{font-size:12px;color:#56627A;font-weight:600}
+.tg-srow{display:flex;align-items:center;justify-content:space-between;padding:6px 9px;border-radius:10px;background:#F8FAFD;border:1px solid #E7ECF4;font-size:13px;font-weight:700}
+.tg-srow button{appearance:none;border:0;border-radius:8px;padding:4px 9px;font:800 12px var(--font,sans-serif);cursor:pointer}
+.tg-srow button.rm{background:#FFE3E9;color:#C81E45}
+.tg-srow button.add{background:#D5F7EA;color:#0A875E}
+.tg-trow{display:flex;align-items:center;justify-content:space-between;padding:6px 4px;border-bottom:1px solid #F0F3F9;font-size:13.5px;font-weight:700;color:#283550}
+.tg-trow:last-child{border-bottom:0}
+.tg-sw{appearance:none;border:0;width:46px;height:26px;border-radius:99px;background:#CBD5E1;position:relative;cursor:pointer;transition:background .2s;flex:none}
+.tg-sw::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.tg-sw.on{background:#12B886}
+.tg-sw.on::after{transform:translateX(20px)}
