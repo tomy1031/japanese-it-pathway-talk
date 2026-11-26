@@ -417,7 +417,7 @@
         const totalOther = EXP.filter(q => !q.critical).length;
         list = EXP.filter(q => !q.critical && sum.hitsByQ[q.id].length > 0)
           .sort((a, b) => sum.hitsByQ[b.id].length - sum.hitsByQ[a.id].length);
-        perPage = 3; layout = 'med3';
+        perPage = 2; layout = 'med2';
         const extra = sum.unmatched.length ? ` · +${sum.unmatched.length} original questions` : '';
         meta.innerHTML = `<span class="pill-cnt">Matched <b>${list.length} / ${totalOther}</b> expected questions</span><span>みんなが聞けた「想定質問」${esc(extra)}</span>`;
       } else if (mode === 'crit-missed') {
@@ -426,7 +426,7 @@
         meta.innerHTML = `<span class="pill-cnt">Missed <b>${list.length} / ${sum.critTotal}</b> critical questions</span><span>聞けなかった「重要な質問」（ここを逃すと大失敗！）</span>`;
       } else if (mode === 'other-missed') {
         list = EXP.filter(q => !q.critical && sum.hitsByQ[q.id].length === 0);
-        perPage = 6; layout = 'grid6';
+        perPage = 4; layout = 'grid4';
         meta.innerHTML = `<span class="pill-cnt"><b>${list.length}</b> remaining Q&amp;As</span><span>その他の想定質問とクライアント回答一覧</span>`;
       }
 
@@ -442,9 +442,9 @@
         if (mode === 'crit-asked') {
           body.innerHTML = `<div class="qac-empty"><b>0 / ${sum.critTotal} Critical Questions Asked Yet</b><p>Nobody hit the hidden project-changing traps yet—let’s see what happens on the Missed slide!<br><small>重要な質問はまだ出ていません（後のスライドで種明かしします！）</small></p></div>`;
         } else if (mode === 'other-asked') {
-          body.innerHTML = `<div class="qac-empty"><b>No Expected Questions Matched Yet</b><p>Scan the QR on Slide 18 (or click 🧪 Sample in rehearsal) to see matched Q&amp;As live.<br><small>想定質問に一致する質問がまだ届いていません</small></p></div>`;
+          body.innerHTML = `<div class="qac-empty"><b>No Expected Questions Matched Yet</b><p>Scan the QR on the Question Time slide (or click 🧪 Sample in rehearsal) to see matched Q&amp;As live.<br><small>想定質問に一致する質問がまだ届いていません</small></p></div>`;
         } else if (mode === 'crit-missed') {
-          body.innerHTML = `<div class="qac-empty" style="border-color:#8CE0C2;background:#F2FBF7"><b>🏆 Amazing! You Found All ${sum.critTotal} / ${sum.critTotal} Critical Questions!</b><p>Zero critical blind spots—your team uncovered budget, 2-month deadline, weak Wi-Fi, Telegram, and multi-shop ops!<br><small>素晴らしい！重要な質問をすべて質問できました！</small></p></div>`;
+          body.innerHTML = `<div class="qac-empty" style="border-color:#8CE0C2;background:#F2FBF7"><b>🏆 Amazing! You Found All ${sum.critTotal} / ${sum.critTotal} Critical Questions!</b><p>Zero critical blind spots—your team uncovered budget, 2-month deadline, congested opening network, single-purpose usage, and multi-shop ops!<br><small>素晴らしい！重要な質問をすべて質問できました！</small></p></div>`;
         } else {
           body.innerHTML = `<div class="qac-empty" style="border-color:#8CE0C2;background:#F2FBF7"><b>🎉 Every Expected Question Was Covered!</b><p>You asked every single item on our expected list!</p></div>`;
         }

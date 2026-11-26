@@ -48,7 +48,7 @@ export const CATEGORIES: Record<string, string> = {
 export const EXPECTED_QUESTIONS: Record<string, string> = {
   c1: "CRITICAL - Budget / cost: asks how much budget or money is available to build and run this system (or hardware/tablet budget).",
   c2: "CRITICAL - Deadline / development time: asks when the mall opens, the launch deadline, or how many weeks/months we have to build it.",
-  c3: "CRITICAL - Internet / Wi-Fi / mobile signal: asks about network speed, mall Wi-Fi congestion on opening days, indoor mobile signal strength, or offline/low-bandwidth conditions.",
+  c3: "CRITICAL - Internet / Wi-Fi / mobile signal: asks about network speed, mall Wi-Fi congestion on opening days (many smartphone-heavy university students nearby), indoor mobile signal strength, or offline/low-bandwidth conditions.",
   c4: "CRITICAL - Usage frequency / single-purpose vs multi-purpose: asks how often customers visit the mall, who the visitors are, or whether visitors will use this app for other things (points, coupons, parking) or ONLY for restaurant waiting lists.",
   c5: "CRITICAL - Multi-restaurant count & staff devices: asks how many restaurants will use it, what device restaurant staff use (tablets vs own smartphones), or how each restaurant manages only its own queue.",
   o1: "Expected - Underlying business goal / KPI: asks why long restaurant lines hurt the mall (e.g. visitors getting tired and going home vs shopping while waiting) or how success is measured.",
