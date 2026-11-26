@@ -99,7 +99,7 @@
     { id: 'd1', participant: 'stu-01', body: 'How much budget do you have to build this app?', ja: 'このアプリを作る予算はいくらですか？', category: 'plan', matched_q: 'c1', open_q: 0.85, depth: 2.4 },
     { id: 'd2', participant: 'stu-02', body: 'What is the total budget for development?', ja: '開発の総予算はどのくらいですか？', category: 'plan', matched_q: 'c1', open_q: 0.8, depth: 2.2 },
     { id: 'd3', participant: 'stu-03', body: 'When will AEONA Mall 4 open? How many months do we have?', ja: 'AEONA Mall 4はいつオープンですか？開発期間は何ヶ月？', category: 'plan', matched_q: 'c2', open_q: 0.9, depth: 2.5 },
-    { id: 'd4', participant: 'stu-04', body: 'Why not use a Telegram Bot instead of making people download an app?', ja: 'アプリをDLさせる代わりにTelegramボットを使いませんか？', category: 'users', matched_q: 'c4', open_q: 0.95, depth: 2.9 },
+    { id: 'd4', participant: 'stu-04', body: 'Will visitors use this app for mall points or parking too, or only for waiting in line?', ja: 'モールのポイントや駐車場にも使いますか？それとも順番待ち専用ですか？', category: 'users', matched_q: 'c4', open_q: 0.9, depth: 2.7 },
     { id: 'd5', participant: 'stu-05', body: 'Which languages do we need? Khmer and English?', ja: 'どの言語が必要ですか？クメール語と英語ですか？', category: 'ux', matched_q: 'o2', open_q: 0.6, depth: 1.5 },
     { id: 'd6', participant: 'stu-06', body: 'Should it support Khmer, English, and Japanese?', ja: 'クメール語・英語・日本語に対応すべきですか？', category: 'ux', matched_q: 'o2', open_q: 0.5, depth: 1.4 },
     { id: 'd7', participant: 'stu-07', body: 'What information do customers enter—number of adults, kids, baby chair?', ja: '大人・子供の人数や子供イスなど何を入力しますか？', category: 'features', matched_q: 'o3', open_q: 0.85, depth: 2.0 },
