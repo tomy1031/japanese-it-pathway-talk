@@ -64,20 +64,20 @@ window.LIVEQ = {
     },
     {
       id: 'c4', critical: true, cat: 'users',
-      qEn: 'Will hungry visitors download a new app—or can we use Telegram?',
-      qJa: '並ぶためだけにアプリをDLしますか？（既存のTelegramではダメですか？）',
-      aEn: 'Nobody wants to download an app & register while hungry—but nearly 100% of visitors in Cambodia already use Telegram!',
-      aJa: '空腹の店の前でDLや会員登録は誰もしたくない。でもTelegramなら全員のスマホにすでに入っている！',
-      impactEn: 'A standalone app gets ignored—using Telegram gives instant zero-download adoption!',
-      re: /\b(download|install|app store|play store|telegram|mini.?app|web.?app|browser|without.*app|sign.?up|login|register)\b|ダウンロード|インストール|テレグラム|登録/i
+      qEn: 'Will visitors use this app for other things (points, parking, coupons), or ONLY when waiting for a restaurant?',
+      qJa: '順番待ち以外にも（ポイントやクーポン等で）普段使いするアプリですか？お客様の来店頻度は？',
+      aEn: 'Waiting in line ONLY! Most guests are weekend families or first-time visitors who come occasionally—they won’t spend time on sign-up or setup.',
+      aJa: '順番待ち専用です！週末にたまに来る家族連れや初来店のお客様が多く、面倒な登録や設定には時間をかけられません。',
+      impactEn: 'Forcing occasional visitors to install & register a single-purpose app creates huge friction!',
+      re: /\b(how often|frequency|regular|first.?time|other (feature|use|purpose)|coupon|point|parking|only.*wait|download|install|sign.?up|login|register|telegram|web.?app)\b|頻度|普段|ポイント|クーポン|専用|ダウンロード|登録/i
     },
     {
       id: 'c5', critical: true, cat: 'operation',
-      qEn: 'How many restaurants use it, and how do staff manage ONLY their own shop?',
-      qJa: '何店舗が使い、各店スタッフは何の端末で自店だけを管理しますか？',
-      aEn: '~15 restaurants, using staff’s own smartphones (no tablet budget). Shop A must never see Shop B, and seat questions differ per shop.',
-      aJa: '約15店舗が参加し、専用端末代はないためスタッフのスマホで管理。他店データの完全分離と店舗別の質問設定が必要。',
-      impactEn: 'Requires per-shop role isolation & custom per-store settings—not a single-shop list!',
+      qEn: 'How many restaurants will use it, and what devices will restaurant staff use?',
+      qJa: '何店舗が使い、各店のスタッフは何の端末で管理しますか？',
+      aEn: '~15 restaurants, using staff’s own smartphones (no budget for shop tablets). Each shop must only see its own queue, and seat questions differ by shop.',
+      aJa: '約15店舗が参加。専用タブレット代はないためスタッフ個人のスマホで運用。他店の予約は見えず、聞く項目も店舗ごとに変えたい。',
+      impactEn: 'Must run on staff’s own phones with strict per-shop separation & custom rules!',
       re: /\b(how many (restaurant|shop|store|tenant)|all restaurant|staff.*(device|phone|tablet|manage|use)|each (restaurant|shop|store)|admin)\b|何店舗|スタッフ|店員|端末|タブレット|管理画面/i
     },
     {
@@ -98,67 +98,67 @@ window.LIVEQ = {
     },
     {
       id: 'o3', critical: false, cat: 'features',
-      qEn: 'What guest details do we ask when joining the queue?',
+      qEn: 'What guest details do restaurants need when someone joins the queue?',
       qJa: '順番待ち登録のときにお客様に何を聞きますか？',
-      aEn: 'Configurable per shop: Adults & Kids count, plus optional Table/Counter, Baby chair, or Stroller.',
-      aJa: '店舗ごとにON/OFF設定：大人・子供人数に加え、テーブル/カウンター希望、子供用イス、ベビーカー有無など。',
+      aEn: 'Varies by shop: Adults & Kids count, plus optional Table/Counter, Baby chair, or Stroller.',
+      aJa: '店舗ごとに変えたい：大人・子供人数に加え、テーブル/カウンター希望、子供用イス、ベビーカー有無など。',
       re: /\b(baby chair|child|children|kid|stroller|table.*counter|seat.*prefer|how many (guest|people|person)|party size|what info)\b|人数|子供|テーブル|カウンター|座席|ベビーカー/i
     },
     {
       id: 'o4', critical: false, cat: 'features',
-      qEn: 'How are guests called, and what if they don’t show up?',
+      qEn: 'How should guests be notified, and what if they don’t show up?',
       qJa: '呼び出し方法と、お客様が来なかった場合のルールは？',
-      aEn: 'Instant message alert when ready; table is held for 10 minutes before cancelling.',
-      aJa: '席が空き次第メッセージ通知。10分以内に店頭へ来なければキャンセル扱い。',
+      aEn: 'Send an instant phone notification when ready; hold the table for 10 minutes before cancelling.',
+      aJa: '席が空き次第スマホへ通知。呼び出し後10分以内に店頭へ来なければキャンセル扱い。',
       re: /\b(no.?show|don't show|not come|late|how long.*(wait|hold)|10 min|miss.*turn|how.*(notify|call|alert))\b|通知|来ない|遅れ|何分|キャンセル/i
     },
     {
       id: 'o5', critical: false, cat: 'users',
       qEn: 'What about elderly visitors or people without smartphones?',
       qJa: 'スマホを持っていないお客様や高齢者はどうしますか？',
-      aEn: 'Restaurant staff can register a walk-in guest on their phone and hand them a paper number slip.',
-      aJa: '店頭スタッフが自分のスマホから手動で番号発行し、紙の番号札を渡せるようにする。',
+      aEn: 'Restaurant staff can register a walk-in guest manually and hand them a paper number slip.',
+      aJa: '店頭スタッフが手動で番号発行し、紙の番号札を渡せる運用にする。',
       re: /\b(no smartphone|without.*phone|don't have.*phone|elderly|old people|senior|walk.?in|paper ticket)\b|高齢者|お年寄り|スマホ.*ない|紙/i
     },
     {
       id: 'o6', critical: false, cat: 'features',
-      qEn: 'Do we need food pre-ordering or KHQR payment inside it?',
+      qEn: 'Do we need menu browsing, food pre-ordering, or KHQR payment?',
       qJa: '事前メニュー注文やKHQR決済機能も必要ですか？',
-      aEn: 'No—keep Phase 1 simple! Queue & calling only; food ordering and POS stay at each restaurant.',
+      aEn: 'No—keep Phase 1 simple! Waiting list & calling only; food ordering and payment stay at each restaurant.',
       aJa: '不要！フェーズ1は順番待ちと呼び出しのみに絞り、注文と会計は各店舗のままにする。',
       re: /\b(pre.?order|order food|menu|payment|pay|khqr|pos|credit card)\b|注文|メニュー|決済|支払い/i
     },
     {
-      id: 'o7', critical: false, cat: 'quality',
-      qEn: 'What if two staff tap “Call” on the same ticket simultaneously?',
-      qJa: '複数スタッフが同時に同じ番号の「呼び出し」を押したら？',
-      aEn: 'System uses an exclusive lock so duplicate notifications are never sent to the guest.',
-      aJa: '排他制御（ロック処理）を入れ、お客様に2重通知が飛ばないようにする。',
-      re: /\b(same time|simultaneous|two staff|multiple staff.*tap|double|duplicate|conflict|lock)\b|同時|二重|重複|ロック/i
+      id: 'o7', critical: false, cat: 'operation',
+      qEn: 'How many staff manage the entrance on busy weekends?',
+      qJa: '週末の混雑時、店頭の受付スタッフは何人体制ですか？',
+      aEn: '2–3 staff share entrance duty at peak hours—we must make sure they never accidentally call the same customer twice.',
+      aJa: 'ピーク時は2〜3人で同時に店頭対応する。同じお客様を誤って2回呼び出さないようにしたい。',
+      re: /\b(how many staff|multiple staff|same time|simultaneous|two staff|double|duplicate|conflict|entrance)\b|何人体制|複数.*スタッフ|同時|二重|重複/i
     },
     {
       id: 'o8', critical: false, cat: 'features',
       qEn: 'Can one visitor join many restaurant queues at the same time?',
       qJa: '1人のお客様が何店舗も同時に順番待ちできますか？',
-      aEn: 'Limit to max 1–2 active queues per account to stop ghost bookings.',
-      aJa: '空予約による混乱を防ぐため、1アカウント同時に1〜2店舗までに制限する。',
+      aEn: 'Limit to max 1–2 active queues per person so ghost bookings don’t disrupt the line.',
+      aJa: '空予約による混乱を防ぐため、1人あたり同時に1〜2店舗までに制限する。',
       re: /\b(many queue|multiple (restaurant|queue|line)|book.*all|spam|fake booking|at once)\b|複数店舗.*並|掛け持ち|いたずら|空予約/i
     },
     {
       id: 'o9', critical: false, cat: 'quality',
-      qEn: 'What personal data is stored, and is data isolated between shops?',
-      qJa: '個人情報の扱いや、他店舗からの覗き見防止はどうしますか？',
-      aEn: 'No phone number or real name needed—only Telegram ID, strictly locked to each shop’s store_id.',
-      aJa: '電話番号や本名は取得しない。Telegram IDのみで識別し、store_idごとにAPI権限を完全分離する。',
-      re: /\b(privacy|personal data|phone number|real name|other (shop|restaurant|store).*see|permission|security|leak)\b|個人情報|電話番号|プライバシー|セキュリティ|他店/i
+      qEn: 'Do you want to collect customer phone numbers or member profiles?',
+      qJa: 'お客様の電話番号や会員情報も集めたいですか？プライバシーは？',
+      aEn: 'No personal info needed—just call guests by ticket number, and keep each restaurant’s customer list strictly private.',
+      aJa: '電話番号や本名などの個人情報は不要。番号だけで呼び出し、他店舗からは一切見られないようにしたい。',
+      re: /\b(privacy|personal data|phone number|real name|member|profile|other (shop|restaurant|store).*see|permission|security|leak)\b|個人情報|電話番号|会員|プライバシー|セキュリティ|他店/i
     },
     {
       id: 'o10', critical: false, cat: 'operation',
-      qEn: 'How are restaurant managers added/removed when staff change?',
-      qJa: 'スタッフの登録や、退職時の権限削除はどう運用しますか？',
-      aEn: 'Mall issues 1 Invite QR per shop; managers scan to link their Telegram ID, and retired IDs are removed in 1 tap.',
-      aJa: 'モール側が店舗別の「管理者招待QR」を発行。退職時は管理画面から該当IDを1タップで削除するだけ。',
-      re: /\b(maintain|maintenance|after launch|staff (leave|quit|change|turnover)|add.*staff|remove.*staff|invite)\b|保守|運用|退職|招待|権限/i
+      qEn: 'Restaurant staff change often—how easily must new staff start or be removed?',
+      qJa: 'アルバイトの入れ替わりが多いですが、引き継ぎや権限管理はどうしますか？',
+      aEn: 'Turnover is high! New staff must be able to start in 1 minute without training, and managers must remove ex-staff right away.',
+      aJa: '入れ替わりが激しい！新人でも研修なしで1分で使い始められ、退職者はすぐ権限を外せるようにしたい。',
+      re: /\b(turnover|part.?time|new staff|training|maintain|maintenance|after launch|staff (leave|quit|change)|add.*staff|remove.*staff)\b|アルバイト|入れ替わり|引き継ぎ|新人|研修|保守|運用|退職|権限/i
     }
   ]
 };
