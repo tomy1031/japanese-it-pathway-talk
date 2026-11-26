@@ -57,9 +57,9 @@ window.LIVEQ = {
       id: 'c3', critical: true, cat: 'quality',
       qEn: 'How is the Wi-Fi and mobile signal at the new mall?',
       qJa: '現地のWi-Fiやスマホの電波状況はどうですか？',
-      aEn: 'Slow & weak! Mall Wi-Fi is planned but will clog on opening weekend, and indoor mobile signal behind CADT is still weak.',
-      aJa: 'オープン時は大混雑でWi-Fiが激遅になり、CADT裏エリアは建物内の携帯電波もまだ弱い。',
-      impactEn: 'Visitors physically CANNOT download an 80–100 MB app in front of a restaurant!',
+      aEn: 'Not fast at opening! Mall Wi-Fi is planned, but opening crowds plus many smartphone-heavy university students nearby will congest the network.',
+      aJa: 'オープン時はそこまで速くならない！Wi-Fiは入れる予定だが、オープン混雑に加えてスマホを多く使う大学生が近くにたくさんいるため通信が混み合う。',
+      impactEn: 'Visitors cannot easily download a heavy 80–100 MB app in front of a restaurant!',
       re: /\b(wifi|wi-fi|internet|signal|network|offline|connection|4g|5g|bandwidth|slow.*net)\b|電波|通信|ネット|回線|オフライン/i
     },
     {

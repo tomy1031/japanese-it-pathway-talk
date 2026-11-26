@@ -1,4 +1,4 @@
-/* Interactive 3-Phone Telegram Queue Bot Prototype for AEONA Mall 4.
+/* Interactive 3-Phone Telegram Queue Bot Prototype for AEONA Mall 4 (100% English UI).
    Demonstrates live on stage:
    1. Per-store Admin Invite QR registration & staff revocation (Telegram ID <-> store_id)
    2. Customer 2-tap QR check-in -> Real-time Admin alert -> Queue list -> "✅ Call (OK)" -> Auto Customer alert
@@ -9,19 +9,18 @@
 
     const initialState = () => ({
       stepHighlight: 0,
-      // Store Master config (per-restaurant rules + authorized Telegram User IDs)
       stores: {
         shop_a: {
-          id: 'shop_a', code: 'A', name: 'Sakura Ramen', jaName: 'A店舗：Sakura Ramen',
+          id: 'shop_a', code: 'A', name: 'Sakura Ramen', label: 'Shop A · Sakura Ramen',
           invite: 'INV-SHOPA-882', banner: 'img/shop_ramen_banner.jpg',
           askSeat: true, askBabyChair: true, askStroller: false,
           admins: [
-            { id: '123456789', name: 'Manager A (店長A)', active: true },
-            { id: '555019283', name: 'Staff B (スタッフB)', active: true }
+            { id: '123456789', name: 'Manager A', active: true },
+            { id: '555019283', name: 'Staff B', active: true }
           ]
         },
         shop_b: {
-          id: 'shop_b', code: 'B', name: 'Sushi Masa', jaName: 'B店舗：Sushi Masa',
+          id: 'shop_b', code: 'B', name: 'Sushi Masa', label: 'Shop B · Sushi Masa',
           invite: 'INV-SHOPB-419', banner: 'img/telegram_banner.jpg',
           askSeat: true, askBabyChair: false, askStroller: false,
           admins: [
@@ -29,41 +28,37 @@
           ]
         }
       },
-      // Customer Phone state
       cust: {
         shop: 'shop_a', adults: 3, kids: 1, seat: 'Table', babyChair: true, stroller: false,
         nextSeqA: 12, nextSeqB: 5,
         msgs: [
           {
             kind: 'bot',
-            html: `<b>👋 Welcome to AEONA Mall 4 Dining!</b><br>Scan any restaurant QR—no app download or login needed.<span class="ja-sub">店頭QRを読むだけ！アプリのDLも会員登録も不要です。</span>`
+            html: `<b>👋 Welcome to AEONA Mall 4 Dining!</b><br>Scan any restaurant QR—no app download or sign-up needed.`
           }
         ]
       },
-      // Active Queue DB (shared backend, strictly filtered by store_id!)
       tickets: [
         { no: '#A-010', shop: 'shop_a', guests: 'Adults 2', prefs: 'Counter', pos: 1, status: 'waiting', calledBy: null },
         { no: '#A-011', shop: 'shop_a', guests: 'Adults 4', prefs: 'Table', pos: 2, status: 'waiting', calledBy: null },
         { no: '#B-004', shop: 'shop_b', guests: 'Adults 2', prefs: 'Counter', pos: 1, status: 'waiting', calledBy: null }
       ],
-      // Phone 2 (Shop A Staff) state
       shopA: {
         actorId: '123456789',
         showList: false,
         msgs: [
           {
             kind: 'bot',
-            html: `<b>🔑 Authenticated: Shop A (Sakura Ramen)</b><br>Telegram ID <code>123456789</code> is bound to <code>store_id: shop_a</code>.<span class="ja-sub">ID 123456789 を【A店舗】管理者として認証中（他店データは非表示）</span>`
+            html: `<b>🔑 Authenticated: Shop A (Sakura Ramen)</b><br>Telegram ID <code>123456789</code> is bound to <code>store_id: shop_a</code> (other shops are hidden).`
           }
         ]
       },
-      // Phone 3 (Isolation & Store Master) state
-      rightTab: 'shopb', // 'shopb' | 'master'
+      rightTab: 'shopb',
       masterShop: 'shop_a',
       shopBMsgs: [
         {
           kind: 'bot',
-          html: `<b>🔑 Authenticated: Shop B (Sushi Masa)</b><br>Telegram ID <code>987654321</code> sees <b>Shop B ONLY</b>.<span class="ja-sub">B店舗スタッフ画面：A店舗の予約（#A-012等）は一切見えません。</span>`
+          html: `<b>🔑 Authenticated: Shop B (Sushi Masa)</b><br>Telegram ID <code>987654321</code> sees <b>Shop B ONLY</b>. Shop A tickets are completely invisible.`
         }
       ]
     });
@@ -85,7 +80,7 @@
         { kind: 'me', html: `/start ${S.stores.shop_a.invite}` },
         {
           kind: 'bot',
-          html: `✅ <b>Admin Linked!</b><br>Registered Telegram ID <code>${S.shopA.actorId}</code> (${esc(actor ? actor.name : 'Staff')}) as an administrator of <b>【Shop A: Sakura Ramen】</b>.<span class="ja-sub">このTelegramアカウントID（${S.shopA.actorId}）を【A店舗】の管理者としてDBに登録しました。複数スタッフも同じ招待QRで登録可能です。</span>`
+          html: `✅ <b>Admin Linked!</b><br>Registered Telegram ID <code>${S.shopA.actorId}</code> (${esc(actor ? actor.name : 'Staff')}) as an admin for <b>[Shop A: Sakura Ramen]</b>.<br><small style="color:#56627A">Multiple staff can scan the same Invite QR to share notifications &amp; queue control.</small>`
         }
       );
       render();
@@ -98,41 +93,37 @@
       const seq = S.cust.shop === 'shop_a' ? S.cust.nextSeqA++ : S.cust.nextSeqB++;
       const no = `#${st.code}-${String(seq).padStart(3, '0')}`;
       const guestsParts = [`Adults ${S.cust.adults}`];
-      const guestsJa = [`大人 ${S.cust.adults}名`];
-      if (S.cust.kids > 0) { guestsParts.push(`Kids ${S.cust.kids}`); guestsJa.push(`子供 ${S.cust.kids}名`); }
+      if (S.cust.kids > 0) guestsParts.push(`Kids ${S.cust.kids}`);
 
-      const prefs = [], prefsJa = [];
-      if (st.askSeat) { prefs.push(`${S.cust.seat} seat`); prefsJa.push(S.cust.seat === 'Table' ? 'テーブル席' : 'カウンター席'); }
-      if (st.askBabyChair && S.cust.babyChair) { prefs.push('Baby chair'); prefsJa.push('子供用イス'); }
-      if (st.askStroller && S.cust.stroller) { prefs.push('Stroller'); prefsJa.push('ベビーカー'); }
+      const prefs = [];
+      if (st.askSeat) prefs.push(`${S.cust.seat} seat`);
+      if (st.askBabyChair && S.cust.babyChair) prefs.push('Baby chair');
+      if (st.askStroller && S.cust.stroller) prefs.push('Stroller');
 
       const waitingCount = S.tickets.filter(t => t.shop === st.id && t.status === 'waiting').length + 1;
+      const ord = waitingCount === 1 ? '1st' : waitingCount === 2 ? '2nd' : waitingCount === 3 ? '3rd' : `${waitingCount}th`;
       const ticket = {
         no, shop: st.id,
         guests: guestsParts.join(' / '),
-        guestsJa: guestsJa.join(' / '),
         prefs: prefs.length ? prefs.join(' · ') : 'Standard',
-        prefsJa: prefsJa.length ? prefsJa.join('・') : '指定なし',
         pos: waitingCount, status: 'waiting', calledBy: null
       };
       S.tickets.push(ticket);
 
-      // Customer confirmation
       S.cust.msgs.push({
         kind: 'bot',
-        html: `🎟️ <b>Joined Queue — ${esc(st.name)}</b><br>・Ticket: <b>${no}</b> (${waitingCount}${waitingCount === 1 ? 'st' : waitingCount === 2 ? 'nd' : waitingCount === 3 ? 'rd' : 'th'} in line)<br>・Party: ${esc(ticket.guests)} (${esc(ticket.prefs)})<br>🛍️ Feel free to shop! We’ll message you here.<span class="ja-sub">受付完了（${waitingCount}組目）。順番まで館内でゆっくりお買い物をお楽しみください！</span>`
+        html: `🎟️ <b>Joined Queue — ${esc(st.name)}</b><br>・Ticket: <b>${no}</b> (${ord} in line)<br>・Party: ${esc(ticket.guests)} (${esc(ticket.prefs)})<br>🛍️ Feel free to shop around! We’ll message you right here.`
       });
 
-      // Step 1: Real-time push to ALL active admins of that specific store!
       if (st.id === 'shop_a') {
         S.shopA.msgs.push({
           kind: 'alert',
-          html: `🔔 <b>New Queue Ticket (${esc(st.name)})</b><br>・Ticket: <b>${no}</b><br>・Guests: <b>${esc(ticket.guests)}</b><br>・Request: <b>${esc(ticket.prefs)}</b><br>・Waiting: <b>#${waitingCount} in line</b><span class="ja-sub">🔔 新規の順番待ち登録（A店舗） 整理番号：${no} ／ 人数：${esc(ticket.guestsJa)} ／ 希望：${esc(ticket.prefsJa)} ／ 現在：${waitingCount}組目</span>`
+          html: `🔔 <b>New Queue Ticket (Shop A)</b><br>・Ticket: <b>${no}</b><br>・Guests: <b>${esc(ticket.guests)}</b><br>・Request: <b>${esc(ticket.prefs)}</b><br>・Current Queue: <b>${ord} in line</b>`
         });
       } else {
         S.shopBMsgs.push({
           kind: 'alert',
-          html: `🔔 <b>New Queue Ticket (Shop B)</b><br>・Ticket: <b>${no}</b> · ${esc(ticket.guests)} (${esc(ticket.prefs)})<span class="ja-sub">B店舗のみに通知（A店舗の画面には一切届きません）</span>`
+          html: `🔔 <b>New Queue Ticket (Shop B)</b><br>・Ticket: <b>${no}</b> · ${esc(ticket.guests)} (${esc(ticket.prefs)})`
         });
       }
       render();
@@ -145,11 +136,10 @@
       const actorId = actorOverride || S.shopA.actorId;
       const admin = S.stores.shop_a.admins.find(a => a.id === actorId);
 
-      // Permission check (is this Telegram ID still an active admin of Shop A?)
       if (!admin || !admin.active) {
         S.shopA.msgs.push({
           kind: 'err',
-          html: `⛔ <b>Access Revoked (403)</b><br>Telegram ID <code>${actorId}</code> is no longer an active admin of Shop A.<span class="ja-sub">権限エラー：退職・削除済みのスタッフIDからは操作できません。</span>`
+          html: `⛔ <b>Access Revoked (403)</b><br>Telegram ID <code>${actorId}</code> is no longer an active admin of Shop A.`
         });
         render();
         scrollBottom('.p2-body');
@@ -159,29 +149,26 @@
       const t = S.tickets.find(x => x.no === ticketNo && x.shop === 'shop_a');
       if (!t) return;
 
-      // Concurrency lock check!
       if (t.status === 'called') {
         S.shopA.msgs.push({
           kind: 'lock',
-          html: `🔒 <b>Concurrency Lock Blocked Duplicate!</b><br>Ticket <b>${t.no}</b> was already called by <b>${esc(t.calledBy)}</b>. Customer was NOT notified twice.<span class="ja-sub">排他制御（ロック処理）：${esc(t.calledBy)}が既に呼び出し済みのため、2重通知を自動ブロックしました！</span>`
+          html: `🔒 <b>Concurrency Lock Blocked Duplicate!</b><br>Ticket <b>${t.no}</b> was already called by <b>${esc(t.calledBy)}</b>. Customer was NOT notified twice.`
         });
         render();
         scrollBottom('.p2-body');
         return;
       }
 
-      // Acquire lock & update status
       t.status = 'called';
       t.calledBy = admin.name;
       S.shopA.msgs.push({
         kind: 'bot',
-        html: `✅ <b>Called ${t.no}</b> (Verified <code>ID:${actorId}</code> = Shop A · Lock OK)<span class="ja-sub">${t.no} を呼び出しました（A店舗管理者権限チェックOK → お客様へ自動通知送信）</span>`
+        html: `✅ <b>Called ${t.no}</b> (Verified <code>ID:${actorId}</code> = Shop A · Lock OK)`
       });
 
-      // Step 3: Automatic message to Customer's Telegram!
       S.cust.msgs.push({
         kind: 'ready',
-        html: `🎉 <b>【Shop A · Sakura Ramen】Table Ready!</b><br>Ticket <b>${t.no}</b> — Your table is ready!<br>Please speak to our staff at the entrance within <b>10 minutes</b>.<span class="ja-sub">🎉【A店舗】お待たせいたしました！整理番号 ${t.no} のお客様、お席の準備が整いました。10分以内に店頭スタッフまでお声がけください。</span>`
+        html: `🎉 <b>[Shop A · Sakura Ramen] Table Ready!</b><br>Ticket <b>${t.no}</b> — Your table is ready!<br>Please speak to our staff at the entrance within <b>10 minutes</b>.`
       });
 
       render();
@@ -210,14 +197,13 @@
         { kind: 'me', html: `Attempt API: call_ticket("#A-012")` },
         {
           kind: 'err',
-          html: `⛔ <b>403 Permission Denied!</b><br>Sender Telegram ID <code>987654321</code> is bound ONLY to <code>store_id: shop_b</code>.<br>Cannot view or update <b>Shop A</b> tickets.<span class="ja-sub">他店舗の誤操作防止：送信者のTelegram IDに紐づく store_id 以外のデータは一切取得・更新できません。</span>`
+          html: `⛔ <b>403 Permission Denied!</b><br>Sender Telegram ID <code>987654321</code> is bound ONLY to <code>store_id: shop_b</code>.<br>Cannot view or update <b>Shop A</b> tickets.`
         }
       );
       render();
       scrollBottom('.p3-body');
     }
 
-    /* ---------- Guided 1-Click Stage Scenarios ---------- */
     function runScenario(step) {
       if (step === 1) {
         scanInviteQr();
@@ -258,7 +244,6 @@
       requestAnimationFrame(apply);
     }
 
-    /* ---------- Render DOM ---------- */
     root.classList.add('tg-stage');
     function render() {
       const prevScroll = {};
@@ -275,15 +260,15 @@
       root.innerHTML = `
         <div class="tg-topbar">
           <div class="tg-title">
-            <span class="kicker">Live Interactive Demo</span>
+            <span class="kicker">Live Prototype</span>
             <h2>AEONA Mall 4 · Telegram Queue Bot</h2>
           </div>
           <div class="tg-steps">
-            <button type="button" class="tg-sbtn ${S.stepHighlight===1?'active':''}" data-sc="1">① 招待QR登録</button>
-            <button type="button" class="tg-sbtn ${S.stepHighlight===2?'active':''}" data-sc="2">② お客様が予約 (#A-012)</button>
-            <button type="button" class="tg-sbtn ${S.stepHighlight===3?'active':''}" data-sc="3">③ リスト確認 → ✅呼び出し</button>
-            <button type="button" class="tg-sbtn ${S.stepHighlight===4?'active':''}" data-sc="4">④ 同時押しロック実験</button>
-            <button type="button" class="tg-sbtn ${S.stepHighlight===5?'active':''}" data-sc="5">⑤ 他店ブロック実験</button>
+            <button type="button" class="tg-sbtn ${S.stepHighlight===1?'active':''}" data-sc="1">① Invite QR</button>
+            <button type="button" class="tg-sbtn ${S.stepHighlight===2?'active':''}" data-sc="2">② Join (#A-012)</button>
+            <button type="button" class="tg-sbtn ${S.stepHighlight===3?'active':''}" data-sc="3">③ Queue → ✅ Call</button>
+            <button type="button" class="tg-sbtn ${S.stepHighlight===4?'active':''}" data-sc="4">④ Lock Test</button>
+            <button type="button" class="tg-sbtn ${S.stepHighlight===5?'active':''}" data-sc="5">⑤ 403 Block Test</button>
             <button type="button" class="tg-sbtn reset" data-sc="0">↺ Reset</button>
           </div>
         </div>
@@ -291,7 +276,7 @@
         <div class="tg-phones">
           <!-- PHONE 1: CUSTOMER -->
           <div class="tg-col">
-            <div class="tg-role cust">🛍️ 1. Customer’s Telegram（お客様画面）</div>
+            <div class="tg-role cust">🛍️ 1. Customer’s Telegram</div>
             <div class="tg-phone">
               <div class="tg-screen">
                 <div class="tg-appbar">
@@ -309,13 +294,13 @@
                   <div class="tg-card">
                     <div class="tg-banner" style="background-image:url(${stCust.banner})">
                       <div class="tg-banner-ov">
-                        <b>${esc(stCust.jaName)}</b>
+                        <b>${esc(stCust.label)}</b>
                         <span>Floor 2 · Restaurant Zone · Instant Telegram Ticket</span>
                       </div>
                     </div>
                     <div class="tg-form">
                       <div class="tg-frow">
-                        <span>👥 Adults / Kids（人数）</span>
+                        <span>👥 Adults / Kids</span>
                         <div style="display:flex;gap:8px">
                           <span class="tg-step"><button type="button" data-adj="a-1">−</button><b>${S.cust.adults}</b><button type="button" data-adj="a+1">+</button></span>
                           <span class="tg-step"><button type="button" data-adj="k-1">−</button><b>${S.cust.kids}</b><button type="button" data-adj="k+1">+</button></span>
@@ -324,13 +309,13 @@
                       ${(stCust.askSeat || stCust.askBabyChair || stCust.askStroller) ? `
                       <div class="tg-chips">
                         ${stCust.askSeat ? `
-                          <button type="button" class="tg-chip ${S.cust.seat==='Table'?'on':''}" data-seat="Table">🪑 Table席</button>
-                          <button type="button" class="tg-chip ${S.cust.seat==='Counter'?'on':''}" data-seat="Counter">🍶 Counter席</button>
+                          <button type="button" class="tg-chip ${S.cust.seat==='Table'?'on':''}" data-seat="Table">🪑 Table</button>
+                          <button type="button" class="tg-chip ${S.cust.seat==='Counter'?'on':''}" data-seat="Counter">🍶 Counter</button>
                         ` : ''}
-                        ${stCust.askBabyChair ? `<button type="button" class="tg-chip ${S.cust.babyChair?'on':''}" data-tog="baby">👶 子供用イス</button>` : ''}
-                        ${stCust.askStroller ? `<button type="button" class="tg-chip ${S.cust.stroller?'on':''}" data-tog="stroller">🛒 ベビーカー</button>` : ''}
-                      </div>` : `<div style="font-size:12.5px;color:#68758E;font-weight:600">※ この店舗は「人数のみ」のシンプル受付設定です</div>`}
-                      <button type="button" class="tg-cta" data-act="join">🎟️ Join Waiting List · 順番待ち登録</button>
+                        ${stCust.askBabyChair ? `<button type="button" class="tg-chip ${S.cust.babyChair?'on':''}" data-tog="baby">👶 Baby chair</button>` : ''}
+                        ${stCust.askStroller ? `<button type="button" class="tg-chip ${S.cust.stroller?'on':''}" data-tog="stroller">🛒 Stroller</button>` : ''}
+                      </div>` : `<div style="font-size:12.5px;color:#68758E;font-weight:600">Simple mode: party size only (configured in Store Master)</div>`}
+                      <button type="button" class="tg-cta" data-act="join">🎟️ Join Waiting List</button>
                     </div>
                   </div>
                   ${S.cust.msgs.map(m => `<div class="tg-msg ${m.kind}">${m.html}<span class="tg-time">${tm} ✓✓</span></div>`).join('')}
@@ -341,7 +326,7 @@
 
           <!-- PHONE 2: SHOP A ADMIN -->
           <div class="tg-col">
-            <div class="tg-role shopa">👨‍🍳 2. Shop A Manager’s Telegram（A店舗 管理者）</div>
+            <div class="tg-role shopa">👨‍🍳 2. Shop A Manager’s Telegram</div>
             <div class="tg-phone">
               <div class="tg-screen">
                 <div class="tg-appbar">
@@ -352,33 +337,33 @@
                   </div>
                 </div>
                 <div class="tg-subbar">
-                  <button type="button" class="tg-tab ${S.shopA.actorId==='123456789'?'on':''}" data-actor="123456789">👤 店長A</button>
-                  <button type="button" class="tg-tab ${S.shopA.actorId==='555019283'?'on':''}" data-actor="555019283">👤 スタッフB</button>
-                  <button type="button" class="tg-tab warn" data-act="invqr">🔑 招待QR登録</button>
+                  <button type="button" class="tg-tab ${S.shopA.actorId==='123456789'?'on':''}" data-actor="123456789">👤 Manager A</button>
+                  <button type="button" class="tg-tab ${S.shopA.actorId==='555019283'?'on':''}" data-actor="555019283">👤 Staff B</button>
+                  <button type="button" class="tg-tab warn" data-act="invqr">🔑 Invite QR</button>
                 </div>
                 <div class="tg-body p2-body">
                   ${S.shopA.msgs.map(m => `<div class="tg-msg ${m.kind}">${m.html}<span class="tg-time">${tm}</span></div>`).join('')}
                   ${S.shopA.showList ? `
                   <div class="tg-qbox">
-                    <div class="tg-qhead"><span>📋 A店舗 待ちリスト（Shop A Only）</span><span>${shopATickets.filter(t=>t.status==='waiting').length} 組待ち</span></div>
+                    <div class="tg-qhead"><span>📋 Shop A Queue (Shop A Only)</span><span>${shopATickets.filter(t=>t.status==='waiting').length} waiting</span></div>
                     ${shopATickets.slice().reverse().map(t => `
                       <div class="tg-qitem ${t.no==='#A-012'&&t.status==='waiting'?'hl':''} ${t.status}">
                         <div class="tg-qrow">
                           <span class="tg-tno">${esc(t.no)}</span>
-                          <span class="tg-qstat">${t.status==='called' ? '✅ 呼出済 ('+esc(t.calledBy)+')' : t.status==='cancelled' ? '❌ キャンセル' : '⏳ 待ち #'+t.pos}</span>
+                          <span class="tg-qstat">${t.status==='called' ? '✅ Called ('+esc(t.calledBy)+')' : t.status==='cancelled' ? '❌ Cancelled' : '⏳ Waiting #'+t.pos}</span>
                         </div>
                         <div class="tg-qmeta">${esc(t.guests)} · ${esc(t.prefs)}</div>
                         ${t.status !== 'cancelled' ? `
                         <div class="tg-ibtn-row">
-                          <button type="button" class="tg-ibtn ok ${t.status==='called'?'done':''}" data-call="${esc(t.no)}">✅ 呼び出し (OK)</button>
-                          <button type="button" class="tg-ibtn ng" data-cancel="${esc(t.no)}">❌ キャンセル</button>
+                          <button type="button" class="tg-ibtn ok ${t.status==='called'?'done':''}" data-call="${esc(t.no)}">✅ Call (OK)</button>
+                          <button type="button" class="tg-ibtn ng" data-cancel="${esc(t.no)}">❌ Cancel</button>
                         </div>` : ''}
                       </div>
                     `).join('')}
                   </div>` : ''}
                 </div>
                 <div class="tg-botbar">
-                  <button type="button" class="tg-menubtn" data-act="togglelist">📋 ${S.shopA.showList ? '待ちリストを更新・表示中' : '待ちリスト確認（Check Queue）'}</button>
+                  <button type="button" class="tg-menubtn" data-act="togglelist">📋 ${S.shopA.showList ? 'Queue List Open (Tap to Toggle)' : 'Check Waiting List'}</button>
                 </div>
               </div>
             </div>
@@ -386,7 +371,7 @@
 
           <!-- PHONE 3: MULTI-STORE ISOLATION & STORE MASTER -->
           <div class="tg-col">
-            <div class="tg-role guard">🛡️ 3. Isolation &amp; Store Master（他店分離・店舗設定）</div>
+            <div class="tg-role guard">🛡️ 3. Isolation &amp; Store Master</div>
             <div class="tg-phone">
               <div class="tg-screen">
                 <div class="tg-appbar ${S.rightTab==='shopb'?'shopb':'master'}">
@@ -397,17 +382,17 @@
                   </div>
                 </div>
                 <div class="tg-subbar">
-                  <button type="button" class="tg-tab ${S.rightTab==='shopb'?'on':''}" data-rtab="shopb">🍣 B店舗スタッフ画面</button>
-                  <button type="button" class="tg-tab ${S.rightTab==='master'?'on':''}" data-rtab="master">⚙️ 権限・質問マスター</button>
+                  <button type="button" class="tg-tab ${S.rightTab==='shopb'?'on':''}" data-rtab="shopb">🍣 Shop B Staff</button>
+                  <button type="button" class="tg-tab ${S.rightTab==='master'?'on':''}" data-rtab="master">⚙️ Store Master</button>
                 </div>
 
                 ${S.rightTab === 'shopb' ? `
                 <div class="tg-body p3-body">
                   <div class="tg-qbox">
-                    <div class="tg-qhead"><span>📋 B店舗 待ちリスト（Shop B Only）</span><span>${shopBTickets.length} 組</span></div>
+                    <div class="tg-qhead"><span>📋 Shop B Queue (Shop B Only)</span><span>${shopBTickets.length} waiting</span></div>
                     ${shopBTickets.map(t => `
                       <div class="tg-qitem">
-                        <div class="tg-qrow"><span class="tg-tno">${esc(t.no)}</span><span class="tg-qstat">⏳ 待ち #${t.pos}</span></div>
+                        <div class="tg-qrow"><span class="tg-tno">${esc(t.no)}</span><span class="tg-qstat">⏳ Waiting #${t.pos}</span></div>
                         <div class="tg-qmeta">${esc(t.guests)} · ${esc(t.prefs)}</div>
                       </div>
                     `).join('')}
@@ -415,36 +400,36 @@
                   ${S.shopBMsgs.map(m => `<div class="tg-msg ${m.kind}">${m.html}<span class="tg-time">${tm}</span></div>`).join('')}
                 </div>
                 <div class="tg-botbar">
-                  <button type="button" class="tg-menubtn" style="background:#FFE8EC;color:#C81E45" data-act="hack">🚫 A店舗の #A-012 を操作してみる（権限テスト）</button>
+                  <button type="button" class="tg-menubtn" style="background:#FFE8EC;color:#C81E45" data-act="hack">🚫 Try Calling Shop A’s #A-012 (403 Test)</button>
                 </div>
                 ` : `
                 <div class="tg-body p3-body">
                   <div class="tg-mcard">
-                    <h4><span>① A店舗 管理者招待コード/QR</span><span style="color:#12B886;font-size:12px">store_id: shop_a</span></h4>
+                    <h4><span>① Shop A Admin Invite QR</span><span style="color:#12B886;font-size:12px">store_id: shop_a</span></h4>
                     <div class="tg-inv">
                       <div class="tg-inv-qr"></div>
-                      <div><code>${S.stores.shop_a.invite}</code><small>店長・スタッフが読むだけでA店舗に紐づけ</small></div>
+                      <div><code>${S.stores.shop_a.invite}</code><small>Scan once to link staff Telegram ID to Shop A</small></div>
                     </div>
                     ${S.stores.shop_a.admins.map(a => `
                       <div class="tg-srow">
                         <span>👤 ${esc(a.name)} <code style="color:#68758E">${a.id}</code></span>
-                        <button type="button" class="${a.active?'rm':'add'}" data-staff="${a.id}">${a.active ? '退職・削除 ✕' : '再登録 ＋'}</button>
+                        <button type="button" class="${a.active?'rm':'add'}" data-staff="${a.id}">${a.active ? 'Remove ✕' : 'Re-add ＋'}</button>
                       </div>
                     `).join('')}
                   </div>
 
                   <div class="tg-mcard">
                     <h4>
-                      <span>③ 店舗別の質問項目 ON/OFF</span>
+                      <span>③ Per-Shop Question Toggles</span>
                       <span style="display:inline-flex;gap:4px">
-                        <button type="button" class="tg-chip ${S.masterShop==='shop_a'?'on':''}" style="padding:3px 9px;font-size:12px" data-mshop="shop_a">A店舗</button>
-                        <button type="button" class="tg-chip ${S.masterShop==='shop_b'?'on':''}" style="padding:3px 9px;font-size:12px" data-mshop="shop_b">B店舗</button>
+                        <button type="button" class="tg-chip ${S.masterShop==='shop_a'?'on':''}" style="padding:3px 9px;font-size:12px" data-mshop="shop_a">Shop A</button>
+                        <button type="button" class="tg-chip ${S.masterShop==='shop_b'?'on':''}" style="padding:3px 9px;font-size:12px" data-mshop="shop_b">Shop B</button>
                       </span>
                     </h4>
-                    <div class="tg-trow"><span>テーブル / カウンター希望</span><button type="button" class="tg-sw ${stMaster.askSeat?'on':''}" data-rule="askSeat"></button></div>
-                    <div class="tg-trow"><span>子供用イス (Baby chair)</span><button type="button" class="tg-sw ${stMaster.askBabyChair?'on':''}" data-rule="askBabyChair"></button></div>
-                    <div class="tg-trow"><span>ベビーカー有無 (Stroller)</span><button type="button" class="tg-sw ${stMaster.askStroller?'on':''}" data-rule="askStroller"></button></div>
-                    <div style="font-size:12px;color:#56627A;font-weight:600">↑ ON/OFFを切り替えると左の「お客様スマホ画面」が即座に変わります！</div>
+                    <div class="tg-trow"><span>Table / Counter preference</span><button type="button" class="tg-sw ${stMaster.askSeat?'on':''}" data-rule="askSeat"></button></div>
+                    <div class="tg-trow"><span>Baby chair option</span><button type="button" class="tg-sw ${stMaster.askBabyChair?'on':''}" data-rule="askBabyChair"></button></div>
+                    <div class="tg-trow"><span>Stroller space option</span><button type="button" class="tg-sw ${stMaster.askStroller?'on':''}" data-rule="askStroller"></button></div>
+                    <div style="font-size:12px;color:#56627A;font-weight:600">↑ Toggle ON/OFF to update the Customer Phone on the left live!</div>
                   </div>
                 </div>
                 `}
@@ -459,7 +444,6 @@
       });
     }
 
-    /* ---------- Delegated Click Handler (stops slide-advance propagation!) ---------- */
     root.addEventListener('click', e => {
       const btn = e.target.closest('button');
       if (!btn) return;
@@ -501,5 +485,5 @@
     render();
   }
 
-  window. mountTelegramProto = mountTelegramProto;
+  window.mountTelegramProto = mountTelegramProto;
 })();

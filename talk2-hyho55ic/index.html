@@ -241,7 +241,16 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
 .eqb.res{width:350px;background:var(--grad);color:#fff;border:none;box-shadow:0 30px 80px rgba(255,77,109,.38)}
 .eqb.res .pimg{height:326px;box-shadow:0 0 0 4px rgba(255,255,255,.7)}
 
-/* Slide 14: CADT -> AEONA Mall 4 Location Map */
+/* Case Study START Opener Slide */
+.cs-start{background:radial-gradient(circle at 20% 20%,rgba(255,77,109,.32),transparent 48%),radial-gradient(circle at 82% 78%,rgba(47,123,255,.32),transparent 52%),linear-gradient(135deg,#0E1830 0%,#162447 55%,#1E1B4B 100%) !important;color:#fff}
+.cs-start .cs-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 140px;z-index:5;gap:26px}
+.cs-pill{display:inline-flex;align-items:center;gap:14px;padding:16px 36px;border-radius:999px;background:var(--grad);color:#fff;font-size:30px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 20px 54px rgba(255,77,109,.48)}
+.cs-start h1{margin:0;font-size:122px;font-weight:800;letter-spacing:-.04em;line-height:1.02;color:#fff}
+.cs-start .cs-sub{margin:0;font-size:40px;font-weight:700;color:#CBD5E1;letter-spacing:-.015em}
+.cs-start .cs-chips{display:flex;gap:18px;margin-top:16px}
+.cs-start .cs-chip{padding:16px 30px;border-radius:999px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.22);color:#fff;font-size:26px;font-weight:800;backdrop-filter:blur(10px)}
+
+/* Slide 15: CADT -> AEONA Mall 4 Location Map */
 .map-grid{position:absolute;left:130px;right:130px;top:305px;bottom:92px;display:grid;grid-template-columns:1.38fr 1fr;gap:38px;z-index:5}
 .map-card{padding:22px;display:flex;flex-direction:column;position:relative;overflow:hidden;background:#fff}
 .map-card svg{width:100%;height:100%;display:block;border-radius:20px}
@@ -842,7 +851,22 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <aside class="notes">(~1.5 min) In Japan, the most critical phase of any software project is 要件定義 (yōken teigi)—requirements definition. And its tool is not code. Its tool is good questions. Now it's your turn to step into an engineer's shoes!</aside>
 </section>
 
-<!-- 14 CASE STUDY SETTING: LOCATION MAP BEHIND CADT -->
+<!-- 14 CASE STUDY START OPENER -->
+<section class="slide cs-start" data-title="Case Study: START">
+  <div class="cs-wrap">
+    <div class="cs-pill a pop" style="--d:.1s">▶ CASE STUDY · START</div>
+    <h1 class="a up" style="--d:.3s">Your Turn to Be<br><span class="g">the Engineer.</span></h1>
+    <p class="cs-sub a up" style="--d:.55s">Real-World Requirements Definition Workshop · ここからケーススタディ開始！</p>
+    <div class="cs-chips a up" style="--d:.8s">
+      <span class="cs-chip">🏬 Client: AEONA Mall 4</span>
+      <span class="cs-chip">🎯 Goal: Ask the right questions</span>
+      <span class="cs-chip">📱 Use your smartphone</span>
+    </div>
+  </div>
+  <aside class="notes">(~30 sec) Alright—switching gears! From right here, our hands-on CASE STUDY begins! Put on your Japanese SE hat: you are the IT engineering team meeting a new client for the very first time.</aside>
+</section>
+
+<!-- 15 CASE STUDY SETTING: LOCATION MAP (AEONA MALL 4 ABOVE CADT) -->
 <section class="slide" data-title="Setting: AEONA Mall 4 behind CADT">
   <div class="pad">
     <div class="kicker a">Case Study · Imagine This!</div>
@@ -850,17 +874,16 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   </div>
   <div class="map-grid">
     <div class="card map-card a zoom" style="--d:.5s">
-      <svg viewBox="0 0 920 620" aria-label="Map showing CADT and planned AEONA Mall 4 right behind CADT">
+      <svg viewBox="0 0 920 620" aria-label="Map showing AEONA Mall 4 located above CADT">
         <defs>
           <linearGradient id="riverG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#CBE9FF"/><stop offset="100%" stop-color="#9BD4FF"/></linearGradient>
           <linearGradient id="mallG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF4D6D"/><stop offset="100%" stop-color="#FF8E3C"/></linearGradient>
         </defs>
         <!-- Map land background -->
         <rect x="0" y="0" width="920" height="620" rx="20" fill="#F2F6EC"/>
-        <!-- Subtle green parks / blocks -->
-        <rect x="200" y="34" width="230" height="120" rx="18" fill="#E3F0D8"/>
-        <rect x="200" y="476" width="250" height="114" rx="18" fill="#E3F0D8"/>
-        <rect x="470" y="458" width="240" height="130" rx="18" fill="#E6EFE0"/>
+        <!-- Subtle green blocks -->
+        <rect x="615" y="42" width="140" height="190" rx="18" fill="#E3F0D8"/>
+        <rect x="615" y="388" width="140" height="190" rx="18" fill="#E3F0D8"/>
         <!-- Mekong River on the east -->
         <path d="M 790 0 C 760 180, 815 390, 770 620 L 920 620 L 920 0 Z" fill="url(#riverG)"/>
         <text x="855" y="315" font-family="Plus Jakarta Sans,sans-serif" font-size="22" font-weight="800" fill="#2A75B3" text-anchor="middle" transform="rotate(90 855 315)" letter-spacing="4">MEKONG RIVER</text>
@@ -870,33 +893,33 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
         <rect x="22" y="255" width="92" height="110" rx="14" fill="#14213D"/>
         <text x="68" y="298" font-family="Plus Jakarta Sans,sans-serif" font-size="16" font-weight="800" fill="#93C5FD" text-anchor="middle">ROAD</text>
         <text x="68" y="334" font-family="Plus Jakarta Sans,sans-serif" font-size="30" font-weight="800" fill="#FFFFFF" text-anchor="middle">6A</text>
-        <!-- Side street between CADT & Mall -->
-        <path d="M 158 310 L 760 310" stroke="#FFFFFF" stroke-width="20"/>
-        <!-- CADT Campus Block -->
-        <rect x="190" y="180" width="248" height="260" rx="24" fill="#2F7BFF" fill-opacity="0.14" stroke="#2F7BFF" stroke-width="5"/>
-        <rect x="218" y="218" width="192" height="90" rx="16" fill="#2F7BFF"/>
-        <text x="314" y="274" font-family="Plus Jakarta Sans,sans-serif" font-size="36" font-weight="800" fill="#FFFFFF" text-anchor="middle">CADT</text>
-        <rect x="212" y="330" width="204" height="44" rx="22" fill="#FFFFFF"/>
-        <text x="314" y="359" font-family="Plus Jakarta Sans,sans-serif" font-size="20" font-weight="800" fill="#1D5BD6" text-anchor="middle">📍 YOU ARE HERE</text>
-        <text x="314" y="416" font-family="Plus Jakarta Sans,sans-serif" font-size="18" font-weight="700" fill="#475569" text-anchor="middle">Prek Leap · Chroy Changvar</text>
-        <!-- Walking Arrow -->
-        <path d="M 444 292 C 476 258, 506 258, 534 286" fill="none" stroke="#FF4D6D" stroke-width="7" stroke-linecap="round"/>
-        <polygon points="540,292 522,288 534,272" fill="#FF4D6D"/>
-        <rect x="441" y="216" width="100" height="34" rx="17" fill="#14213D"/>
-        <text x="491" y="239" font-family="Plus Jakarta Sans,sans-serif" font-size="16" font-weight="800" fill="#FFFFFF" text-anchor="middle">🚶 3 min</text>
-        <!-- AEONA Mall 4 Planned Site (Right Behind CADT!) -->
-        <rect x="546" y="128" width="224" height="310" rx="28" fill="#FF4D6D" fill-opacity="0.13" stroke="#FF4D6D" stroke-width="6" stroke-dasharray="14 10"/>
-        <rect x="565" y="156" width="186" height="44" rx="22" fill="url(#mallG)"/>
-        <text x="658" y="185" font-family="Plus Jakarta Sans,sans-serif" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">NEW · BEHIND CADT</text>
-        <text x="658" y="264" font-family="Plus Jakarta Sans,sans-serif" font-size="56" text-anchor="middle">🏬</text>
-        <text x="658" y="318" font-family="Plus Jakarta Sans,sans-serif" font-size="30" font-weight="800" fill="#14213D" text-anchor="middle">AEONA Mall 4</text>
-        <rect x="567" y="342" width="182" height="68" rx="16" fill="#FFFFFF" stroke="#FFD0D9" stroke-width="2"/>
-        <text x="658" y="370" font-family="Plus Jakarta Sans,sans-serif" font-size="18" font-weight="800" fill="#D61F45" text-anchor="middle">🍜 Restaurant Floor</text>
-        <text x="658" y="396" font-family="Plus Jakarta Sans,sans-serif" font-size="16" font-weight="700" fill="#56627A" text-anchor="middle">15+ popular shops</text>
+        <!-- Side street between Mall & CADT -->
+        <path d="M 158 326 L 760 326" stroke="#FFFFFF" stroke-width="22"/>
+        <!-- AEONA Mall 4 Planned Site (ABOVE CADT!) -->
+        <rect x="200" y="34" width="388" height="250" rx="28" fill="#FF4D6D" fill-opacity="0.13" stroke="#FF4D6D" stroke-width="6" stroke-dasharray="14 10"/>
+        <rect x="274" y="54" width="240" height="42" rx="21" fill="url(#mallG)"/>
+        <text x="394" y="82" font-family="Plus Jakarta Sans,sans-serif" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">NEW · BEHIND CADT</text>
+        <text x="274" y="168" font-family="Plus Jakarta Sans,sans-serif" font-size="56" text-anchor="middle">🏬</text>
+        <text x="432" y="156" font-family="Plus Jakarta Sans,sans-serif" font-size="34" font-weight="800" fill="#14213D" text-anchor="middle">AEONA Mall 4</text>
+        <rect x="234" y="194" width="320" height="66" rx="16" fill="#FFFFFF" stroke="#FFD0D9" stroke-width="2"/>
+        <text x="394" y="222" font-family="Plus Jakarta Sans,sans-serif" font-size="19" font-weight="800" fill="#D61F45" text-anchor="middle">🍜 Restaurant Floor (Floor 2)</text>
+        <text x="394" y="247" font-family="Plus Jakarta Sans,sans-serif" font-size="16" font-weight="700" fill="#56627A" text-anchor="middle">15+ popular shops</text>
+        <!-- Upward Walking Arrow from CADT to AEONA Mall 4 -->
+        <path d="M 394 362 L 394 298" fill="none" stroke="#FF4D6D" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="394,286 382,306 406,306" fill="#FF4D6D"/>
+        <rect x="424" y="308" width="112" height="36" rx="18" fill="#14213D"/>
+        <text x="480" y="332" font-family="Plus Jakarta Sans,sans-serif" font-size="17" font-weight="800" fill="#FFFFFF" text-anchor="middle">🚶 3 min!</text>
+        <!-- CADT Campus Block (BELOW AEONA Mall 4) -->
+        <rect x="200" y="366" width="388" height="218" rx="24" fill="#2F7BFF" fill-opacity="0.14" stroke="#2F7BFF" stroke-width="5"/>
+        <rect x="230" y="394" width="166" height="92" rx="16" fill="#2F7BFF"/>
+        <text x="313" y="452" font-family="Plus Jakarta Sans,sans-serif" font-size="38" font-weight="800" fill="#FFFFFF" text-anchor="middle">CADT</text>
+        <rect x="404" y="416" width="170" height="48" rx="24" fill="#FFFFFF"/>
+        <text x="489" y="446" font-family="Plus Jakarta Sans,sans-serif" font-size="17" font-weight="800" fill="#1D5BD6" text-anchor="middle">📍 YOU ARE HERE</text>
+        <text x="394" y="544" font-family="Plus Jakarta Sans,sans-serif" font-size="17.5" font-weight="700" fill="#475569" text-anchor="middle">Prek Leap · Chroy Changvar · Phnom Penh</text>
         <!-- Compass -->
-        <circle cx="84" cy="78" r="34" fill="#FFFFFF" stroke="#DCE3EE" stroke-width="2"/>
-        <text x="84" y="72" font-family="Plus Jakarta Sans,sans-serif" font-size="18" font-weight="800" fill="#FF4D6D" text-anchor="middle">N</text>
-        <polygon points="84,82 76,98 92,98" fill="#14213D"/>
+        <circle cx="68" cy="78" r="34" fill="#FFFFFF" stroke="#DCE3EE" stroke-width="2"/>
+        <text x="68" y="72" font-family="Plus Jakarta Sans,sans-serif" font-size="18" font-weight="800" fill="#FF4D6D" text-anchor="middle">N</text>
+        <polygon points="68,82 60,98 76,98" fill="#14213D"/>
       </svg>
     </div>
     <div class="map-side">
@@ -1095,8 +1118,8 @@ body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased
   <div class="prop3">
     <div class="card pwhy a up" style="--d:.55s;--c:#FF4D6D">
       <span class="ic"><svg class="icon"><use href="#i-clock"/></svg></span>
-      <b>2 Months &amp; Weak Signal</b>
-      <p>No time for App Store review—and congested opening Wi-Fi kills 95 MB downloads.</p>
+      <b>2 Months &amp; Crowded Net</b>
+      <p>No time for store review—and opening crowds + smartphone-heavy students nearby slow down downloads.</p>
     </div>
     <div class="card pwhy a up" style="--d:.75s;--c:#E9A400">
       <span class="ic"><svg class="icon"><use href="#i-brief"/></svg></span>
