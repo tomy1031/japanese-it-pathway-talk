@@ -37,12 +37,11 @@ export const CATEGORIES: Record<string, string> = {
   goal: "Purpose and goals: why the client wants the system, the business problem to solve, what success looks like and how it will be measured.",
   users: "Users and usage habits: who will use it (families, elderly, students, restaurant staff), how often they visit, and whether they use it for anything else.",
   features: "Features: what the waiting-list system should do (joining a line, seat preferences, calling, cancelling, walk-ins, ordering/payment or not).",
-  ux: "Design and usability: ease of use in front of a crowded restaurant, languages (Khmer, English, Japanese), sign-up or onboarding friction.",
-  data: "Data and integration: existing mall apps/systems, POS, notifications, per-restaurant settings.",
-  quality: "Quality, network and privacy: slow mall Wi-Fi or weak mobile signal indoors, privacy/personal data, keeping each restaurant's data separate.",
+  ux: "Design and language: ease of use in front of a crowded restaurant, languages (Khmer, English, Japanese), sign-up or onboarding friction.",
+  quality: "Network, data and security: slow mall Wi-Fi or weak mobile signal indoors, existing systems/POS, privacy/personal data, keeping each restaurant's data separate.",
   plan: "Budget, schedule and scope: project budget, how many months until mall opening, launch timeline, phase-1 scope.",
   operation: "Operation and multi-store management: how many restaurants use it, staff devices, multiple staff at the entrance, staff turnover.",
-  other: "Anything else, or not a question about this project.",
+  other: "Other or original questions not fitting the above 7 areas, or off-topic.",
 };
 
 export const EXPECTED_QUESTIONS: Record<string, string> = {
