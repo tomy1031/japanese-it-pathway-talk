@@ -5,8 +5,8 @@ window.LIVEQ = {
   url: 'https://odpexredcsyjynbexstj.supabase.co',
   anon: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9kcGV4cmVkY3N5anluYmV4c3RqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ4MDU3NDIsImV4cCI6MjExMDM4MTc0Mn0.mkyk8E9ih7VL8CksmlBZMsSeEkfXYNggHeZ2U56V0cA',
   fn: 'https://odpexredcsyjynbexstj.supabase.co/functions/v1/questions',
-  // where the QR code sends phones (the published form)
-  askUrl: 'https://tomy1031.github.io/japanese-it-pathway-talk/talk2-hyho55ic/ask/',
+  // where the QR code sends phones (separate public folder so the slide URL stays private)
+  askUrl: 'https://tomy1031.github.io/japanese-it-pathway-talk/ask/',
   // the talk's session; add ?s=test (to the deck or the form) for rehearsals
   defaultSession: 'live',
   session() {
@@ -20,18 +20,18 @@ window.LIVEQ = {
     role: 'Project Manager',
     request: 'We are building AEONA Mall 4 right behind CADT! Weekends at our restaurant floor will have huge lines, so we want a smartphone app where visitors can join a waiting list and get called when their table is ready.'
   },
-  // the 8 requirement categories gemini-decision-1 chooses from
+  // 8 dashboard categories (7 merged requirement areas + Other)
   cats: [
-    { key: 'goal',      en: 'Purpose & goals',      ja: '目的・ゴール',       c: '#FF4D6D', icon: 'i-target' },
-    { key: 'users',     en: 'Users & adoption',     ja: 'ユーザー・利用障壁', c: '#2F7BFF', icon: 'i-users' },
-    { key: 'features',  en: 'Features',             ja: '機能',               c: '#7C5CFF', icon: 'i-layers' },
-    { key: 'ux',        en: 'Design & usability',   ja: '使いやすさ・言語',   c: '#FF8E3C', icon: 'i-eye' },
-    { key: 'data',      en: 'Platform & data',      ja: '基盤・データ連携',   c: '#12B886', icon: 'i-network' },
-    { key: 'quality',   en: 'Network & security',   ja: '通信・セキュリティ', c: '#E9A400', icon: 'i-shield' },
-    { key: 'plan',      en: 'Budget & schedule',    ja: '予算・開発期間',     c: '#0EA5B7', icon: 'i-calendar' },
-    { key: 'operation', en: 'Store operation',      ja: '店舗運用・管理',     c: '#E64980', icon: 'i-tool' }
+    { key: 'goal',      en: 'Purpose & goals',          ja: '目的・ゴール',           c: '#FF4D6D', icon: 'i-target' },
+    { key: 'users',     en: 'Users & habits',           ja: 'ユーザー・利用頻度',     c: '#2F7BFF', icon: 'i-users' },
+    { key: 'features',  en: 'Features',                 ja: '機能',                   c: '#7C5CFF', icon: 'i-layers' },
+    { key: 'ux',        en: 'Design & language',        ja: '使いやすさ・言語',       c: '#FF8E3C', icon: 'i-eye' },
+    { key: 'quality',   en: 'Network, data & security', ja: '通信・データ・安全',     c: '#E9A400', icon: 'i-shield' },
+    { key: 'plan',      en: 'Budget & schedule',        ja: '予算・開発期間',         c: '#0EA5B7', icon: 'i-calendar' },
+    { key: 'operation', en: 'Store operation',          ja: '店舗運用・管理',         c: '#E64980', icon: 'i-tool' },
+    { key: 'other',     en: 'Other / original',         ja: 'その他',                 c: '#64748B', icon: 'i-help' }
   ],
-  other: { key: 'other', en: 'Other / off-topic', ja: 'その他', c: '#8A93A6', icon: 'i-help' },
+  other: { key: 'other', en: 'Other / original', ja: 'その他', c: '#64748B', icon: 'i-help' },
 
   // Expected Q&A set (c1..c5 = Critical questions that flip the entire architecture; o1..o10 = Other expected questions)
   expectedQuestions: [

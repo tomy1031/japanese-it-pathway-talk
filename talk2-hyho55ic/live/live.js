@@ -96,18 +96,18 @@
 
   /* ---------- Rehearsal / Demo Sample Data (1-click toggle for testing) ---------- */
   const DEMO_ITEMS = [
-    { id: 'd1', participant: 'stu-01', body: 'How much budget do you have to build this app?', ja: 'このアプリを作る予算はいくらですか？', category: 'plan', matched_q: 'c1', open_q: 0.85, depth: 2.4 },
-    { id: 'd2', participant: 'stu-02', body: 'What is the total budget for development?', ja: '開発の総予算はどのくらいですか？', category: 'plan', matched_q: 'c1', open_q: 0.8, depth: 2.2 },
-    { id: 'd3', participant: 'stu-03', body: 'When will AEONA Mall 4 open? How many months do we have?', ja: 'AEONA Mall 4はいつオープンですか？開発期間は何ヶ月？', category: 'plan', matched_q: 'c2', open_q: 0.9, depth: 2.5 },
-    { id: 'd4', participant: 'stu-04', body: 'Will visitors use this app for mall points or parking too, or only for waiting in line?', ja: 'モールのポイントや駐車場にも使いますか？それとも順番待ち専用ですか？', category: 'users', matched_q: 'c4', open_q: 0.9, depth: 2.7 },
-    { id: 'd5', participant: 'stu-05', body: 'Which languages do we need? Khmer and English?', ja: 'どの言語が必要ですか？クメール語と英語ですか？', category: 'ux', matched_q: 'o2', open_q: 0.6, depth: 1.5 },
-    { id: 'd6', participant: 'stu-06', body: 'Should it support Khmer, English, and Japanese?', ja: 'クメール語・英語・日本語に対応すべきですか？', category: 'ux', matched_q: 'o2', open_q: 0.5, depth: 1.4 },
-    { id: 'd7', participant: 'stu-07', body: 'What information do customers enter—number of adults, kids, baby chair?', ja: '大人・子供の人数や子供イスなど何を入力しますか？', category: 'features', matched_q: 'o3', open_q: 0.85, depth: 2.0 },
-    { id: 'd8', participant: 'stu-08', body: 'What happens if a customer is called but does not show up after 10 minutes?', ja: '呼び出しても10分以上来なかった場合はどうなりますか？', category: 'features', matched_q: 'o4', open_q: 0.9, depth: 2.3 },
-    { id: 'd9', participant: 'stu-09', body: 'Can customers also pre-order food and pay with KHQR while waiting?', ja: '待ち時間に事前注文やKHQR決済もできますか？', category: 'features', matched_q: 'o6', open_q: 0.7, depth: 1.8 },
-    { id: 'd10', participant: 'stu-10', body: 'What about elderly grandparents who do not have a smartphone?', ja: 'スマホを持っていないお年寄りはどう並びますか？', category: 'users', matched_q: 'o5', open_q: 0.9, depth: 2.4 },
-    { id: 'd11', participant: 'stu-11', body: 'Why do you want to reduce the physical queue? What is your main goal?', ja: '行列を減らしたい一番の目的は何ですか？', category: 'goal', matched_q: 'o1', open_q: 0.95, depth: 2.8 },
-    { id: 'd12', participant: 'stu-12', body: 'Will restaurants give discount coupons if waiting time exceeds 45 minutes?', ja: '45分以上待ったら割引クーポンを出しますか？', category: 'operation', matched_q: 'none', open_q: 0.6, depth: 1.6 }
+    { id: 'd1', participant: 'stu-01', body: 'What is the total budget for building and running this system?', ja: 'このシステムの開発・運用の総予算はいくらですか？', category: 'plan', matched_q: 'c1', open_q: 0.85, depth: 2.4 },
+    { id: 'd2', participant: 'stu-02', body: 'How much budget do you have left for the restaurant floor?', ja: 'レストランフロアに使える予算はどのくらい残っていますか？', category: 'plan', matched_q: 'c1', open_q: 0.8, depth: 2.2 },
+    { id: 'd3', participant: 'stu-03', body: 'When is the Grand Opening of AEONA Mall 4? How many months do we have?', ja: 'AEONA Mall 4のグランドオープンはいつですか？開発期間は何ヶ月ありますか？', category: 'plan', matched_q: 'c2', open_q: 0.9, depth: 2.5 },
+    { id: 'd4', participant: 'stu-04', body: 'Will visitors use this app for mall points or parking too, or ONLY for waiting in line?', ja: 'モールのポイントや駐車場にも使いますか？それとも順番待ち専用ですか？', category: 'users', matched_q: 'c4', open_q: 0.92, depth: 2.8 },
+    { id: 'd5', participant: 'stu-05', body: 'Which languages do we need to support? Khmer and English?', ja: 'どの言語に対応する必要がありますか？クメール語と英語ですか？', category: 'ux', matched_q: 'o2', open_q: 0.65, depth: 1.6 },
+    { id: 'd6', participant: 'stu-06', body: 'What details should guests enter—number of adults, kids, table or counter, baby chair?', ja: '大人・子供の人数、テーブル/カウンター希望、子供イスなど何を入力しますか？', category: 'features', matched_q: 'o3', open_q: 0.85, depth: 2.1 },
+    { id: 'd7', participant: 'stu-07', body: 'How will guests be notified, and what if they do not come after 10 minutes?', ja: 'どうやって呼び出しますか？10分来なかった場合はどうなりますか？', category: 'features', matched_q: 'o4', open_q: 0.9, depth: 2.3 },
+    { id: 'd8', participant: 'stu-08', body: 'Do you also want menu browsing, food pre-ordering, or KHQR payment?', ja: '事前メニュー注文やKHQR決済機能も必要ですか？', category: 'features', matched_q: 'o6', open_q: 0.7, depth: 1.8 },
+    { id: 'd9', participant: 'stu-09', body: 'What about elderly grandparents who do not have a smartphone?', ja: 'スマホを持っていないお年寄りはどうやって順番待ちしますか？', category: 'users', matched_q: 'o5', open_q: 0.9, depth: 2.4 },
+    { id: 'd10', participant: 'stu-10', body: 'Why do you want to reduce the physical line? What is your real business goal?', ja: '行列を減らしたい一番のビジネス上の目的は何ですか？', category: 'goal', matched_q: 'o1', open_q: 0.95, depth: 2.9 },
+    { id: 'd11', participant: 'stu-11', body: 'How many staff handle the entrance on busy weekends?', ja: '週末の混雑時、店頭の受付スタッフは何人体制ですか？', category: 'operation', matched_q: 'o7', open_q: 0.8, depth: 2.2 },
+    { id: 'd12', participant: 'stu-12', body: 'Will AEONA Mall 4 give discount coupons if the wait is over 45 minutes?', ja: '待ち時間が45分を超えたら割引クーポンを配りますか？', category: 'other', matched_q: 'none', open_q: 0.6, depth: 1.5 }
   ];
   function toggleDemo() {
     useDemo = !useDemo;
@@ -268,7 +268,6 @@
           <span class="lq-more" hidden></span>
         </div>`).join('')}
       </div>
-      <div class="lq-other"><span><b>${esc(OTHER.en)}</b> · <span class="n">0</span></span><span class="items"></span></div>
       <div class="lq-focus"><button class="lq-close" type="button" aria-label="Close">×</button><div class="lq-head"></div><div class="lq-list"></div></div>`;
     el.querySelector('.lq-session').textContent = S === C.defaultSession ? '' : '· practice: ' + S;
 
@@ -312,8 +311,11 @@
       ].map(([v, en, ja]) => `<div class="lq-tile"><b>${v}</b><span>${en} <small>${ja}</small></span></div>`).join('');
 
       const visible = [...activeMap().values()].filter(r => !r.flagged && r.category).sort((a, b) => b.created_at.localeCompare(a.created_at));
-      const by = Object.fromEntries(ALL.map(c => [c.key, []]));
-      visible.forEach(r => (by[r.category] || by.other).push(r));
+      const by = Object.fromEntries(CATS.map(c => [c.key, []]));
+      visible.forEach(r => {
+        const k = r.category === 'data' ? 'quality' : r.category;
+        (by[k] || by.other).push(r);
+      });
       const max = Math.max(1, ...CATS.map(c => by[c.key].length));
 
       const live = new Set();
@@ -338,9 +340,6 @@
         const more = card.querySelector('.lq-more');
         more.hidden = n <= 5; more.textContent = '+' + (n - 5) + ' more';
       });
-      const oth = by.other;
-      $('.lq-other .n').textContent = oth.length;
-      $('.lq-other .items').innerHTML = oth.slice(0, 6).map(r => `<span class="lq-q"><span class="t">${esc(r.body)}</span></span>`).join(' ');
       for (const id of [...nodes.keys()]) if (!live.has(id)) nodes.delete(id);
 
       if (focusKey) {
